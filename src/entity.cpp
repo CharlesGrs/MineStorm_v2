@@ -11,6 +11,14 @@ void Entity::OnCreate() {}
 
 void Entity::OnDestroy() {}
 
-void Entity::Draw() {}
+void Entity::Draw() 
+{
+	Color c;
+	c.r = 1;
+	c.g = 1;
+	c.b = 1;
+	c.a = 1;
+	DrawTextureRec(texture, spriteRect, position, c);
+}
 
 void Entity::Update() {}

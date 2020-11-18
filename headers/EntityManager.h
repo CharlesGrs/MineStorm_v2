@@ -14,14 +14,18 @@ class EntityManager
 {
 public:
 
-	EntityManager(); // Load Sprite Atlas in cTor
+	EntityManager() = default;
+	EntityManager(Texture);// Load Sprite Atlas in cTor
 
 	Texture spriteSheet;
 	std::list<Entity>  loadedEntities;
 	Entity prefabs[6];
 
 	void LoadEntitiesReferences();
-	void InstantiateEntity(EntityIndexes index);
+
+	void InstantiateEntity(EntityIndexes index, Vector2 position);
+	void InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
+
 	void DestroyEntity(Entity entity);
 
 	void UpdateEntities();

@@ -5,6 +5,7 @@ class Entity
 {
 public :
 
+	Entity() = default;
 	Entity(Vector2 _position, float _speed, Rectangle _spriteRect, Texture2D _texture) ;
 	Vector2 position;
 	float rotation = 0;

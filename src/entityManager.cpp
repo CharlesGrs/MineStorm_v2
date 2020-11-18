@@ -1,34 +1,56 @@
 #include "../headers/EntityManager.h"
+#include "../headers/SpriteHelper.h"
 #include <raylib.h>
+
+
+EntityManager::EntityManager(Texture _spriteSheet) : spriteSheet(_spriteSheet) 
+{
+	LoadEntitiesReferences();
+}
 
 void EntityManager::LoadEntitiesReferences()
 {
-	// Calculate rectSize
-	// Give them all the correct rect
-	// Populate the prefabs array accordingly to the EntityIndexes order
-	// Done.
+	Vector2 defaultPosition;
+	defaultPosition.x = 0;
+	defaultPosition.y = 0;
+
+	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 8, 1);
+	Entity Player(defaultPosition, 10, playerSpriteRect, spriteSheet);
+	prefabs[0] = Player;
+
+	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 8, 2);
+	Entity Bullet(defaultPosition, 10, bulletSpriteRect, spriteSheet);
+	prefabs[1] = Bullet;
 }
 
-void EntityManager::InstantiateEntity(EntityIndexes index)
+void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position)
 {
-	// Copy Entity from Entity Array "Prefabs" according to the EntityIndex given.
-	// Then push_back the Entity in the loadedEntities
+	int entityIndex = (int)index;
 
-#pragma region Debug
-	Vector2 position;
-	position.x = 0;
-	position.y = 0;
-	Rectangle spriteRect;
-	spriteRect.width = 100;
-	spriteRect.height = 100;
+	Entity newEntity(prefabs[entityIndex]);
+	newEntity.position = position;
 
-	Entity newEntity = Entity(position, 10, spriteRect, spriteSheet);
+	loadedEntities.push_back(newEntity);
+}
 
-#pragma endregion
+void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position, float rotation)
+{
+	int entityIndex = (int)index;
+
+	Entity newEntity(prefabs[entityIndex]);
+	newEntity.position = position;
+	newEntity.rotation = rotation;
 
 	loadedEntities.push_back(newEntity);
 }
 
 void EntityManager::DestroyEntity(Entity entity) {}
 void EntityManager::UpdateEntities() {} // forEach loop on loadedEntities -> Entity.Update
-void EntityManager::DrawEntities() {} // forEach loop on loadedEntities -> Entity.Draw
+void EntityManager::DrawEntities() 
+{
+	for (Entity i : loadedEntities)
+	{
+		i.Draw();
+	}
+	
+} // forEach loop on loadedEntities -> Entity.Draw

@@ -7,7 +7,8 @@
 
 World::World()
 {
-    EntityManager _entityManager;
+    Texture spriteSheet = LoadTexture("/Assets/minestorm_sprite_atlas_mine_storm.png");
+    EntityManager _entityManager(spriteSheet);
     entityManager = _entityManager;
 }
 
@@ -26,7 +27,10 @@ void World::Update()
 
     if (IsKeyDown(KEY_A))
     {
-        entityManager.InstantiateEntity(EntityIndexes::Player);
+        Vector2 playerPos;
+        playerPos.x = 350;
+        playerPos.y = 350;
+        entityManager.InstantiateEntity(EntityIndexes::Player, playerPos);
         DrawText("PRESSED", 100, 350, 20, LIGHTGRAY);
     }
 

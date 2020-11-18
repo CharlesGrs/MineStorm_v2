@@ -27,7 +27,7 @@
     <ClInclude Include="headers\World.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteHelper.h">
+    <ClInclude Include="headers\SpriteHelper.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -49,9 +49,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\Assets Mine Storm.jpg">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="assets\minestorm_background.png">
       <Filter>Assets</Filter>
     </Image>
@@ -62,6 +59,9 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="assets\minestorm_sprite_atlas_mine_storm.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="assets\Assets Mine Storm.jpg">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
