@@ -55,8 +55,8 @@ void World::Debug()
 	}
 
 	int size = (int)entityManager.loadedEntities.size();
-	std::string s = std::to_string(size);
+	std::string s = "Entity count: " + std::to_string(size);
 	char const* pChar = s.c_str();
-	DrawText(pChar, 100, 450, 20, LIGHTGRAY);
+	DrawText( pChar, 10, 10, 14, LIGHTGRAY);
 
 }
