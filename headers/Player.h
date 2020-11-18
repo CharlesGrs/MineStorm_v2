@@ -2,13 +2,20 @@
 #include <raylib.h>
 #include "Entity.h"
 
-class Player :Entity
+class Player : Entity
 {
 	float acceleration;
 	Vector2 velocity;
 	bool playerOne;
 	Entity bullet;
 	int health = 3;
+
+	
+
+	void Draw();
+
+	void Update();
+
 
 	/*
 			player.position.x += (player.speed.x*player.acceleration);

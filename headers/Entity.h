@@ -6,19 +6,20 @@ class Entity
 public :
 
 	Entity() = default;
-	Entity(Vector2 _position, float _speed, Rectangle _spriteRect, Texture2D _texture) ;
+	Entity(Vector2 _position, float _speed, float scale,  Rectangle _spriteRect, Texture2D _texture);
 	Vector2 position;
 	float rotation = 0;
+	float scale;
 	float speed;
 	Rectangle spriteRect;
 	Rectangle hitboxRect;
 	Texture2D texture;
 
-	virtual void OnCreate();
+	void OnCreate();
 
-	virtual void OnDestroy();
+	void OnDestroy();
 
-	virtual void Update();
+	void Update();
 
-	virtual void Draw();
+	void Draw();
 };

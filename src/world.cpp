@@ -25,7 +25,7 @@ void World::Update()
 
     #pragma region DEBUG
 
-    if (IsKeyDown(KEY_A))
+    if (IsKeyReleased(KEY_A))
     {
         Vector2 playerPos;
         playerPos.x = (float)(rand() % 1080);
