@@ -8,7 +8,13 @@
 enum class EntityIndexes : int
 {
 	Player = 0,
-	Bullet = 1
+	SpawnPoint = 1,
+	MineLayer = 2,
+	Bullet = 3,
+	FloatingMine = 4,
+	FireballMine = 5,
+	MagneticMine = 6,
+	MagneticFireballMine = 7
 };
 class EntityManager
 {
@@ -19,7 +25,7 @@ public:
 
 	Texture spriteSheet;
 	std::list<Entity>  loadedEntities;
-	Entity prefabs[6];
+	Entity prefabs[8];
 
 	void LoadEntitiesReferences();
 

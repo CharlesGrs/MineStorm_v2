@@ -4,20 +4,25 @@
 
 Rectangle SpriteHelper::GetSpriteRectangle(Texture2D texture, int columnCount, int rowCount, int spriteIndex)
 {
-	int width = texture.width;
-	int height = texture.height;
-	int spriteWidth = width / columnCount;
-	int spriteHeight = height / rowCount;
-	int spriteCount = columnCount * rowCount;
+	float width			= texture.width;
+	float height		= texture.height;
+	float spriteWidth	= width / columnCount;
+	float spriteHeight	= height / rowCount;
+	float spriteCount	= columnCount * rowCount;
 
-	int xIndex = columnCount - rowCount;
-	int yIndex = spriteIndex - xIndex * columnCount;
+	//for now cause we only have 2 rows (and 4 columns)
+	int xIndex = spriteIndex >= columnCount ? spriteIndex - columnCount : spriteIndex;
+	int yIndex = spriteIndex >= columnCount ? 1 : 2;
+
+	//int xIndex = columnCount - rowCount; //this is a const
+	//int yIndex = spriteIndex - xIndex * columnCount; 
 
 	Rectangle spriteRect;
-	spriteRect.width = spriteWidth;
-	spriteRect.height = spriteWidth;
-	spriteRect.x = xIndex * spriteHeight;
-	spriteRect.y = yIndex * spriteWidth;
+
+	spriteRect.width	= spriteWidth;
+	spriteRect.height	= spriteHeight;
+	spriteRect.x		= xIndex * spriteWidth;
+	spriteRect.y		= yIndex * spriteHeight;
 
 	return spriteRect;
 }

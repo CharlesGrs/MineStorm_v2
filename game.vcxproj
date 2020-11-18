@@ -96,6 +96,7 @@
     <ClInclude Include="headers\SpriteHelper.h" />
     <ClInclude Include="headers\World.h" />
     <ClInclude Include="headers\Player.h" />
+    <ClInclude Include="Mine.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Assets Mine Storm.jpg" />

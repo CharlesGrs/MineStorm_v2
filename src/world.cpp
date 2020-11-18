@@ -34,7 +34,7 @@ void World::Update()
         DrawText("PRESSED", 100, 350, 20, LIGHTGRAY);
     }
 
-    int size = entityManager.loadedEntities.size();
+    int size = (int)entityManager.loadedEntities.size();
     std::string s = std::to_string(size);
     char const* pChar = s.c_str();
     DrawText(pChar, 100, 450, 20, LIGHTGRAY);

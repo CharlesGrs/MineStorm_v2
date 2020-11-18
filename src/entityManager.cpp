@@ -14,13 +14,37 @@ void EntityManager::LoadEntitiesReferences()
 	defaultPosition.x = 0;
 	defaultPosition.y = 0;
 
-	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 8, 1);
-	Entity Player(defaultPosition, 10, playerSpriteRect, spriteSheet);
-	prefabs[0] = Player;
+	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 0);
+	Entity player(defaultPosition, 10, playerSpriteRect, spriteSheet);
+	prefabs[0] = player;
 
-	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 8, 2);
-	Entity Bullet(defaultPosition, 10, bulletSpriteRect, spriteSheet);
-	prefabs[1] = Bullet;
+	Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 1);
+	Entity spawnPoint(defaultPosition, 10, spawnPointSpriteRect, spriteSheet);
+	prefabs[1] = spawnPoint;
+
+	Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 2);
+	Entity mineLayer(defaultPosition, 10, MineLayerSpriteRect, spriteSheet);
+	prefabs[2] = mineLayer;
+
+	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 3);
+	Entity bullet(defaultPosition, 10, bulletSpriteRect, spriteSheet);
+	prefabs[3] = bullet;
+
+	Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 4);
+	Entity floatingMine(defaultPosition, 10, floatingMineSpriteRect, spriteSheet);
+	prefabs[4] = floatingMine;
+
+	Rectangle fireballMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 5);
+	Entity fireballMine(defaultPosition, 10, fireballMineSpriteRect, spriteSheet);
+	prefabs[5] = fireballMine;
+
+	Rectangle magneticMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 6);
+	Entity magneticMine(defaultPosition, 10, magneticMineSpriteRect, spriteSheet);
+	prefabs[6] = magneticMine;
+
+	Rectangle magneticFireballMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 2, 4, 7);
+	Entity magneticFireballMine(defaultPosition, 10, magneticFireballMineSpriteRect, spriteSheet);
+	prefabs[7] = magneticFireballMine;
 }
 
 void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position)
