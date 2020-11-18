@@ -2,8 +2,8 @@
 #include <raylib.h>
 
 
-Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
-	: position(_position), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), texture(_texture)
+Entity::Entity(Vector2 _position, int _id, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
+	: position(_position), id(_id), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), texture(_texture)
 {
 	hitboxRect = Rectangle(spriteRect);
 	hitboxRect.width *= scale;

@@ -4,8 +4,8 @@
 // Debug
 #include <string>
 
-Player::Player(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
-	: Entity(_position, _speed, _scale, _spriteRect, _texture)
+Player::Player(Vector2 _position, int _id, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
+	: Entity(_position,_id, _speed, _scale, _spriteRect, _texture)
 {
 }
 
