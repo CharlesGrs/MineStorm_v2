@@ -44,7 +44,7 @@ void World::LoadResources()
 
 void World::Debug() 
 {
-    if (IsKeyReleased(KEY_A))
+    if (IsKeyReleased(KEY_Q))
     {
         Vector2 playerPos;
         playerPos.x = (float)(rand() % 1080);
