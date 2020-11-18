@@ -8,6 +8,8 @@ public :
 	World();
 	
 	Shader bloom;
+	Shader fishEye;
+
 	EntityManager entityManager;
 	RenderTexture renderTexture;
 
@@ -15,7 +17,11 @@ public :
 	static const int windowHeight = 720;
 
 
+
 	void LoadResources();
+	void UnloadResources();
 	void Update();
 	void Debug();
+
 };
+

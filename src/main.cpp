@@ -19,6 +19,8 @@ int main(int argc, char* argv[])
         currentWorld.Update();
     }
 
+    currentWorld.UnloadResources();
+
     //don't forget to delete allocated pointers
     currentWorld.entityManager.FreeBuffers();
 

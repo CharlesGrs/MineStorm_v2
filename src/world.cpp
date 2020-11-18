@@ -43,6 +43,12 @@ void World::LoadResources()
 	renderTexture = LoadRenderTexture(1080, 720);
 }
 
+void World::UnloadResources() 
+{
+	UnloadShader(bloom);
+	UnloadRenderTexture(renderTexture);
+}
+
 void World::Debug()
 {
 	if (IsKeyReleased(KEY_SPACE))
