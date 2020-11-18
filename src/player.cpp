@@ -12,29 +12,33 @@ Player::Player(Vector2 _position, int _id, float _speed, float _scale, Rectangle
 
 void Player::Update()
 {
-
     if (IsKeyDown(KEY_W))
     {
-        velocity = { 0,-1 };    // toward top
-        rotation = 0;
+        if (acceleration < 1) acceleration += 0.04f;
     }
-    else if (IsKeyDown(KEY_A))
+    else
     {
-        velocity = { -1,0 };    // toward left
-        rotation = -90;
+        if (acceleration > 0) acceleration -= 0.02f;
+        else if (acceleration < 0) acceleration = 0;
+    }
+     if (IsKeyDown(KEY_A))
+    {
+        rotation = -5;
     }
     else if (IsKeyDown(KEY_D))
     {
-        velocity = { 1,0 };     // toward right
-        rotation = 90;
+        rotation += 5;
     }
-    else if (IsKeyDown(KEY_S))
-    {
-        velocity = { 0,1 };     // toward down
-        rotation = 180;
-    }
+     if (IsKeyDown(KEY_S))
+     {
+         if (acceleration > 0) acceleration -= 0.04f;
+         else if (acceleration < 0) acceleration = 0;
+     }
 
-    position.x += velocity.x * speed;
-    position.y += velocity.y * speed;
+    velocity.x = sin(rotation * DEG2RAD) * speed;
+    velocity.y = cos(rotation * DEG2RAD) * speed;
+
+    position.x += velocity.x * acceleration;
+    position.y -= velocity.y * acceleration;
         
 }

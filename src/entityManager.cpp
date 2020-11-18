@@ -20,7 +20,7 @@ void EntityManager::LoadEntitiesReferences()
 	defaultPosition.y = 0;
 
 	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 0);
-	Player* player = new Player(defaultPosition,0, 10, 0.25, playerSpriteRect, spriteSheet);
+	Player* player = new Player(defaultPosition,0, 1, 0.25, playerSpriteRect, spriteSheet);
 	prefabs[0] = (Entity*)player;
 
 	Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
