@@ -30,7 +30,7 @@
     <ClInclude Include="headers\SpriteHelper.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Mine.h">
+    <ClInclude Include="headers\Mine.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

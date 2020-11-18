@@ -1,6 +1,5 @@
 #include <raylib.h>
 #include "../headers/World.h"
-#include "../headers/EntityManager.h"
 
 // Debug
 #include <string>

@@ -1,5 +1,5 @@
 #pragma once
-#include "../headers/EntityManager.h"
+#include "EntityManager.h"
 
 class World
 {
