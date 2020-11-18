@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
     }
 
     //don't forget to delete allocated pointers
+    currentWorld.entityManager.FreeBuffers();
 
     CloseWindow();
 

@@ -5,6 +5,7 @@
 #include "../headers/SpawnPoint.h"
 #include "../headers/Bullet.h"
 #include "../headers/MineLayer.h"
+#include <stdlib.h>
 #include <raylib.h>
 
 
@@ -117,4 +118,13 @@ void EntityManager::DrawEntities()
 	{
 		i->Draw();
 	}
+}
+
+void EntityManager::FreeBuffers()
+{
+	for (Entity* i : loadedEntities)
+	{
+		free(i);
+	}
+	loadedEntities.clear();
 }

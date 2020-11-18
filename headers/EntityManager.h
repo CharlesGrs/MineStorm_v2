@@ -36,4 +36,6 @@ public:
 
 	void UpdateEntities();
 	void DrawEntities();
+
+	void FreeBuffers();
 };
