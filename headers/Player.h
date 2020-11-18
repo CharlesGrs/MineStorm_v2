@@ -1,16 +1,18 @@
 #pragma once
 #include <raylib.h>
-#include "Entity.h"
+#include <list>
+#include "../headers/Entity.h"
 
 class Player : Entity
 {
-	float acceleration;
-	Vector2 velocity;
-	bool playerOne;
-	Entity bullet;
+public :
+	float acceleration = 0;
+	Vector2 velocity = {0,0};
+	bool playerOne = true;
+	std::list<Entity> bullets;
 	int health = 3;
-
-	
+	Player() = default;
+	Player(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
 
 	void Draw();
 

@@ -84,17 +84,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\bullet.cpp" />
     <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\entityManager.cpp" />
+    <ClCompile Include="src\mine.cpp" />
+    <ClCompile Include="src\mineLayer.cpp" />
     <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\spawnPoint.cpp" />
     <ClCompile Include="src\spriteHelper.cpp" />
     <ClCompile Include="src\world.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Bullet.h" />
     <ClInclude Include="headers\Entity.h" />
     <ClInclude Include="headers\EntityManager.h" />
     <ClInclude Include="headers\Mine.h" />
+    <ClInclude Include="headers\MineLayer.h" />
+    <ClInclude Include="headers\SpawnPoint.h" />
     <ClInclude Include="headers\SpriteHelper.h" />
     <ClInclude Include="headers\World.h" />
     <ClInclude Include="headers\Player.h" />

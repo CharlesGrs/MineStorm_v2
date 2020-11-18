@@ -1,28 +1,43 @@
 #pragma once
 #include <raylib.h>
+#include "../headers/Entity.h"
 
-class mine
+class Mine : Entity
 {
 public:
-	Vector2 position;
+	Mine() = default;
+	Mine(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
+	void update() {};
 };
 
-class floating_mine : mine
+class Floating_Mine : Mine
 {
 public:
+	Floating_Mine() = default;
+	Floating_Mine(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
+	void Update(){};
 };
 
-class fireball_mine : mine
+class Fireball_Mine : Mine
 {
-
+public:
+	Fireball_Mine() = default;
+	Fireball_Mine(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
+	void Update(){};
 };
 
-class magnetic_mine : mine
+class Magnetic_Mine : Mine
 {
-
+public:
+	Magnetic_Mine() = default;
+	Magnetic_Mine(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
+	void Update(){};
 };
 
-class magnetic_fireball_mine : mine
+class Magnetic_Fireball_Mine : Mine
 {
-
+public:
+	Magnetic_Fireball_Mine() = default;
+	Magnetic_Fireball_Mine(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
+	void Update(){};
 };
