@@ -1,5 +1,5 @@
-#Mine Storm 
+# Mine Storm 
 
 
-##ToDo :
-	-World Singleton Pattern
+## ToDo :
+	1. World **Singleton** Pattern
