@@ -11,7 +11,7 @@
 
 EntityManager::EntityManager(Texture _spriteSheet) : spriteSheet(_spriteSheet)
 {
-	LoadEntitiesReferences();
+	//LoadEntitiesReferences();
 }
 
 void EntityManager::LoadEntitiesReferences()
@@ -122,9 +122,14 @@ void EntityManager::DrawEntities()
 
 void EntityManager::FreeBuffers()
 {
-	for (Entity* i : loadedEntities)
+	while (loadedEntities.size() > 0)
+	{
+		loadedEntities.pop_front();
+	}
+
+
+	for (Entity* i : prefabs)
 	{
 		free(i);
 	}
-	loadedEntities.clear();
 }

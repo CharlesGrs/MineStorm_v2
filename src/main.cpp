@@ -1,5 +1,8 @@
 
 #include <raylib.h>
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 #include "../headers/World.h"
 
 int main(int argc, char* argv[])
@@ -19,12 +22,12 @@ int main(int argc, char* argv[])
         currentWorld.Update();
     }
 
+    //free heap used
     currentWorld.UnloadResources();
-
-    //don't forget to delete allocated pointers
     currentWorld.entityManager.FreeBuffers();
 
     CloseWindow();
+    _CrtDumpMemoryLeaks();
 
     return 0;
 }
