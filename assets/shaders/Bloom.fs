@@ -35,8 +35,10 @@ void main()
         }
     }
 
-    // Calculate final fragment color
+    // bloom result
     vec4 bloom =((sum/(samples*samples)) + source)*colDiffuse;
-    bloom += sin(fragTexCoord.y *10);
+
+    // Strides
+    bloom += abs(fract(fragTexCoord.y *80))*.3;
     finalColor = bloom;
 }
