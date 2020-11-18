@@ -1,14 +1,14 @@
 #pragma once
 #include <raylib.h>
 #include <list>
-#include "Entity.h"
+#include "../headers/Entity.h"
 
 class Player : Entity
 {
 public :
-	float acceleration;
-	Vector2 velocity;
-	bool playerOne;
+	float acceleration = 0;
+	Vector2 velocity = {0,0};
+	bool playerOne = true;
 	std::list<Entity> bullets;
 	int health = 3;
 	Player() = default;

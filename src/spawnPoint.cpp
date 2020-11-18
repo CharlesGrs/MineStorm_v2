@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include "../headers/SpawnPoint.h"
 
+
 // Debug
 #include <string>
 
