@@ -6,6 +6,8 @@ int main(int argc, char* argv[])
 {
     int screenWidth = 1080;
     int screenHeight = 720;
+
+    SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(screenWidth, screenHeight, "MineStorm");
 
     World currentWorld;
