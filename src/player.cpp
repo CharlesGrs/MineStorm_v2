@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "../headers/Player.h"
+#include "../headers/World.h"
 
 
 // Debug
@@ -18,7 +19,7 @@ void Player::Update()
     }
     else
     {
-        if (acceleration > 0) acceleration -= 0.02f;
+        if (acceleration > 0) acceleration -= 0.01f;
         else if (acceleration < 0) acceleration = 0;
     }
      if (IsKeyDown(KEY_A))

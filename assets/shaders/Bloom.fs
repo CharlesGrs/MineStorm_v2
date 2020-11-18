@@ -36,5 +36,7 @@ void main()
     }
 
     // Calculate final fragment color
-    finalColor = ((sum/(samples*samples)) + source)*colDiffuse;
+    vec4 bloom =((sum/(samples*samples)) + source)*colDiffuse;
+    bloom += sin(fragTexCoord.y *10);
+    finalColor = bloom;
 }

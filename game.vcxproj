@@ -114,7 +114,7 @@
     <Image Include="assets\minestorm_sprite_atlas_mine_storm.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Bloom.fs" />
+    <None Include="assets\shaders\Bloom.fs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

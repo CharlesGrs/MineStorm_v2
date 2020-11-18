@@ -93,7 +93,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Bloom.fs">
+    <None Include="assets\shaders\Bloom.fs">
       <Filter>Assets\Shaders</Filter>
     </None>
   </ItemGroup>
