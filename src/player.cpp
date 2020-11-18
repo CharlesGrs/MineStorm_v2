@@ -12,8 +12,29 @@ Player::Player(Vector2 _position, int _id, float _speed, float _scale, Rectangle
 
 void Player::Update()
 {
-    if (IsKeyDown(KEY_B))
+
+    if (IsKeyDown(KEY_W))
     {
-        DrawText("PRESSED B", 100, 300, 20, LIGHTGRAY);
+        velocity = { 0,-1 };    // toward top
+        rotation = 0;
     }
+    else if (IsKeyDown(KEY_A))
+    {
+        velocity = { -1,0 };    // toward left
+        rotation = -90;
+    }
+    else if (IsKeyDown(KEY_D))
+    {
+        velocity = { 1,0 };     // toward right
+        rotation = 90;
+    }
+    else if (IsKeyDown(KEY_S))
+    {
+        velocity = { 0,1 };     // toward down
+        rotation = 180;
+    }
+
+    position.x += velocity.x * speed;
+    position.y += velocity.y * speed;
+        
 }
