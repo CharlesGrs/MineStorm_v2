@@ -23,7 +23,7 @@ void Player::Update()
     }
      if (IsKeyDown(KEY_A))
     {
-        rotation = -5;
+        rotation -= 5;
     }
     else if (IsKeyDown(KEY_D))
     {
@@ -35,8 +35,8 @@ void Player::Update()
          else if (acceleration < 0) acceleration = 0;
      }
 
-    velocity.x = sin(rotation * DEG2RAD) * speed;
-    velocity.y = cos(rotation * DEG2RAD) * speed;
+    velocity.x = sin((double)rotation * DEG2RAD) * speed;
+    velocity.y = cos((double)rotation * DEG2RAD) * speed;
 
     position.x += velocity.x * acceleration;
     position.y -= velocity.y * acceleration;
