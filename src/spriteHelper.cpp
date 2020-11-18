@@ -10,9 +10,9 @@ Rectangle SpriteHelper::GetSpriteRectangle(Texture2D texture, int columnCount, i
 	float spriteHeight	= height / rowCount;
 	float spriteCount	= columnCount * rowCount;
 
-	//for now cause we only have 2 rows (and 4 columns)
+	//for now cause we only have 2 rows (and 4 columns), and spriteIndex starts at 0
 	int xIndex = spriteIndex >= columnCount ? spriteIndex - columnCount : spriteIndex;
-	int yIndex = spriteIndex >= columnCount ? 1 : 2;
+	int yIndex = spriteIndex >= columnCount ? 1 : 0;
 
 	//int xIndex = columnCount - rowCount; //this is a const
 	//int yIndex = spriteIndex - xIndex * columnCount; 

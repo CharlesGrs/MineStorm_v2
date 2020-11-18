@@ -14,9 +14,9 @@ void Entity::OnDestroy() {}
 void Entity::Draw() 
 {
 	Color c;
-	c.r = 1;
-	c.g = 1;
-	c.b = 1;
+	c.r = 0.5;
+	c.g = 0.5;
+	c.b = 0.5;
 	c.a = 1;
 	DrawTextureRec(texture, spriteRect, position, c);
 }

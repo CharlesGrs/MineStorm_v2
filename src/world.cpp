@@ -7,9 +7,10 @@
 
 World::World()
 {
-    Texture spriteSheet = LoadTexture("/Assets/minestorm_sprite_atlas_mine_storm.png");
+    Texture spriteSheet = LoadTexture("assets/minestorm_sprite_atlas_mine_storm.png");
     EntityManager _entityManager(spriteSheet);
     entityManager = _entityManager;
+
 }
 
 void World::Update()
