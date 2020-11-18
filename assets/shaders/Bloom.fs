@@ -17,6 +17,7 @@ const vec2 size = vec2(1080, 720);   // render size
 const float samples = 14.0;          // pixels per axis; higher = bigger glow, worse performance
 const float quality = 1; 	        // lower = smaller glow, better quality
 
+
 void main()
 {
     vec4 sum = vec4(0);
@@ -35,10 +36,24 @@ void main()
         }
     }
 
+    vec4 result;
     // bloom result
-    vec4 bloom =((sum/(samples*samples)) + source)*colDiffuse;
+    result = ((sum/(samples*samples)) + source)*colDiffuse;
+
+    //rgb stripes
+   float x = fragTexCoord.x *300;
+   float mod = mod(x, 3);
+   float step1 = step(2, mod);
+   float step2 = step(1, mod);
+
+   float r = (1-step2 )- step1;;
+   float g = 1-(1-step2 + step1);
+   float b = step2-g;
+   vec4 rgbStripes = vec4(r,g,b,1);
+
 
     // Strides
-    bloom += abs(fract(fragTexCoord.y *80))*.3;
-    finalColor = bloom;
+    result += abs(fract(fragTexCoord.y *80))*.15;
+    result += rgbStripes * 0.05;
+    finalColor = result;
 }
