@@ -22,7 +22,10 @@ public:
 
 	EntityManager() = default;
 	EntityManager(Texture);// Load Sprite Atlas in cTor
-
+	~EntityManager()
+	{
+		FreeBuffers();
+	}
 	Texture spriteSheet;
 	std::list<Entity*>  loadedEntities;
 	Entity* prefabs[8];

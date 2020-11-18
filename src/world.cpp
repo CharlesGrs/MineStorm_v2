@@ -47,6 +47,7 @@ void World::UnloadResources()
 {
 	UnloadShader(bloom);
 	UnloadRenderTexture(renderTexture);
+	UnloadTexture(entityManager.spriteSheet);
 }
 
 void World::Debug()
