@@ -25,7 +25,7 @@ public:
 
 	Texture spriteSheet;
 	std::list<Entity>  loadedEntities;
-	Entity prefabs[8];
+	Entity* prefabs[8];
 
 	void LoadEntitiesReferences();
 

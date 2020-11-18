@@ -17,6 +17,8 @@ int main(int argc, char* argv[])
         currentWorld.Update();
     }
 
+    //don't forget to delete allocated pointers
+
     CloseWindow();
 
     return 0;

@@ -33,6 +33,15 @@
     <ClInclude Include="headers\Mine.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Bullet.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\SpawnPoint.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\MineLayer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -51,6 +60,18 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="src\player.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bullet.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spawnPoint.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mineLayer.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
