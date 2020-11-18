@@ -7,6 +7,12 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{c617df49-9118-4178-8603-493859d908dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{c205fe7a-4878-422d-9f85-26ccfccb3784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{dcdfb386-d494-4fb5-8f57-27d8442d6c92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Entity.h">
@@ -19,6 +25,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\World.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteHelper.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,5 +44,30 @@
     <ClCompile Include="src\world.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\spriteHelper.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\Assets Mine Storm.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="assets\minestorm_background.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="assets\minestorm_forground.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="assets\minestorm_forground.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="assets\minestorm_sprite_atlas_mine_storm.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bloom.fs">
+      <Filter>Assets\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

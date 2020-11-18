@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\entityManager.cpp" />
+    <ClCompile Include="src\spriteHelper.cpp" />
     <ClCompile Include="src\world.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -94,6 +95,17 @@
     <ClInclude Include="headers\EntityManager.h" />
     <ClInclude Include="headers\World.h" />
     <ClInclude Include="headers\Player.h" />
+    <ClInclude Include="SpriteHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\Assets Mine Storm.jpg" />
+    <Image Include="assets\minestorm_background.png" />
+    <Image Include="assets\minestorm_forground.jpg" />
+    <Image Include="assets\minestorm_forground.png" />
+    <Image Include="assets\minestorm_sprite_atlas_mine_storm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bloom.fs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
