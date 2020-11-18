@@ -7,6 +7,7 @@ public :
 
 	Entity() = default;
 	Entity(Vector2 _position,int _id, float _speed, float scale,  Rectangle _spriteRect, Texture2D _texture);
+	~Entity() = default;
 	Vector2 position;
 	float rotation = 0;
 	float scale;

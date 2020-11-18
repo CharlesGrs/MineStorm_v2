@@ -5,12 +5,13 @@
 #include "../headers/SpawnPoint.h"
 #include "../headers/Bullet.h"
 #include "../headers/MineLayer.h"
+#include <stdlib.h>
 #include <raylib.h>
 
 
 EntityManager::EntityManager(Texture _spriteSheet) : spriteSheet(_spriteSheet)
 {
-	LoadEntitiesReferences();
+	//LoadEntitiesReferences();
 }
 
 void EntityManager::LoadEntitiesReferences()
@@ -116,5 +117,19 @@ void EntityManager::DrawEntities()
 	for (Entity* i : loadedEntities)
 	{
 		i->Draw();
+	}
+}
+
+void EntityManager::FreeBuffers()
+{
+	while (loadedEntities.size() > 0)
+	{
+		loadedEntities.pop_front();
+	}
+
+
+	for (Entity* i : prefabs)
+	{
+		free(i);
 	}
 }

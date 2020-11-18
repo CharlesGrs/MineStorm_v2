@@ -13,6 +13,9 @@ public :
 	EntityManager entityManager;
 	RenderTexture renderTexture;
 
+	static const int windowWidth = 1080;
+	static const int windowHeight = 720;
+
 
 
 	void LoadResources();

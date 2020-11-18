@@ -1,5 +1,5 @@
-#include "../headers/Entity.h"
 #include "../headers/SpriteHelper.h"
+#include "../headers/World.h"
 #include <raylib.h>
 
 
@@ -26,6 +26,17 @@ void Entity::Draw()
 
 void Entity::Update() 
 {
+
+	if (position.x > World::windowWidth)
+		position.x = 0;
+	else if (position.y > World::windowHeight)
+		position.y = 0;
+	
+	if (position.y < 0)
+		position.y = World::windowHeight;
+	else if (position.x < 0)
+		position.x = World::windowWidth;
+
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
 }
