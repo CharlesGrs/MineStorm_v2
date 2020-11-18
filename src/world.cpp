@@ -31,7 +31,7 @@ void World::Update()
         Vector2 playerPos;
         playerPos.x = rand() % 1080;
         playerPos.y = rand() % 720;
-        entityManager.InstantiateEntity(EntityIndexes::Player, playerPos);
+        entityManager.InstantiateEntity(EntityIndexes::Player, playerPos, rand()%360);
         DrawText("PRESSED", 100, 350, 20, LIGHTGRAY);
     }
 
