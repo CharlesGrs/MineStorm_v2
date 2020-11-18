@@ -1,6 +1,6 @@
 #pragma once
 #include <raylib.h>
-#include "../headers/Entity.h"
+#include "../../headers/entities/Entity.h"
 
 class Bullet : Entity
 {

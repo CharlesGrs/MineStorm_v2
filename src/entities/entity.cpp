@@ -1,5 +1,5 @@
-#include "../headers/SpriteHelper.h"
-#include "../headers/World.h"
+#include "../../headers/helpers/SpriteHelper.h"
+#include "../../headers/gameplay/World.h"
 #include <raylib.h>
 
 

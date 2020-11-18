@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "../headers/Mine.h"
+#include "../../headers/entities/Mine.h"
 
 
 // Debug

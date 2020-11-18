@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "../headers/World.h"
+#include "../../headers/gameplay/World.h"
 
 // Debug
 #include <string>
@@ -18,6 +18,8 @@ void World::Update()
 	BeginTextureMode(renderTexture);
 	ClearBackground(BLACK);
 
+	Debug();
+
 	entityManager.UpdateEntities();
 	entityManager.DrawEntities();
 
@@ -31,7 +33,6 @@ void World::Update()
 
 	EndShaderMode();
 
-	Debug();
 
 
 	EndDrawing();
@@ -58,7 +59,6 @@ void World::Debug()
 		playerPos.x = (float)(rand() % 1080);
 		playerPos.y = (float)(rand() % 720);
 		entityManager.InstantiateEntity(EntityIndexes::Player, playerPos, (float)(rand() % 360));
-		DrawText("PRESSED", 100, 350, 20, LIGHTGRAY);
 	}
 
 	int size = (int)entityManager.loadedEntities.size();

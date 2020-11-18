@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "../headers/MineLayer.h"
+#include "../../headers/entities/MineLayer.h"
 
 // Debug
 #include <string>

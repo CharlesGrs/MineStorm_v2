@@ -1,6 +1,5 @@
 #include <raylib.h>
-#include "../headers/Bullet.h"
-
+#include "../../headers/entities/Bullet.h"
 // Debug
 #include <string>
 

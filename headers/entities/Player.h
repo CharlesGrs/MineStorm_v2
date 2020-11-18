@@ -1,7 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <list>
-#include "../headers/Entity.h"
+#include "../../headers/entities/Entity.h"
 
 class Player : Entity
 {

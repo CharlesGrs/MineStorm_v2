@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "../headers/SpriteHelper.h"
+#include "../../headers/helpers/SpriteHelper.h"
 
 
 Rectangle SpriteHelper::GetSpriteRectangle(Texture2D texture, int columnCount, int rowCount, int spriteIndex)

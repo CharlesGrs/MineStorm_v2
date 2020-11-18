@@ -1,6 +1,6 @@
 #include <raylib.h>
-#include "../headers/Player.h"
-#include "../headers/World.h"
+#include "../../headers/entities/Player.h"
+#include "../../headers/gameplay/World.h"
 
 
 // Debug

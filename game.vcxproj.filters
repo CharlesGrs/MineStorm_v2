@@ -13,83 +13,104 @@
     <Filter Include="Assets\Shaders">
       <UniqueIdentifier>{dcdfb386-d494-4fb5-8f57-27d8442d6c92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Entities">
+      <UniqueIdentifier>{350db4c9-3526-4ebc-8e99-5856293688f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Entities">
+      <UniqueIdentifier>{df4a34fa-51a7-4a3e-8fb1-e9caedc14d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Helpers">
+      <UniqueIdentifier>{8fbfe5d1-b008-47b2-9015-4ae2a6c17ba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Gameplay">
+      <UniqueIdentifier>{939826b3-247d-4086-8a89-ff6842869933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay">
+      <UniqueIdentifier>{3265c94e-d74a-4889-86b5-272f7bc44515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Helpers">
+      <UniqueIdentifier>{9e65b5e4-72f0-4f1d-90dd-0160cd833721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Textures">
+      <UniqueIdentifier>{d2cb3fa1-4fc0-460d-8693-011e1aebefe6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Entity.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\gameplay\EntityManager.h">
+      <Filter>Headers\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="headers\EntityManager.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\gameplay\World.h">
+      <Filter>Headers\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Player.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\helpers\SpriteHelper.h">
+      <Filter>Headers\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="headers\World.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\entities\Bullet.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="headers\SpriteHelper.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\entities\Entity.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Mine.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\entities\Mine.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Bullet.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\entities\MineLayer.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="headers\SpawnPoint.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\entities\Player.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="headers\MineLayer.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="headers\entities\SpawnPoint.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\entity.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\gameplay\entityManager.cpp">
+      <Filter>Sources\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\entityManager.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\gameplay\world.cpp">
+      <Filter>Sources\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\world.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\helpers\spriteHelper.cpp">
+      <Filter>Sources\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="src\spriteHelper.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\entities\bullet.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\player.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\entities\entity.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\mine.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\entities\mine.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\bullet.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\entities\mineLayer.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\spawnPoint.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\entities\player.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\mineLayer.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="src\entities\spawnPoint.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\Assets Mine Storm.jpg">
+      <Filter>Assets\Textures</Filter>
+    </Image>
     <Image Include="assets\minestorm_background.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="assets\minestorm_forground.jpg">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="assets\minestorm_forground.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="assets\minestorm_sprite_atlas_mine_storm.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="assets\Assets Mine Storm.jpg">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

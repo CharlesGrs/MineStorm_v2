@@ -84,27 +84,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\bullet.cpp" />
-    <ClCompile Include="src\entity.cpp" />
-    <ClCompile Include="src\entityManager.cpp" />
-    <ClCompile Include="src\mine.cpp" />
-    <ClCompile Include="src\mineLayer.cpp" />
-    <ClCompile Include="src\player.cpp" />
-    <ClCompile Include="src\spawnPoint.cpp" />
-    <ClCompile Include="src\spriteHelper.cpp" />
-    <ClCompile Include="src\world.cpp" />
+    <ClCompile Include="src\entities\bullet.cpp" />
+    <ClCompile Include="src\entities\entity.cpp" />
+    <ClCompile Include="src\entities\mine.cpp" />
+    <ClCompile Include="src\entities\mineLayer.cpp" />
+    <ClCompile Include="src\entities\player.cpp" />
+    <ClCompile Include="src\entities\spawnPoint.cpp" />
+    <ClCompile Include="src\gameplay\entityManager.cpp" />
+    <ClCompile Include="src\gameplay\world.cpp" />
+    <ClCompile Include="src\helpers\spriteHelper.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Bullet.h" />
-    <ClInclude Include="headers\Entity.h" />
-    <ClInclude Include="headers\EntityManager.h" />
-    <ClInclude Include="headers\Mine.h" />
-    <ClInclude Include="headers\MineLayer.h" />
-    <ClInclude Include="headers\SpawnPoint.h" />
-    <ClInclude Include="headers\SpriteHelper.h" />
-    <ClInclude Include="headers\World.h" />
-    <ClInclude Include="headers\Player.h" />
+    <ClInclude Include="headers\entities\Bullet.h" />
+    <ClInclude Include="headers\entities\Entity.h" />
+    <ClInclude Include="headers\entities\Mine.h" />
+    <ClInclude Include="headers\entities\MineLayer.h" />
+    <ClInclude Include="headers\entities\Player.h" />
+    <ClInclude Include="headers\entities\SpawnPoint.h" />
+    <ClInclude Include="headers\gameplay\EntityManager.h" />
+    <ClInclude Include="headers\gameplay\World.h" />
+    <ClInclude Include="headers\helpers\SpriteHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Assets Mine Storm.jpg" />

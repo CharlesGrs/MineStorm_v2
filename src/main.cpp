@@ -3,7 +3,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-#include "../headers/World.h"
+#include "../../headers/gameplay/World.h"
 
 int main(int argc, char* argv[])
 {

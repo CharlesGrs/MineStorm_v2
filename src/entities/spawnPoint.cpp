@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "../headers/SpawnPoint.h"
+#include "../../headers/entities/SpawnPoint.h"
 
 
 // Debug

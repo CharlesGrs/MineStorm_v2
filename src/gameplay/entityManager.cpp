@@ -1,17 +1,17 @@
-#include "../headers/EntityManager.h"
-#include "../headers/SpriteHelper.h"
-#include "../headers/Player.h"
-#include "../headers/Mine.h"
-#include "../headers/SpawnPoint.h"
-#include "../headers/Bullet.h"
-#include "../headers/MineLayer.h"
+#include "../../headers/gameplay/EntityManager.h"
+#include "../../headers/helpers/SpriteHelper.h"
+#include "../../headers/entities/Player.h"
+#include "../../headers/entities/Mine.h"
+#include "../../headers/entities/SpawnPoint.h"
+#include "../../headers/entities/Bullet.h"
+#include "../../headers/entities/MineLayer.h"
 #include <stdlib.h>
 #include <raylib.h>
 
 
 EntityManager::EntityManager(Texture _spriteSheet) : spriteSheet(_spriteSheet)
 {
-	//LoadEntitiesReferences();
+	LoadEntitiesReferences();
 }
 
 void EntityManager::LoadEntitiesReferences()
@@ -120,16 +120,5 @@ void EntityManager::DrawEntities()
 	}
 }
 
-void EntityManager::FreeBuffers()
-{
-	while (loadedEntities.size() > 0)
-	{
-		loadedEntities.pop_front();
-	}
-
-
-	for (Entity* i : prefabs)
-	{
-		free(i);
-	}
-}
+// TODO ! 
+void EntityManager::FreeBuffers() {}
