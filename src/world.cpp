@@ -29,8 +29,8 @@ void World::Update()
     if (IsKeyDown(KEY_A))
     {
         Vector2 playerPos;
-        playerPos.x = 350;
-        playerPos.y = 350;
+        playerPos.x = rand() % 1080;
+        playerPos.y = rand() % 720;
         entityManager.InstantiateEntity(EntityIndexes::Player, playerPos);
         DrawText("PRESSED", 100, 350, 20, LIGHTGRAY);
     }

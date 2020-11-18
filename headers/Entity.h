@@ -11,6 +11,7 @@ public :
 	float rotation = 0;
 	float speed;
 	Rectangle spriteRect;
+	Rectangle hitboxRect;
 	Texture2D texture;
 
 	virtual void OnCreate();
