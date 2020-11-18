@@ -56,8 +56,8 @@ void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position)
 {
 	int entityIndex = (int)index;
 
-	Entity newEntity(*prefabs[entityIndex]);
-	newEntity.position = position;
+	Entity* newEntity = new Entity(*prefabs[entityIndex]);
+	newEntity->position = position;
 
 	loadedEntities.push_back(newEntity);
 }
@@ -66,9 +66,9 @@ void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position, flo
 {
 	int entityIndex = (int)index;
 
-	Entity newEntity(*prefabs[entityIndex]);
-	newEntity.position = position;
-	newEntity.rotation = rotation;
+	Entity* newEntity = new Entity(*prefabs[entityIndex]);
+	newEntity->position = position;
+	newEntity->rotation = rotation;
 
 	loadedEntities.push_back(newEntity);
 }
@@ -78,16 +78,16 @@ void EntityManager::DestroyEntity(Entity entity) {}
 
 void EntityManager::UpdateEntities() 
 {
-	for (Entity i : loadedEntities)
+	for (Entity* i : loadedEntities)
 	{
-		i.Update();
+		i->Update();
 	}
 } 
 
 void EntityManager::DrawEntities()
 {
-	for (Entity i : loadedEntities)
+	for (Entity* i : loadedEntities)
 	{
-		i.Draw();
+		i->Draw();
 	}
 }

@@ -24,7 +24,7 @@ public:
 	EntityManager(Texture);// Load Sprite Atlas in cTor
 
 	Texture spriteSheet;
-	std::list<Entity>  loadedEntities;
+	std::list<Entity*>  loadedEntities;
 	Entity* prefabs[8];
 
 	void LoadEntitiesReferences();
