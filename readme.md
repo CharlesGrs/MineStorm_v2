@@ -2,4 +2,4 @@
 
 
 ## ToDo :
-	1. World **Singleton** Pattern
+	1. World Singleton Pattern
