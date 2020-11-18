@@ -12,6 +12,7 @@ public :
 	float scale;
 	float speed;
 	int id;
+	Vector2 origin;
 	Rectangle spriteRect;
 	Rectangle hitboxRect;
 	Texture2D texture;

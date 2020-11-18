@@ -22,3 +22,9 @@ Rectangle SpriteHelper::GetSpriteRectangle(Texture2D texture, int columnCount, i
 
 	return spriteRect;
 }
+
+Vector2 SpriteHelper::GetSpriteOrigin(Rectangle spriteRect, float scale)
+{
+	Vector2 origin{ spriteRect.width / 2 * scale, spriteRect.height / 2 * scale };
+	return origin;
+}

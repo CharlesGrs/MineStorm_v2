@@ -1,4 +1,5 @@
 #include "../headers/Entity.h"
+#include "../headers/SpriteHelper.h"
 #include <raylib.h>
 
 
@@ -8,6 +9,8 @@ Entity::Entity(Vector2 _position, int _id, float _speed, float _scale, Rectangle
 	hitboxRect = Rectangle(spriteRect);
 	hitboxRect.width *= scale;
 	hitboxRect.height *= scale;
+
+	origin = SpriteHelper::GetSpriteOrigin(spriteRect, scale);
 }
 
 void Entity::OnCreate() {}
@@ -18,7 +21,7 @@ void Entity::Draw()
 {
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
-	DrawTexturePro(texture, spriteRect, hitboxRect, {0,0}, rotation, WHITE);
+	DrawTexturePro(texture, spriteRect, hitboxRect, origin, rotation, WHITE);
 }
 
 void Entity::Update() 
