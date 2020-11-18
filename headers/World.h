@@ -6,6 +6,7 @@ class World
 public :
 	
 	World();
+	~World() = default;
 	
 	Shader bloom;
 	Shader fishEye;
