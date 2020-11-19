@@ -3,26 +3,21 @@
 
 class Entity
 {
-public :
+public:
 
 	Entity() = default;
-	Entity(Vector2 _position,int _id, float _speed, float scale,  Rectangle _spriteRect, Texture2D _texture);
-	~Entity() = default;
+	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture);
+	~Entity() = default; // VIRTUAL 
 	Vector2 position;
 	float rotation = 0;
 	float scale;
 	float speed;
-	int id;
 	Vector2 origin;
 	Rectangle spriteRect;
 	Rectangle hitboxRect;
-	Texture2D texture;
+	Texture2D texture; //POINTER
 
-	void OnCreate();
-
-	void OnDestroy();
-
-	void Update();
-
+	virtual void Update();
+	virtual Entity* Clone() = 0;
 	void Draw();
 };

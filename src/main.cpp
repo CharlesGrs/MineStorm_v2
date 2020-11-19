@@ -23,6 +23,7 @@ int main(int argc, char* argv[])
         currentWorld.Update();
     }
 
+
     CloseWindow();
     //_CrtDumpMemoryLeaks();
 

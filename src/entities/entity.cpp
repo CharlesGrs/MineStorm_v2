@@ -3,8 +3,8 @@
 #include <raylib.h>
 
 
-Entity::Entity(Vector2 _position, int _id, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
-	: position(_position), id(_id), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), texture(_texture)
+Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
+	: position(_position), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), texture(_texture)
 {
 	hitboxRect = Rectangle(spriteRect);
 	hitboxRect.width *= scale;
@@ -12,10 +12,6 @@ Entity::Entity(Vector2 _position, int _id, float _speed, float _scale, Rectangle
 
 	origin = SpriteHelper::GetSpriteOrigin(spriteRect, scale);
 }
-
-void Entity::OnCreate() {}
-
-void Entity::OnDestroy() {}
 
 void Entity::Draw() 
 {
@@ -26,7 +22,6 @@ void Entity::Draw()
 
 void Entity::Update() 
 {
-
 	if (position.x > World::windowWidth)
 		position.x = 0;
 	else if (position.y > World::windowHeight)
@@ -40,3 +35,4 @@ void Entity::Update()
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
 }
+

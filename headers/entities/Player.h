@@ -3,7 +3,7 @@
 #include <list>
 #include "../../headers/entities/Entity.h"
 
-class Player : Entity
+class Player : public Entity
 {
 public :
 	float acceleration = 0;
@@ -12,14 +12,13 @@ public :
 	std::list<Entity> bullets;
 	int health = 3;
 	Player() = default;
-	Player(Vector2 _position, int _id, float _speed, float scale, Rectangle _spriteRect, Texture2D _texture);
+	Player(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture) :
+		Entity(_position, _speed, _scale, _spriteRect, _texture) {}
 
-	void Draw();
-	void Update();
+	void Update() override ;
 	void UpdatePosition();
-	void Shoot();
-
 	void GetInput();
-	void Die();
+
+	Entity* Clone();
 
 };
