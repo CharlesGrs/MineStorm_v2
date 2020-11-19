@@ -33,7 +33,7 @@ public:
 	void InstantiateEntity(EntityIndexes index, Vector2 position);
 	void InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
 
-	void DestroyEntity(Entity entity);
+	void DestroyEntity(Entity* entity);
 
 	void UpdateEntities();
 	void DrawEntities();

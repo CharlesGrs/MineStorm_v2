@@ -45,22 +45,10 @@
     <ClInclude Include="headers\helpers\SpriteHelper.h">
       <Filter>Headers\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="headers\entities\Bullet.h">
-      <Filter>Headers\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="headers\entities\Entity.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="headers\entities\Mine.h">
-      <Filter>Headers\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\entities\MineLayer.h">
-      <Filter>Headers\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="headers\entities\Player.h">
-      <Filter>Headers\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\entities\SpawnPoint.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,22 +65,10 @@
     <ClCompile Include="src\helpers\spriteHelper.cpp">
       <Filter>Sources\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="src\entities\bullet.cpp">
-      <Filter>Sources\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="src\entities\entity.cpp">
       <Filter>Sources\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\entities\mine.cpp">
-      <Filter>Sources\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\mineLayer.cpp">
-      <Filter>Sources\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="src\entities\player.cpp">
-      <Filter>Sources\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\spawnPoint.cpp">
       <Filter>Sources\Entities</Filter>
     </ClCompile>
   </ItemGroup>

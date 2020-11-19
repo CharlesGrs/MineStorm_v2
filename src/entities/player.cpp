@@ -6,10 +6,10 @@
 // Debug
 #include <string>
 
-Player::Player(Vector2 _position, int _id, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture)
-	: Entity(_position,_id, _speed, _scale, _spriteRect, _texture)
-{
+Entity* Player::Clone() {
+    return new Player(*this);
 }
+
 void Player::UpdatePosition()
 {
     velocity.x = sin((double)rotation * DEG2RAD) * speed;

@@ -1,7 +1,5 @@
 #include <raylib.h>
 #include "../../headers/gameplay/World.h"
-
-// Debug
 #include <string>
 
 World::World()

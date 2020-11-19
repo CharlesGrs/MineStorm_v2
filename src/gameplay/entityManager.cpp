@@ -1,18 +1,18 @@
 #include "../../headers/gameplay/EntityManager.h"
 #include "../../headers/helpers/SpriteHelper.h"
 #include "../../headers/entities/Player.h"
-#include "../../headers/entities/Mine.h"
-#include "../../headers/entities/SpawnPoint.h"
-#include "../../headers/entities/Bullet.h"
-#include "../../headers/entities/MineLayer.h"
+//#include "../../headers/entities/Mine.h"
+//#include "../../headers/entities/SpawnPoint.h"
+//#include "../../headers/entities/Bullet.h"
+//#include "../../headers/entities/MineLayer.h"
 #include <stdlib.h>
 #include <raylib.h>
-
 
 EntityManager::EntityManager(Texture _spriteSheet) : spriteSheet(_spriteSheet)
 {
 	LoadEntitiesReferences();
 }
+
 EntityManager::~EntityManager()
 {
 	FreeBuffers();
@@ -25,43 +25,39 @@ void EntityManager::LoadEntitiesReferences()
 	defaultPosition.y = 0;
 
 	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 0);
-	Player* player = new Player(defaultPosition, 0, 5, 0.25, playerSpriteRect, spriteSheet);
-	prefabs[0] = (Entity*)player;
+	prefabs[0] = new Player(defaultPosition, 5, 0.25, playerSpriteRect, spriteSheet);
 
-	Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
-	SpawnPoint* spawnPoint = new SpawnPoint(defaultPosition, 1, 10, 1, spawnPointSpriteRect, spriteSheet);
-	prefabs[1] = (Entity*)spawnPoint;
+	#pragma region LATER
 
-	Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
-	MineLayer* mineLayer = new MineLayer(defaultPosition, 2, 10, 1, MineLayerSpriteRect, spriteSheet);
-	prefabs[2] = (Entity*)mineLayer;
+	//Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
+	//prefabs[1] = new SpawnPoint(defaultPosition, 10, 1, spawnPointSpriteRect, spriteSheet);
 
-	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
-	Bullet* bullet = new Bullet(defaultPosition, 3, 10, 1, bulletSpriteRect, spriteSheet);
-	prefabs[3] = (Entity*)bullet;
+	//Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
+	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
 
-	Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 4);
-	Floating_Mine* floatingMine = new Floating_Mine(defaultPosition, 4, 10, 1, floatingMineSpriteRect, spriteSheet);
-	prefabs[4] = (Entity*)floatingMine;
+	//Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
+	//prefabs[3] = new Bullet(defaultPosition, 10, 1, bulletSpriteRect, spriteSheet);
 
-	Rectangle fireballMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 5);
-	Fireball_Mine* fireballMine = new Fireball_Mine(defaultPosition, 5, 10, 1, fireballMineSpriteRect, spriteSheet);
-	prefabs[5] = (Entity*)fireballMine;
+	//Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 4);
+	//prefabs[4] = new Floating_Mine(defaultPosition, 10, 1, floatingMineSpriteRect, spriteSheet);
 
-	Rectangle magneticMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 6);
-	Magnetic_Mine* magneticMine = new Magnetic_Mine(defaultPosition, 6, 10, 1, magneticMineSpriteRect, spriteSheet);
-	prefabs[6] = (Entity*)magneticMine;
+	//Rectangle fireballMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 5);
+	//prefabs[5] = new Fireball_Mine(defaultPosition, 10, 1, fireballMineSpriteRect, spriteSheet);
 
-	Rectangle magneticFireballMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 7);
-	Magnetic_Fireball_Mine* magneticFireballMine = new Magnetic_Fireball_Mine(defaultPosition, 7, 10, 1, magneticFireballMineSpriteRect, spriteSheet);
-	prefabs[7] = (Entity*)magneticFireballMine;
+	//Rectangle magneticMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 6);
+	//prefabs[6] = new Magnetic_Mine(defaultPosition, 10, 1, magneticMineSpriteRect, spriteSheet);
+
+	//Rectangle magneticFireballMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 7);
+	//prefabs[7] = new Magnetic_Fireball_Mine(defaultPosition, 10, 1, magneticFireballMineSpriteRect, spriteSheet);
+
+#pragma endregion
 }
 
 void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position)
 {
 	int entityIndex = (int)index;
 
-	Entity* newEntity = new Entity(*prefabs[entityIndex]);
+	Entity* newEntity = prefabs[entityIndex]->Clone();
 	newEntity->position = position;
 
 	loadedEntities.push_back(newEntity);
@@ -71,65 +67,32 @@ void EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position, flo
 {
 	int entityIndex = (int)index;
 
-	Entity* newEntity = new Entity(*prefabs[entityIndex]);
+	Entity* newEntity = prefabs[entityIndex]->Clone();
 	newEntity->position = position;
 	newEntity->rotation = rotation;
 
 	loadedEntities.push_back(newEntity);
 }
 
-void EntityManager::DestroyEntity(Entity entity) {}
+void EntityManager::DestroyEntity(Entity* entity) {}
 
 void EntityManager::UpdateEntities()
 {
 	for (Entity* i : loadedEntities)
-	{
-		switch (i->id)
-		{
-		case 0:
-			((Player*)i)->Update();
-			break;
-		case 1:
-			((SpawnPoint*)i)->Update();
-			break;
-		case 2:
-			((MineLayer*)i)->Update();
-			break;
-		case 3:
-			((Bullet*)i)->Update();
-			break;
-		case 4:
-			((Floating_Mine*)i)->Update();
-			break;
-		case 5:
-			((Fireball_Mine*)i)->Update();
-			break;
-		case 6:
-			((Magnetic_Mine*)i)->Update();
-			break;
-		case 7:
-			((Magnetic_Fireball_Mine*)i)->Update();
-			break;
-		default:
-			break;
-		}
-	}
+		i->Update();
 }
 
 void EntityManager::DrawEntities()
 {
 	for (Entity* i : loadedEntities)
-	{
 		i->Draw();
-	}
 }
 
-void EntityManager::FreeBuffers() 
+void EntityManager::FreeBuffers()
 {
 	UnloadTexture(spriteSheet);
 	while (!loadedEntities.empty()) delete loadedEntities.front(), loadedEntities.pop_front();
+
 	for (int i = 0; i < 8; i++)
-	{
 		delete prefabs[i];
-	}
 }
