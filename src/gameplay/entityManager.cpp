@@ -127,7 +127,14 @@ void EntityManager::DrawEntities()
 void EntityManager::FreeBuffers() 
 {
 	UnloadTexture(spriteSheet);
-	while (!loadedEntities.empty()) delete loadedEntities.front(), loadedEntities.pop_front();
+	
+	while (!loadedEntities.empty())
+	{
+		UnloadTexture(loadedEntities.back()->texture);
+		delete loadedEntities.back();
+		loadedEntities.pop_back();
+	}
+	
 	for (int i = 0; i < 8; i++)
 	{
 		delete prefabs[i];
