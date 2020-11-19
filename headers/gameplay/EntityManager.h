@@ -21,6 +21,7 @@ class EntityManager
 public:
 
 	EntityManager() = default;
+	~EntityManager();
 	EntityManager(Texture);// Load Sprite Atlas in cTor
 	
 	Texture spriteSheet;

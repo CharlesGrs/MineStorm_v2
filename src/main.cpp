@@ -22,10 +22,6 @@ int main(int argc, char* argv[])
         currentWorld.Update();
     }
 
-    //free heap used
-    currentWorld.UnloadResources();
-    currentWorld.entityManager.FreeBuffers();
-
     CloseWindow();
     _CrtDumpMemoryLeaks();
 

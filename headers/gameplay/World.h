@@ -6,12 +6,12 @@ class World
 public :
 	
 	World();
-	~World() = default;
+	~World();
 	
 	bool enableShader = true;
 	Shader bloom;
 
-	EntityManager entityManager;
+	EntityManager* entityManager;
 	RenderTexture renderTexture;
 
 	static const int windowWidth = 1080;
