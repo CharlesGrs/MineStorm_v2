@@ -15,32 +15,47 @@ World::World()
 void World::Update()
 {
 	BeginDrawing();
-	BeginTextureMode(renderTexture);
+
+	if (enableShader)
+	{
+		BeginTextureMode(renderTexture);
+	}
 	ClearBackground(BLACK);
 
-	Debug();
 
 	entityManager.UpdateEntities();
 	entityManager.DrawEntities();
 
-	EndTextureMode();
+	if (enableShader)
+	{
+		EndTextureMode();
 
-	BeginShaderMode(bloom);
+		BeginShaderMode(bloom);
+		Rectangle renderTextureRect = { 0,0, renderTexture.texture.width, -renderTexture.texture.height };
+		Vector2 zero = { 0, 0 };
+		DrawTextureRec(renderTexture.texture, renderTextureRect, zero, WHITE);
+		EndShaderMode();
 
-	Rectangle renderTextureRect = { 0,0, renderTexture.texture.width, -renderTexture.texture.height };
-	Vector2 zero = { 0, 0 };
-	DrawTextureRec(renderTexture.texture, renderTextureRect, zero, WHITE);
+		DrawRectangle(0, 0, 50, 50, BLACK);
+		DrawRectangle(windowWidth - 50, 0, 50, 50, BLACK);
+		DrawRectangle(windowWidth - 50, windowHeight - 50, 50, 50, BLACK);
+		DrawRectangle(0, windowHeight - 50, 50, 50, BLACK);
+	}
 
-	EndShaderMode();
 
 
+
+
+
+
+	Debug();
 
 	EndDrawing();
 }
 
 void World::LoadResources()
 {
-	bloom = LoadShader("assets/shaders/bloom.vs", "assets/shaders/bloom.fs");
+	bloom = LoadShader(0, "assets/shaders/bloom.fs");
 	renderTexture = LoadRenderTexture(1080, 720);
 }
 
@@ -61,9 +76,19 @@ void World::Debug()
 		entityManager.InstantiateEntity(EntityIndexes::Player, playerPos, (float)(rand() % 360));
 	}
 
+	if (IsKeyReleased(KEY_F1))
+	{
+		enableShader = !enableShader;
+	}
+
+	if(enableShader)
+		DrawText("Press F1 to disable shaders", 5, windowHeight-15, 12, WHITE);
+	else
+		DrawText("Press F1 to enable shaders", 5, windowHeight - 15, 12, WHITE);
+
+
 	int size = (int)entityManager.loadedEntities.size();
 	std::string s = "Entity count: " + std::to_string(size);
 	char const* pChar = s.c_str();
-	DrawText( pChar, 10, 10, 14, LIGHTGRAY);
-
+	DrawText( pChar, 5, 10, 12, WHITE);
 }

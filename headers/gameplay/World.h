@@ -8,8 +8,8 @@ public :
 	World();
 	~World() = default;
 	
+	bool enableShader = true;
 	Shader bloom;
-	Shader fishEye;
 
 	EntityManager entityManager;
 	RenderTexture renderTexture;
