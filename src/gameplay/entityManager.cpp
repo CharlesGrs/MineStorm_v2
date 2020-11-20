@@ -57,6 +57,9 @@ void EntityManager::LoadEntitiesReferences()
 	//prefabs[7] = new Magnetic_Fireball_Mine(defaultPosition, 10, 1, magneticFireballMineSpriteRect, spriteSheet);
 
 #pragma endregion
+
+	UnloadTexture(collisionMap);
+	UnloadImage(collisionMapData);
 }
 
 Entity* EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position)
