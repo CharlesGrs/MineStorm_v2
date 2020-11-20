@@ -91,7 +91,7 @@ void World::Debug()
 		DrawText("Press F2 to enable debugMode", 5, windowHeight - 25, 12, WHITE);
 
 
-	int size = (int)entityManager() ->loadedEntities.size();
+	int size = (int)entityManager()->entityAmount();
 	std::string s = "Entity count: " + std::to_string(size);
 	char const* pChar = s.c_str();
 	DrawText( pChar, 5, 10, 12, WHITE);
