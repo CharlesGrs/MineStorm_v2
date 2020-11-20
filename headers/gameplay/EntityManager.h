@@ -30,8 +30,8 @@ public:
 
 	void LoadEntitiesReferences();
 
-	void InstantiateEntity(EntityIndexes index, Vector2 position);
-	void InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
+	static Entity* InstantiateEntity(EntityIndexes index, Vector2 position);
+	static Entity* InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
 
 	void DestroyEntity(Entity* entity);
 

@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\entities\bullet.cpp" />
     <ClCompile Include="src\entities\entity.cpp" />
     <ClCompile Include="src\entities\player.cpp" />
     <ClCompile Include="src\gameplay\entityManager.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\entities\Bullet.h" />
     <ClInclude Include="headers\entities\Entity.h" />
     <ClInclude Include="headers\entities\Player.h" />
     <ClInclude Include="headers\gameplay\EntityManager.h" />
