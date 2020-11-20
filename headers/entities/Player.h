@@ -18,6 +18,8 @@ public :
 	void UpdatePosition();
 	void GetInput();
 
+	void Shoot();
+
 	Entity* Clone();
 
 };

@@ -18,7 +18,6 @@ public:
 	Rectangle hitboxRect;
 	Texture2D texture; //POINTER
 
-
 	virtual void Update();
 	virtual Entity* Clone() = 0;
 	void Draw();

@@ -22,6 +22,7 @@ void Bullet::Update()
     Entity::Update();
     UpdatePosition(); 
 }
+
 void Bullet::Draw()
 {
     Entity::Draw();

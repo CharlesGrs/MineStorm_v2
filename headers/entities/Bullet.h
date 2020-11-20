@@ -11,6 +11,7 @@ public :
 		: Entity(_position, _speed, _scale, _spriteRect, _texture) {};
 	~Bullet() {};
 
+
 	void Update();
 	void Draw();
 	void UpdatePosition();

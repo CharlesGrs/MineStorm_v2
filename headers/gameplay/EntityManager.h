@@ -23,15 +23,15 @@ public:
 	EntityManager() = default;
 	~EntityManager();
 	EntityManager(Texture);// Load Sprite Atlas in cTor
-	
+
 	Texture spriteSheet;
 	std::list<Entity*>  loadedEntities;
 	Entity* prefabs[8];
 
 	void LoadEntitiesReferences();
 
-	static Entity* InstantiateEntity(EntityIndexes index, Vector2 position);
-	static Entity* InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
+	Entity* InstantiateEntity(EntityIndexes index, Vector2 position);
+	Entity* InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
 
 	void DestroyEntity(Entity* entity);
 

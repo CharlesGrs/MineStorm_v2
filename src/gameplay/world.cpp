@@ -2,17 +2,17 @@
 #include "../../headers/gameplay/World.h"
 #include <string>
 
+
+EntityManager* World::_eM;
+
 World::World()
 {
 	LoadResources();
-	Texture spriteSheet = LoadTexture("assets/minestorm_sprite_atlas_mine_storm.png");
-	entityManager = new EntityManager(spriteSheet);
 }
 
 World::~World() 
 {
 	UnloadResources();
-	delete entityManager;
 }
 
 void World::Update()
@@ -26,8 +26,8 @@ void World::Update()
 	ClearBackground(BLACK);
 
 
-	entityManager -> UpdateEntities();
-	entityManager -> DrawEntities();
+	entityManager() -> UpdateEntities();
+	entityManager() -> DrawEntities();
 
 	if (enableShader)
 	{
@@ -58,6 +58,7 @@ void World::LoadResources()
 
 void World::UnloadResources() 
 {
+	delete _eM;
 	UnloadShader(bloom);
 	UnloadRenderTexture(renderTexture);
 }
@@ -69,7 +70,7 @@ void World::Debug()
 		Vector2 playerPos;
 		playerPos.x = (float)(rand() % 1080);
 		playerPos.y = (float)(rand() % 720);
-		entityManager  -> InstantiateEntity(EntityIndexes::Player, playerPos, (float)(rand() % 360));
+		entityManager() -> InstantiateEntity(EntityIndexes::Player, playerPos, (float)(rand() % 360));
 	}
 
 	if (IsKeyReleased(KEY_F1))
@@ -83,7 +84,7 @@ void World::Debug()
 		DrawText("Press F1 to enable shaders", 5, windowHeight - 15, 12, WHITE);
 
 
-	int size = (int)entityManager ->loadedEntities.size();
+	int size = (int)entityManager() ->loadedEntities.size();
 	std::string s = "Entity count: " + std::to_string(size);
 	char const* pChar = s.c_str();
 	DrawText( pChar, 5, 10, 12, WHITE);

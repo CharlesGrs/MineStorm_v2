@@ -3,7 +3,7 @@
 #include "../../headers/entities/Player.h"
 //#include "../../headers/entities/Mine.h"
 //#include "../../headers/entities/SpawnPoint.h"
-//#include "../../headers/entities/Bullet.h"
+#include "../../headers/entities/Bullet.h"
 //#include "../../headers/entities/MineLayer.h"
 #include <stdlib.h>
 #include <raylib.h>
@@ -27,6 +27,7 @@ void EntityManager::LoadEntitiesReferences()
 	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 0);
 	prefabs[0] = new Player(defaultPosition, 5, 0.25, playerSpriteRect, spriteSheet);
 
+
 	#pragma region LATER
 
 	//Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
@@ -35,8 +36,8 @@ void EntityManager::LoadEntitiesReferences()
 	//Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
 	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
 
-	//Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
-	//prefabs[3] = new Bullet(defaultPosition, 10, 1, bulletSpriteRect, spriteSheet);
+	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
+	prefabs[3] = new Bullet(defaultPosition, 15, 0.25, bulletSpriteRect, spriteSheet);
 
 	//Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 4);
 	//prefabs[4] = new Floating_Mine(defaultPosition, 10, 1, floatingMineSpriteRect, spriteSheet);

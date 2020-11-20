@@ -3,6 +3,10 @@
 
 class World
 {
+
+private:
+	static EntityManager* _eM;
+
 public :
 	
 	World();
@@ -10,8 +14,16 @@ public :
 	
 	bool enableShader = true;
 	Shader bloom;
-
-	EntityManager* entityManager;
+	
+	static EntityManager* entityManager()
+	{
+		if (_eM == NULL)
+		{
+			Texture spriteSheet = LoadTexture("assets/minestorm_sprite_atlas_mine_storm.png");
+			_eM = new EntityManager(spriteSheet);
+		}
+		return _eM;
+	}
 	RenderTexture renderTexture;
 
 	static const int windowWidth = 1080;
