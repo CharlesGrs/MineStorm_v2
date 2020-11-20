@@ -20,15 +20,19 @@ EntityManager::~EntityManager()
 
 void EntityManager::LoadEntitiesReferences()
 {
+	Texture collisionMap = LoadTexture("assets/collisionMap.png");
+	Image collisionMapData = GetTextureData(collisionMap);
 	Vector2 defaultPosition;
 	defaultPosition.x = 0;
 	defaultPosition.y = 0;
+	float scale = 0.25;
 
 	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 0);
-	prefabs[0] = new Player(defaultPosition, 5, 0.25, playerSpriteRect, spriteSheet);
+	Polygon playerHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, playerSpriteRect, scale);
+	prefabs[0] = new Player(defaultPosition, 5, scale, playerSpriteRect, playerHitbox, spriteSheet);
 
 
-	#pragma region LATER
+#pragma region LATER
 
 	//Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
 	//prefabs[1] = new SpawnPoint(defaultPosition, 10, 1, spawnPointSpriteRect, spriteSheet);
@@ -37,7 +41,8 @@ void EntityManager::LoadEntitiesReferences()
 	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
 
 	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
-	prefabs[3] = new Bullet(defaultPosition, 15, 0.25, bulletSpriteRect, spriteSheet);
+	Polygon bulletHitbox= PolygonHelper::CalculatePolygonFromImage(collisionMapData, bulletSpriteRect, scale);
+	prefabs[3] = new Bullet(defaultPosition, 15, scale, bulletSpriteRect,bulletHitbox, spriteSheet);
 
 	//Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 4);
 	//prefabs[4] = new Floating_Mine(defaultPosition, 10, 1, floatingMineSpriteRect, spriteSheet);

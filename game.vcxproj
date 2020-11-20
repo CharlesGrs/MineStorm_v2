@@ -89,7 +89,9 @@
     <ClCompile Include="src\entities\player.cpp" />
     <ClCompile Include="src\gameplay\entityManager.cpp" />
     <ClCompile Include="src\gameplay\world.cpp" />
+    <ClCompile Include="src\helpers\polygonHelper.cpp" />
     <ClCompile Include="src\helpers\spriteHelper.cpp" />
+    <ClCompile Include="src\helpers\vector2Helper.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -98,10 +100,13 @@
     <ClInclude Include="headers\entities\Player.h" />
     <ClInclude Include="headers\gameplay\EntityManager.h" />
     <ClInclude Include="headers\gameplay\World.h" />
+    <ClInclude Include="headers\helpers\PolygonHelper.h" />
     <ClInclude Include="headers\helpers\SpriteHelper.h" />
+    <ClInclude Include="headers\helpers\Vector2Helper.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Assets Mine Storm.jpg" />
+    <Image Include="assets\collisionMap.png" />
     <Image Include="assets\minestorm_background.png" />
     <Image Include="assets\minestorm_forground.jpg" />
     <Image Include="assets\minestorm_forground.png" />

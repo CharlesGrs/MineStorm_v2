@@ -54,6 +54,12 @@
     <ClInclude Include="headers\entities\Bullet.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="headers\helpers\PolygonHelper.h">
+      <Filter>Headers\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\helpers\Vector2Helper.h">
+      <Filter>Headers\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -77,6 +83,12 @@
     <ClCompile Include="src\entities\bullet.cpp">
       <Filter>Sources\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="src\helpers\polygonHelper.cpp">
+      <Filter>Sources\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helpers\vector2Helper.cpp">
+      <Filter>Sources\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Assets Mine Storm.jpg">
@@ -92,6 +104,9 @@
       <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="assets\minestorm_sprite_atlas_mine_storm.png">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="assets\collisionMap.png">
       <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>

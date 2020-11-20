@@ -3,6 +3,7 @@
 #include <list>
 #include "../../headers/entities/Entity.h"
 
+
 class Player : public Entity
 {
 public :
@@ -11,8 +12,8 @@ public :
 	bool playerOne = true;
 	int health = 3;
 	Player() = default;
-	Player(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Texture2D _texture) :
-		Entity(_position, _speed, _scale, _spriteRect, _texture) {}
+	Player(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon _hitbox,Texture2D _texture) :
+		Entity(_position, _speed, _scale, _spriteRect, _hitbox, _texture) {}
 
 	void Update() override ;
 	void UpdatePosition();

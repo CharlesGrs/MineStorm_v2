@@ -30,10 +30,12 @@ void Player::GetInput()
 	if (IsKeyDown(KEY_A))
 	{
 		rotation -= 5;
+		RotateHitbox(-5);
 	}
 	else if (IsKeyDown(KEY_D))
 	{
 		rotation += 5;
+		RotateHitbox(5);
 	}
 	if (IsKeyDown(KEY_S))
 	{

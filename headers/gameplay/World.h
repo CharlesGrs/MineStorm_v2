@@ -13,6 +13,7 @@ public :
 	~World();
 	
 	bool enableShader = true;
+	static bool debugMode;
 	Shader bloom;
 	
 	static EntityManager* entityManager()

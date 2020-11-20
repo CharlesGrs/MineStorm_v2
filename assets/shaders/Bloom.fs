@@ -54,7 +54,7 @@ void main()
     //--------------------------------------------------------
 
     //RGB STRIDES ---------------------------------------
-   float x = uv.x *1080 /4;
+   float x = uv.x *1080/4;
    float mod = mod(x, 3);
    float step1 = step(2, mod);
    float step2 = step(1, mod);
@@ -76,9 +76,9 @@ void main()
      vec4 vignette =  vec4(vec3(clamp(pow((1080 / 2) * intensity, 1), 0.0, 1.0)), 1.0);
      //--------------------------------------------------------
 
-
     finalColor = result* vignette;
 
     finalColor *= scanLineIntensity(uv.y, 1080/4, 0.4);
-    finalColor *= scanLineIntensity(uv.x, 720/4, 0.4);
+   finalColor *= scanLineIntensity(uv.x, 720/4, 0.4);
+
 }

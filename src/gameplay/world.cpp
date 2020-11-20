@@ -4,6 +4,7 @@
 
 
 EntityManager* World::_eM;
+bool World::debugMode;
 
 World::World()
 {
@@ -70,18 +71,24 @@ void World::Debug()
 		Vector2 playerPos;
 		playerPos.x = (float)(rand() % 1080);
 		playerPos.y = (float)(rand() % 720);
-		entityManager() -> InstantiateEntity(EntityIndexes::Player, playerPos, (float)(rand() % 360));
+		entityManager() -> InstantiateEntity(EntityIndexes::Player, playerPos, 0);
 	}
 
 	if (IsKeyReleased(KEY_F1))
-	{
 		enableShader = !enableShader;
-	}
+
+	if (IsKeyReleased(KEY_F2))
+		debugMode = !debugMode;
 
 	if(enableShader)
 		DrawText("Press F1 to disable shaders", 5, windowHeight-15, 12, WHITE);
 	else
 		DrawText("Press F1 to enable shaders", 5, windowHeight - 15, 12, WHITE);
+
+	if (debugMode)
+		DrawText("Press F2 to disable debugMode", 5, windowHeight - 25, 12, WHITE);
+	else
+		DrawText("Press F2 to enable debugMode", 5, windowHeight - 25, 12, WHITE);
 
 
 	int size = (int)entityManager() ->loadedEntities.size();
