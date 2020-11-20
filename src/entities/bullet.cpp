@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include <iostream>
 #include "../../headers/entities/Bullet.h"
+#include "../../headers/gameplay/World.h"
 
 
 
@@ -21,6 +22,10 @@ void Bullet::Update()
 {
     Entity::Update();
     UpdatePosition(); 
+
+    timer -= GetFrameTime();
+    if (timer < 0)
+        World::entityManager()->DestroyEntity(this);
 }
 
 void Bullet::Draw()

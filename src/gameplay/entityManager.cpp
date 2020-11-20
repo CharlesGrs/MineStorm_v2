@@ -41,8 +41,8 @@ void EntityManager::LoadEntitiesReferences()
 	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
 
 	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
-	Polygon bulletHitbox= PolygonHelper::CalculatePolygonFromImage(collisionMapData, bulletSpriteRect, scale);
-	prefabs[3] = new Bullet(defaultPosition, 15, scale, bulletSpriteRect,bulletHitbox, spriteSheet);
+	Polygon bulletHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, bulletSpriteRect, scale);
+	prefabs[3] = new Bullet(defaultPosition, 15, scale, bulletSpriteRect, bulletHitbox, spriteSheet);
 
 	//Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 4);
 	//prefabs[4] = new Floating_Mine(defaultPosition, 10, 1, floatingMineSpriteRect, spriteSheet);
@@ -86,12 +86,21 @@ Entity* EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position, 
 	return newEntity;
 }
 
-void EntityManager::DestroyEntity(Entity* entity) {}
+void EntityManager::DestroyEntity(Entity* entity) 
+{
+	entitiesToDestroy.push_back(entity);
+}
 
 void EntityManager::UpdateEntities()
 {
 	for (Entity* i : loadedEntities)
 		i->Update();
+
+	for (auto&& child : entitiesToDestroy) {
+		loadedEntities.remove(child);
+		delete child;
+	}
+	entitiesToDestroy.clear();
 }
 
 void EntityManager::DrawEntities()

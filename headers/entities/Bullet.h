@@ -11,6 +11,7 @@ public :
 		: Entity(_position, _speed, _scale, _spriteRect, _hitbox, _texture) {};
 	~Bullet() {};
 
+	float timer = 3;
 
 	void Update();
 	void Draw();

@@ -26,6 +26,7 @@ public:
 
 	Texture spriteSheet;
 	std::list<Entity*>  loadedEntities;
+	std::list<Entity*> entitiesToDestroy;
 	Entity* prefabs[8];
 
 	void LoadEntitiesReferences();
