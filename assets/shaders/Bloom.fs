@@ -13,8 +13,8 @@ out vec4 finalColor;
 
 // Bloom Parameters
 const vec2 size = vec2(1080, 720);   // render size
-const float samples = 15.0;          // pixels per axis; higher = bigger glow, worse performance
-const float quality = 1; 	        // lower = smaller glow, better quality
+const float samples = 21.0;          // pixels per axis; higher = bigger glow, worse performance
+const float quality = 2; 	        // lower = smaller glow, better quality
 
 
 #define PI 3.1415926538
@@ -40,7 +40,7 @@ void main()
     vec4 sum = vec4(0);
     vec2 sizeFactor = vec2(1)/size*quality;
     vec4 source = texture(texture0, uv);
-    const int range = 7; //  (samples - 1)/2;
+    const int range = 10; //  (samples - 1)/2;
 
     for (int x = -range; x <= range; x++)
     {
@@ -63,11 +63,11 @@ void main()
    float g = 1-(1-step2 + step1);
    float b = step2-g;
    vec4 rgbStripes = vec4(r,g,b,1);
-   result += rgbStripes * 0.03;
+   result += rgbStripes * 0.025;
    // ---------------------------------------------------------
 
     // STRIDES --------------------------------------------
-   result += abs(fract(uv.y *100))*.15;
+   result += abs(fract(uv.y *100))*.1;
     //-------------------------------------------------------
 
 
@@ -78,7 +78,7 @@ void main()
 
     finalColor = result* vignette;
 
-    finalColor *= scanLineIntensity(uv.y, 1080/4, 0.4);
-   finalColor *= scanLineIntensity(uv.x, 720/4, 0.4);
+    finalColor *= scanLineIntensity(uv.y, 1080/4, 0.3);
+   finalColor *= scanLineIntensity(uv.x, 720/4, 0.3);
 
 }

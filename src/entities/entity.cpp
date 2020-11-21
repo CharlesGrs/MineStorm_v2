@@ -3,8 +3,6 @@
 #include <raylib.h>
 #include "../../headers/helpers/Vector2Helper.h"
 
-
-
 Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon _hitbox, Texture2D _texture)
 	: position(_position), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), hitbox(_hitbox), texture(_texture)
 {
@@ -19,7 +17,7 @@ void Entity::Draw()
 {
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
-	DrawTexturePro(texture, spriteRect, hitboxRect, origin, rotation, WHITE);
+	DrawTexturePro(texture, spriteRect, hitboxRect, origin, rotation, Color{ 120,200,255 ,255 });
 
 	if (World::debugMode)
 	{
@@ -28,9 +26,12 @@ void Entity::Draw()
 		for (std::list<Vector2>::iterator it = hitbox.vertices.begin(); it != hitbox.vertices.end(); ++it) {
 			i++;
 			if (i > size - 1)
-				DrawLine(it->x + position.x - origin.x, it->y + position.y - origin.y, hitbox.vertices.front().x + position.x - origin.x, hitbox.vertices.front().y + position.y - origin.y, GREEN);
+				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
+					Vector2{ hitbox.vertices.front().x + position.x - origin.x, hitbox.vertices.front().y + position.y - origin.y }, 3, GREEN);
 			else
-				DrawLine(it->x + position.x - origin.x, it->y + position.y - origin.y, std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y, GREEN);
+				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y }, 
+					Vector2{ std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y },
+					3, GREEN);
 		}
 	}
 }

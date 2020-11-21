@@ -4,7 +4,6 @@
 #include <raylib.h>
 #include "../entities/Entity.h"
 
-
 enum class EntityIndexes : int
 {
 	Player = 0,
