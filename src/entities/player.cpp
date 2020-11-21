@@ -1,7 +1,9 @@
 #include <raylib.h>
+#include <string>
 #include "../../headers/entities/Player.h"
 #include "../../headers/gameplay/World.h"
 #include "../../headers/entities/Bullet.h"
+#include "../../headers/helpers/Vector2Helper.h"
 
 Entity* Player::Clone() {
 	return new Player(*this);
@@ -9,24 +11,29 @@ Entity* Player::Clone() {
 
 void Player::UpdatePosition()
 {
-	velocity.x = sin((double)rotation * DEG2RAD) * speed;
-	velocity.y = cos((double)rotation * DEG2RAD) * speed;
-
-	position.x += velocity.x * acceleration;
-	position.y -= velocity.y * acceleration;
+	position = Vector2Helper::Add(inertia, position);
 }
 
 void Player::GetInput()
 {
+	bool accelerate = false;
 	if (IsKeyDown(KEY_W))
 	{
-		if (acceleration < 1) acceleration += 0.04f;
+		float magnitude = Vector2Helper::Magnitude(inertia);
+		if (magnitude < speed)
+		{
+			Vector2 currentDirection = Vector2Helper::Multiply(Vector2Helper::AngleToVector2(rotation), 0.25f);
+			inertia.y -= currentDirection.y;
+			inertia.x += currentDirection.x;
+			accelerate = true;
+		}
 	}
-	else
+	if (!accelerate)
 	{
-		if (acceleration > 0) acceleration -= 0.01f;
-		else if (acceleration < 0) acceleration = 0;
+		float factor = IsKeyDown(KEY_S) ? 2.5f : 0.7f;
+		inertia = Vector2Helper::Lerp(inertia, Vector2{ 0,0 }, GetFrameTime() * factor);
 	}
+
 	if (IsKeyDown(KEY_A))
 	{
 		rotation -= 5;
@@ -37,15 +44,15 @@ void Player::GetInput()
 		rotation += 5;
 		RotateHitbox(5);
 	}
-	if (IsKeyDown(KEY_S))
-	{
-		if (acceleration > 0) acceleration -= 0.04f;
-		else if (acceleration < 0) acceleration = 0;
-	}
 
-	if (IsKeyPressed(KEY_F))
+	if (IsKeyDown(KEY_F))
 	{
-		Shoot();
+		bulletTimer += GetFrameTime();
+		if (bulletTimer > SHOOTING_SPEED)
+		{
+			bulletTimer -= SHOOTING_SPEED;
+			Shoot();
+		}
 	}
 }
 
@@ -56,7 +63,7 @@ void Player::Update()
 	UpdatePosition();
 }
 
-void Player::Shoot() 
+void Player::Shoot()
 {
 	Entity* bullet = World::entityManager()->InstantiateEntity(EntityIndexes::Bullet, position);
 	bullet->rotation = rotation;

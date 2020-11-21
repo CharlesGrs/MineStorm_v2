@@ -29,7 +29,7 @@ void EntityManager::LoadEntitiesReferences()
 
 	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 0);
 	Polygon playerHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, playerSpriteRect, scale);
-	prefabs[0] = new Player(defaultPosition, 5, scale, playerSpriteRect, playerHitbox, spriteSheet);
+	prefabs[0] = new Player(defaultPosition, 10, scale, playerSpriteRect, playerHitbox, spriteSheet);
 
 
 #pragma region LATER
