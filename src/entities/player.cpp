@@ -65,8 +65,7 @@ void Player::Update()
 	GetInput();
 	UpdatePosition();
 
-	if (IsKeyDown(KEY_B))
-		RenderTrail();
+	RenderTrail();
 }
 
 void Player::Shoot()
@@ -94,7 +93,7 @@ void Player::RenderTrail()
 	{
 		trailTimer -= TRAIL_FREQUENCY;
 		trailPoints[0] = thrusterPos;
-		for (size_t i = size-1; i > 0; i--)
+		for (size_t i = size - 1; i > 0; i--)
 		{
 			trailPoints[i] = trailPoints[i - 1];
 		}
