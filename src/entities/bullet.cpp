@@ -1,7 +1,7 @@
 #include <raylib.h>
 #include <iostream>
 #include "../../headers/entities/Bullet.h"
-#include "../../headers/gameplay/World.h"
+#include "../../headers/core/Game.h"
 
 
 
@@ -25,7 +25,7 @@ void Bullet::Update()
 
     timer -= GetFrameTime();
     if (timer < 0)
-        World::entityManager()->DestroyEntity(this);
+        Game::entityManager()->DestroyEntity(this);
 }
 
 void Bullet::Draw()

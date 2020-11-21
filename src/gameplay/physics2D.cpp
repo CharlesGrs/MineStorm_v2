@@ -1,15 +1,16 @@
 #include <raylib.h>
 #include <string>
 #include "../../headers/gameplay/Physics2D.h"
-#include "../../headers/gameplay/World.h"
+#include "../../headers/core/Master.h"
+#include "../../headers/core/Game.h"
 
 
 Physics2D* Physics2D::_instance = nullptr;
 
 void Physics2D::InitGrid()
 {
-	int CellPerRow = World::windowWidth / cellSize;
-	int cellPerColumn = World::windowHeight / cellSize;
+	int CellPerRow = Master::windowWidth / cellSize;
+	int cellPerColumn = Master::windowHeight / cellSize;
 
 	for (int i = 0; i < CellPerRow; i++)
 	{

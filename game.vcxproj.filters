@@ -34,12 +34,15 @@
     <Filter Include="Assets\Textures">
       <UniqueIdentifier>{d2cb3fa1-4fc0-460d-8693-011e1aebefe6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Core">
+      <UniqueIdentifier>{19c7724c-5804-4d22-b87a-b1405da3e3ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Core">
+      <UniqueIdentifier>{920f910c-1b87-401c-b33f-5efe47b2732e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\gameplay\EntityManager.h">
-      <Filter>Headers\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\gameplay\World.h">
       <Filter>Headers\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="headers\helpers\SpriteHelper.h">
@@ -66,15 +69,24 @@
     <ClInclude Include="headers\gameplay\Cell.h">
       <Filter>Headers\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="headers\gameplay\Game.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\core\Scene.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\core\Menu.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\core\Master.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="src\gameplay\entityManager.cpp">
-      <Filter>Sources\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gameplay\world.cpp">
       <Filter>Sources\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\helpers\spriteHelper.cpp">
@@ -100,6 +112,15 @@
     </ClCompile>
     <ClCompile Include="src\gameplay\cell.cpp">
       <Filter>Sources\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameplay\menu.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameplay\game.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\master.cpp">
+      <Filter>Sources\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

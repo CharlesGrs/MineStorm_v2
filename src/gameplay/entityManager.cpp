@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include <raylib.h>
 
-EntityManager::EntityManager(Texture _spriteSheet) : spriteSheet(_spriteSheet)
+EntityManager::EntityManager()
 {
+	spriteSheet = LoadTexture("assets/minestorm_sprite_atlas_mine_storm.png");
 	LoadEntitiesReferences();
 }
 

@@ -1,7 +1,7 @@
 #include <raylib.h>
 #include <string>
 #include "../../headers/entities/Player.h"
-#include "../../headers/gameplay/World.h"
+#include "../../headers/core/Game.h"
 #include "../../headers/entities/Bullet.h"
 #include "../../headers/helpers/Vector2Helper.h"
 #include <iostream>
@@ -70,7 +70,7 @@ void Player::Update()
 
 void Player::Shoot()
 {
-	Entity* bullet = World::entityManager()->InstantiateEntity(EntityType::Bullet, position);
+	Entity* bullet = Game::entityManager()->InstantiateEntity(EntityType::Bullet, position);
 	bullet->rotation = rotation;
 }
 

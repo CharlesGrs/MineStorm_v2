@@ -8,9 +8,8 @@ class EntityManager
 {
 public:
 
-	EntityManager() = default;
+	EntityManager() ;
 	~EntityManager();
-	EntityManager(Texture);// Load Sprite Atlas in cTor
 
 
 	void LoadEntitiesReferences();

@@ -3,7 +3,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-#include "../../headers/gameplay/World.h"
+#include "../../headers/core/Master.h"
 
 int main(int argc, char* argv[])
 {
@@ -14,13 +14,13 @@ int main(int argc, char* argv[])
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(screenWidth, screenHeight, "MineStorm");
 
-    World currentWorld;
+    Master master;
 
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) 
     {
-        currentWorld.Update();
+        master.Update();
     }
 
 

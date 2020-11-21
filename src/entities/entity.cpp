@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include "../../headers/helpers/SpriteHelper.h"
-#include "../../headers/gameplay/World.h"
+#include "../../headers/core/Game.h"
+#include "../../headers/core/Master.h"
 #include "../../headers/gameplay/Physics2D.h"
 #include "../../headers/helpers/Vector2Helper.h"
 
@@ -20,7 +21,7 @@ void Entity::Draw()
 	hitboxRect.y = position.y;
 	DrawTexturePro(texture, spriteRect, hitboxRect, origin, rotation, Color{ 120,200,255 ,255 });
 
-	if (World::debugMode)
+	if (Master::debugMode)
 	{
 		int size = hitbox.vertices.size();
 		int i = 0;
@@ -52,15 +53,15 @@ void Entity::Update()
 
 	//Cell c = Physics2D::instance()->FindCellAtPos(position);
 
-	if (position.x > World::windowWidth)
+	if (position.x > Master::windowWidth)
 		position.x = 0;
-	else if (position.y > World::windowHeight)
+	else if (position.y > Master::windowHeight)
 		position.y = 0;
 
 	if (position.y < 0)
-		position.y = World::windowHeight;
+		position.y = Master::windowHeight;
 	else if (position.x < 0)
-		position.x = World::windowWidth;
+		position.x = Master::windowWidth;
 
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
