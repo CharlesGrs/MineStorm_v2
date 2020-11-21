@@ -51,9 +51,7 @@ void Entity::RotateHitbox(float angle)
 void Entity::Update()
 {
 
-	//Cell c = Physics2D::instance()->FindCellAtPos(position);
-
-	if (position.x > Master::windowWidth)
+	if (position.x > World::windowWidth)
 		position.x = 0;
 	else if (position.y > Master::windowHeight)
 		position.y = 0;
@@ -66,23 +64,35 @@ void Entity::Update()
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
 
-	//if (enablePhysics)
-	//{
-	//	Cell newCell = Physics2D::instance()->FindCellAtPos(position);
-	//	
-	//	if ((newCell.position.x != c.position.x) && (newCell.position.y != c.position.y))
-	//	{
-	//		c.RemoveEntity(this);
-	//		currentCell = newCell;
-	//		c.AddEntity(this);
-	//	}
+	
 
-	//	std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
-	//	for (Entity* e : temp)
-	//	{
-	//		//check collision
-	//	}
-	//}
+	if (enablePhysics)
+	{
+		bool checkX = position.x >= 0 && position.x < World::windowWidth;
+		bool checkY = position.y >= 0 && position.y < World::windowHeight;
+
+		Cell newCell = currentCell;
+
+		if (checkX && checkY)
+			newCell = Physics2D::instance()->FindCellAtPos(position);
+
+		if ((newCell.position.x != currentCell.position.x) || (newCell.position.y != currentCell.position.y))
+		{
+ 			currentCell.RemoveEntity(this);
+			currentCell = newCell;
+			currentCell.AddEntity(this);
+		}
+
+		//Physics2D::instance()->DrawGrid();
+		DrawRectangleLines(currentCell.position.x, currentCell.position.y, Physics2D::instance()->cellSize, Physics2D::instance()->cellSize, WHITE);
+		
+
+		std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
+		for (Entity* e : temp)
+		{
+			//check collision
+		}
+	}
 
 }
 
