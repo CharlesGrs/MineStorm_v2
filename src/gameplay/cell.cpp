@@ -1,8 +1,6 @@
 #include <raylib.h>
 #include <string>
 #include "../../headers/gameplay/Cell.h"
-#include "../../headers/gameplay/World.h"
-
 
 void Cell::AddEntity(Entity* e)
 {
@@ -24,3 +22,4 @@ std::list<Entity*> Cell::GetEntities()
 {
 	return entities;
 }
+

@@ -4,6 +4,8 @@
 #include "../../headers/gameplay/World.h"
 
 
+Physics2D* Physics2D::_instance = nullptr;
+
 void Physics2D::InitGrid()
 {
 	int CellPerRow = World::windowWidth / cellSize;
@@ -67,5 +69,17 @@ std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell c)
 
 
 	return list;
+}
+
+Cell Physics2D::FindCellAtPos(Vector2 position)
+{
+	for (Cell c : cellGrid)
+	{
+		bool checkX = position.x >= c.position.x && position.x < c.position.x + cellSize;
+		bool checkY = position.y >= c.position.y && position.y < c.position.y + cellSize;
+
+		if (checkX && checkY)
+			return c;
+	}
 }
 

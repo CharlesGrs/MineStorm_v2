@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include "../helpers/PolygonHelper.h"
+#include "../gameplay/Cell.h"
 
 
 
@@ -30,8 +31,9 @@ public:
 	float speed;
 	Polygon hitbox;
 
-	EntityType type;
+	EntityType type = EntityType::Player;
 	Cell currentCell;
+	bool enablePhysics = false;
 
 	Vector2 origin;
 	Rectangle spriteRect;
