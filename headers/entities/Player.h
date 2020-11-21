@@ -24,10 +24,14 @@ private:
 	void GetInput();
 	void Shoot();
 	void RenderTrail();
+	Vector2 GetThrusterPos();
 
 	bool playerOne = true;
 	int health = 3;
 	Vector2 inertia = { 0,0 };
 	float bulletTimer =0;
 	const float SHOOTING_SPEED = 0.1f;
+	float trailTimer = 0;
+	const float TRAIL_FREQUENCY = 0.0166f;
+	Vector2 trailPoints[10];
 };

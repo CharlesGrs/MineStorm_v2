@@ -4,6 +4,7 @@
 #include <raylib.h>
 #include "../entities/Entity.h"
 
+
 class EntityManager
 {
 public:
@@ -11,7 +12,6 @@ public:
 	EntityManager() = default;
 	~EntityManager();
 	EntityManager(Texture);// Load Sprite Atlas in cTor
-
 
 	void LoadEntitiesReferences();
 

@@ -1,10 +1,7 @@
 #include "../../headers/gameplay/EntityManager.h"
 #include "../../headers/helpers/SpriteHelper.h"
 #include "../../headers/entities/Player.h"
-//#include "../../headers/entities/Mine.h"
-//#include "../../headers/entities/SpawnPoint.h"
 #include "../../headers/entities/Bullet.h"
-//#include "../../headers/entities/MineLayer.h"
 #include <stdlib.h>
 #include <raylib.h>
 
@@ -68,7 +65,6 @@ Entity* EntityManager::InstantiateEntity(EntityType type, Vector2 position)
 
 	Entity* newEntity = prefabs[entityIndex]->Clone();
 	newEntity->position = position;
-	newEntity->type = type;
 
 	loadedEntities.push_back(newEntity);
 	return newEntity;
@@ -81,7 +77,6 @@ Entity* EntityManager::InstantiateEntity(EntityType type, Vector2 position, floa
 	Entity* newEntity = prefabs[entityIndex]->Clone();
 	newEntity->position = position;
 	newEntity->rotation = rotation;
-	newEntity->type = type;
 
 	loadedEntities.push_back(newEntity);
 

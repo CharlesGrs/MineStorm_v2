@@ -47,6 +47,7 @@ void Entity::RotateHitbox(float angle)
 	}
 }
 
+
 void Entity::Update()
 {
 
