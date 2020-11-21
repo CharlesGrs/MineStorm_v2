@@ -21,11 +21,16 @@ public :
 		delete _instance;
 	}
 
+	Physics2D()
+	{
+		InitGrid();
+	}
 	
 	std::list<Cell> cellGrid;
-	static int const cellSize = 20;
+	static int const cellSize = 160;
 
 	void InitGrid();
+	void DrawGrid();
 	std::list<Entity*> GetEntityInNeighborCells(Cell c);
 	Cell FindCellAtPos(Vector2 position);
 

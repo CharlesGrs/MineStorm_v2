@@ -11,9 +11,9 @@ void Physics2D::InitGrid()
 	int CellPerRow = World::windowWidth / cellSize;
 	int cellPerColumn = World::windowHeight / cellSize;
 
-	for (int i = 0; i < CellPerRow; i++)
+	for (int i = 0; i <= CellPerRow; i++)
 	{
-		for (int j = 0; j < cellPerColumn; j++)
+		for (int j = 0; j <= cellPerColumn; j++)
 		{
 			Cell newCell = Cell{ {(float)i* cellSize, (float)j * cellSize} };
 			cellGrid.push_back(newCell);
@@ -71,6 +71,7 @@ std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell c)
 	return list;
 }
 
+
 Cell Physics2D::FindCellAtPos(Vector2 position)
 {
 	for (Cell c : cellGrid)
@@ -81,5 +82,24 @@ Cell Physics2D::FindCellAtPos(Vector2 position)
 		if (checkX && checkY)
 			return c;
 	}
+
+	return Cell();
 }
+
+void Physics2D::DrawGrid()
+{
+	int i = 0;
+	for (Cell c : cellGrid)
+	{
+		if (i % 3 == 0)
+			DrawRectangleLines(c.position.x, c.position.y, cellSize, cellSize, WHITE);
+		else if (i % 3 == 1)
+			DrawRectangleLines(c.position.x, c.position.y, cellSize, cellSize, RED);
+		else 
+			DrawRectangleLines(c.position.x, c.position.y, cellSize, cellSize, BLUE);
+
+		i++;
+	}
+}
+
 

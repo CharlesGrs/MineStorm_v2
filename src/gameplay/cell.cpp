@@ -9,13 +9,7 @@ void Cell::AddEntity(Entity* e)
 
 void Cell::RemoveEntity(Entity* entity)
 {
-	for (Entity* e : entities)
-	{
-		if (entity == e)
-		{
-			entities.remove(e);
-		}
-	}
+	entities.remove(entity);
 }
 
 std::list<Entity*> Cell::GetEntities()
