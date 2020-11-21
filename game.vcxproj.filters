@@ -60,6 +60,12 @@
     <ClInclude Include="headers\helpers\Vector2Helper.h">
       <Filter>Headers\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\gameplay\Physics2D.h">
+      <Filter>Headers\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\gameplay\Cell.h">
+      <Filter>Headers\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -88,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="src\helpers\vector2Helper.cpp">
       <Filter>Sources\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameplay\physics2D.cpp">
+      <Filter>Sources\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameplay\cell.cpp">
+      <Filter>Sources\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

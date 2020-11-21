@@ -87,7 +87,9 @@
     <ClCompile Include="src\entities\bullet.cpp" />
     <ClCompile Include="src\entities\entity.cpp" />
     <ClCompile Include="src\entities\player.cpp" />
+    <ClCompile Include="src\gameplay\cell.cpp" />
     <ClCompile Include="src\gameplay\entityManager.cpp" />
+    <ClCompile Include="src\gameplay\physics2D.cpp" />
     <ClCompile Include="src\gameplay\world.cpp" />
     <ClCompile Include="src\helpers\polygonHelper.cpp" />
     <ClCompile Include="src\helpers\spriteHelper.cpp" />
@@ -98,7 +100,9 @@
     <ClInclude Include="headers\entities\Bullet.h" />
     <ClInclude Include="headers\entities\Entity.h" />
     <ClInclude Include="headers\entities\Player.h" />
+    <ClInclude Include="headers\gameplay\Cell.h" />
     <ClInclude Include="headers\gameplay\EntityManager.h" />
+    <ClInclude Include="headers\gameplay\Physics2D.h" />
     <ClInclude Include="headers\gameplay\World.h" />
     <ClInclude Include="headers\helpers\PolygonHelper.h" />
     <ClInclude Include="headers\helpers\SpriteHelper.h" />
