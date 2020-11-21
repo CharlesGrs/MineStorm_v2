@@ -4,7 +4,7 @@
 #include <raylib.h>
 #include "../entities/Entity.h"
 
-enum class EntityIndexes : int
+enum class EntityType : int
 {
 	Player = 0,
 	SpawnPoint = 1,
@@ -23,10 +23,11 @@ public:
 	~EntityManager();
 	EntityManager(Texture);// Load Sprite Atlas in cTor
 
+
 	void LoadEntitiesReferences();
 
-	Entity* InstantiateEntity(EntityIndexes index, Vector2 position);
-	Entity* InstantiateEntity(EntityIndexes index, Vector2 position, float rotation);
+	Entity* InstantiateEntity(EntityType index, Vector2 position);
+	Entity* InstantiateEntity(EntityType index, Vector2 position, float rotation);
 
 	int entityAmount() 
 	{

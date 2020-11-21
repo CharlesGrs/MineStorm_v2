@@ -20,10 +20,13 @@ private:
 	void UpdatePosition();
 	void GetInput();
 	void Shoot();
+	void RenderTrail();
 
 	bool playerOne = true;
 	int health = 3;
 	Vector2 inertia = { 0,0 };
 	float bulletTimer =0;
 	const float SHOOTING_SPEED = 0.1f;
+
+	Vector2[]
 };

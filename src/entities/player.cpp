@@ -65,6 +65,11 @@ void Player::Update()
 
 void Player::Shoot()
 {
-	Entity* bullet = World::entityManager()->InstantiateEntity(EntityIndexes::Bullet, position);
+	Entity* bullet = World::entityManager()->InstantiateEntity(EntityType::Bullet, position);
 	bullet->rotation = rotation;
+}
+
+void Player::RenderTrail() 
+{
+
 }

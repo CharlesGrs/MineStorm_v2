@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include "../helpers/PolygonHelper.h"
+#include "../gameplay/EntityManager.h";
 
 class Entity
 {
@@ -15,6 +16,8 @@ public:
 	float scale;
 	float speed;
 	Polygon hitbox;
+
+	EntityType type;
 
 	Vector2 origin;
 	Rectangle spriteRect;

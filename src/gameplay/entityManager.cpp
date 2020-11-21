@@ -62,24 +62,26 @@ void EntityManager::LoadEntitiesReferences()
 	UnloadImage(collisionMapData);
 }
 
-Entity* EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position)
+Entity* EntityManager::InstantiateEntity(EntityType type, Vector2 position)
 {
-	int entityIndex = (int)index;
+	int entityIndex = (int)type;
 
 	Entity* newEntity = prefabs[entityIndex]->Clone();
 	newEntity->position = position;
+	newEntity->type = type;
 
 	loadedEntities.push_back(newEntity);
 	return newEntity;
 }
 
-Entity* EntityManager::InstantiateEntity(EntityIndexes index, Vector2 position, float rotation)
+Entity* EntityManager::InstantiateEntity(EntityType type, Vector2 position, float rotation)
 {
-	int entityIndex = (int)index;
+	int entityIndex = (int)type;
 
 	Entity* newEntity = prefabs[entityIndex]->Clone();
 	newEntity->position = position;
 	newEntity->rotation = rotation;
+	newEntity->type = type;
 
 	loadedEntities.push_back(newEntity);
 

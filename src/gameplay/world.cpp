@@ -71,7 +71,7 @@ void World::Debug()
 		Vector2 playerPos;
 		playerPos.x = (float)(rand() % 1080);
 		playerPos.y = (float)(rand() % 720);
-		entityManager() -> InstantiateEntity(EntityIndexes::Player, playerPos, 0);
+		entityManager() -> InstantiateEntity(EntityType::Player, playerPos, 0);
 	}
 
 	if (IsKeyReleased(KEY_F1))
