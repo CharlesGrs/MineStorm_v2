@@ -27,6 +27,4 @@ private:
 	Vector2 inertia = { 0,0 };
 	float bulletTimer =0;
 	const float SHOOTING_SPEED = 0.1f;
-
-	Vector2[]
 };
