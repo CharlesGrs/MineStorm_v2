@@ -73,3 +73,8 @@ Vector2 Vector2Helper::AngleToVector2(float angle)
 	result.y = cos((double)angle * DEG2RAD);
 	return result;
 }
+
+float Vector2Helper::Distance(Vector2 v1, Vector2 v2)
+{
+	return Magnitude(Substract(v1, v2));
+}

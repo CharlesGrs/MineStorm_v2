@@ -50,7 +50,7 @@ void Entity::RotateHitbox(float angle)
 void Entity::Update()
 {
 
-	Cell c = Physics2D::instance()->FindCellAtPos(position);
+	//Cell c = Physics2D::instance()->FindCellAtPos(position);
 
 	if (position.x > World::windowWidth)
 		position.x = 0;
@@ -65,23 +65,23 @@ void Entity::Update()
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
 
-	if (enablePhysics)
-	{
-		Cell newCell = Physics2D::instance()->FindCellAtPos(position);
-		
-		if ((newCell.position.x != c.position.x) && (newCell.position.y != c.position.y))
-		{
-			c.RemoveEntity(this);
-			currentCell = newCell;
-			c.AddEntity(this);
-		}
+	//if (enablePhysics)
+	//{
+	//	Cell newCell = Physics2D::instance()->FindCellAtPos(position);
+	//	
+	//	if ((newCell.position.x != c.position.x) && (newCell.position.y != c.position.y))
+	//	{
+	//		c.RemoveEntity(this);
+	//		currentCell = newCell;
+	//		c.AddEntity(this);
+	//	}
 
-		std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
-		for (Entity* e : temp)
-		{
-			//check collision
-		}
-	}
+	//	std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
+	//	for (Entity* e : temp)
+	//	{
+	//		//check collision
+	//	}
+	//}
 
 }
 

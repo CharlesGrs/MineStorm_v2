@@ -4,7 +4,6 @@
 #include "../gameplay/Cell.h"
 
 
-
 enum class EntityType : int
 {
 	Player = 0,
