@@ -14,7 +14,7 @@ public :
 	{
 		enablePhysics = true;
 	}
-	~Player();
+	~Player()=default;
 
 	void Update() override ;
 	Entity* Clone();
