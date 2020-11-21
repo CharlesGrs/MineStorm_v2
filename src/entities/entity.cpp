@@ -1,6 +1,7 @@
+#include <raylib.h>
 #include "../../headers/helpers/SpriteHelper.h"
 #include "../../headers/gameplay/World.h"
-#include <raylib.h>
+#include "../../headers/gameplay/Physics2D.h"
 #include "../../headers/helpers/Vector2Helper.h"
 
 Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon _hitbox, Texture2D _texture)
@@ -48,6 +49,9 @@ void Entity::RotateHitbox(float angle)
 
 void Entity::Update()
 {
+
+	Cell c = Physics2D::instance()->FindCellAtPos(position);
+
 	if (position.x > World::windowWidth)
 		position.x = 0;
 	else if (position.y > World::windowHeight)
@@ -60,5 +64,24 @@ void Entity::Update()
 
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
+
+	if (enablePhysics)
+	{
+		Cell newCell = Physics2D::instance()->FindCellAtPos(position);
+		
+		if ((newCell.position.x != c.position.x) && (newCell.position.y != c.position.y))
+		{
+			c.RemoveEntity(this);
+			currentCell = newCell;
+			c.AddEntity(this);
+		}
+
+		std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
+		for (Entity* e : temp)
+		{
+			//check collision
+		}
+	}
+
 }
 

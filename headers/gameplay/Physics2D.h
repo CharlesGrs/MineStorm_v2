@@ -3,12 +3,30 @@
 
 class Physics2D
 {
+	static Physics2D* _instance;
+
 public :
 
+	static Physics2D* instance()
+	{
+		if (!_instance)
+		{
+			_instance = new Physics2D();
+		}
+		return _instance;
+	}
+
+	~Physics2D()
+	{
+		delete _instance;
+	}
+
+	
 	std::list<Cell> cellGrid;
 	static int const cellSize = 20;
 
 	void InitGrid();
 	std::list<Entity*> GetEntityInNeighborCells(Cell c);
+	Cell FindCellAtPos(Vector2 position);
 
 };
