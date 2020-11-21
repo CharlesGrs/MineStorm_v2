@@ -4,17 +4,7 @@
 #include <raylib.h>
 #include "../entities/Entity.h"
 
-enum class EntityType : int
-{
-	Player = 0,
-	SpawnPoint = 1,
-	MineLayer = 2,
-	Bullet = 3,
-	FloatingMine = 4,
-	FireballMine = 5,
-	MagneticMine = 6,
-	MagneticFireballMine = 7
-};
+
 class EntityManager
 {
 public:
@@ -22,7 +12,6 @@ public:
 	EntityManager() = default;
 	~EntityManager();
 	EntityManager(Texture);// Load Sprite Atlas in cTor
-
 
 	void LoadEntitiesReferences();
 

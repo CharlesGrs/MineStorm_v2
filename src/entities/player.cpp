@@ -61,6 +61,7 @@ void Player::Update()
 	Entity::Update();
 	GetInput();
 	UpdatePosition();
+	RenderTrail();
 }
 
 void Player::Shoot()
@@ -69,7 +70,42 @@ void Player::Shoot()
 	bullet->rotation = rotation;
 }
 
-void Player::RenderTrail() 
-{
+Vector2 Player::GetThrusterPos() {
+	Vector2 dir = Vector2Helper::AngleToVector2(rotation);
+	float offset = -15;
+	Vector2 thrusterPos = Vector2{ dir.x * offset + position.x, position.y - dir.y * offset };
+	return thrusterPos;
+}
 
+
+void Player::RenderTrail()
+{
+	Vector2 thrusterPos = GetThrusterPos();
+	DrawCircle(thrusterPos.x, thrusterPos.y, abs(sin(GetTime() * 10)) * 7, WHITE);
+
+	int size = 10;
+
+	trailTimer += GetFrameTime();
+	if (trailTimer > TRAIL_FREQUENCY)
+	{
+		trailTimer -= TRAIL_FREQUENCY;
+		trailPoints[0] = thrusterPos;
+		for (size_t i = size; i > 0; i--)
+		{
+			trailPoints[i] = trailPoints[i - 1];
+		}
+	}
+
+	for (size_t i = 0; i < size - 1; i++)
+	{
+		if (Vector2Helper::Distance(trailPoints[i], trailPoints[i + 1]) > 100)
+			continue;
+		float t = (10 - i) / 10.0f;
+		Color trailColor;
+		trailColor.r = SKYBLUE.r + t * (WHITE.r - SKYBLUE.r);
+		trailColor.g = SKYBLUE.g + t * (WHITE.g - SKYBLUE.g);
+		trailColor.b = SKYBLUE.b + t * (WHITE.b - SKYBLUE.b);
+		trailColor.a = 255;
+		DrawLineEx(trailPoints[i], trailPoints[i + 1], t * 10, trailColor);
+	}
 }

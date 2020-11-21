@@ -1,7 +1,18 @@
 #pragma once
 #include <raylib.h>
 #include "../helpers/PolygonHelper.h"
-#include "../gameplay/EntityManager.h";
+
+enum class EntityType : int
+{
+	Player = 0,
+	SpawnPoint = 1,
+	MineLayer = 2,
+	Bullet = 3,
+	FloatingMine = 4,
+	FireballMine = 5,
+	MagneticMine = 6,
+	MagneticFireballMine = 7
+};
 
 class Entity
 {
@@ -17,7 +28,7 @@ public:
 	float speed;
 	Polygon hitbox;
 
-	EntityType type;
+	EntityType entityType;
 
 	Vector2 origin;
 	Rectangle spriteRect;
@@ -29,4 +40,5 @@ public:
 	void Draw();
 
 	void RotateHitbox(float angle);
+
 };

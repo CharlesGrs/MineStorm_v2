@@ -46,6 +46,7 @@ void Entity::RotateHitbox(float angle)
 	}
 }
 
+
 void Entity::Update()
 {
 	if (position.x > World::windowWidth)

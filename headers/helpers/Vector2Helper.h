@@ -13,5 +13,6 @@ public:
 	static float Magnitude(Vector2 v);
 	static Vector2 Lerp(Vector2 v1, Vector2 v2, float t);
 	static Vector2 AngleToVector2(float angle);
+	static float Distance(Vector2 v1, Vector2 v2);
 
 };
