@@ -51,7 +51,7 @@ void Entity::RotateHitbox(float angle)
 void Entity::Update()
 {
 
-	if (position.x > World::windowWidth)
+	if (position.x > Master::windowWidth)
 		position.x = 0;
 	else if (position.y > Master::windowHeight)
 		position.y = 0;
@@ -68,8 +68,8 @@ void Entity::Update()
 
 	if (enablePhysics)
 	{
-		bool checkX = position.x >= 0 && position.x < World::windowWidth;
-		bool checkY = position.y >= 0 && position.y < World::windowHeight;
+		bool checkX = position.x >= 0 && position.x < Master::windowWidth;
+		bool checkY = position.y >= 0 && position.y < Master::windowHeight;
 
 		Cell newCell = currentCell;
 

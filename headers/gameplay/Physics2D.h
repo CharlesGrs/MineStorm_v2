@@ -5,7 +5,7 @@ class Physics2D
 {
 	static Physics2D* _instance;
 
-public :
+public:
 
 	static Physics2D* instance()
 	{
@@ -25,12 +25,11 @@ public :
 	{
 		InitGrid();
 	}
-	
-	std::list<Cell> cellGrid;
+
+	Cell cellGrid[7][5];
 	static int const cellSize = 160;
 
 	void InitGrid();
-	void DrawGrid();
 	std::list<Entity*> GetEntityInNeighborCells(Cell c);
 	Cell FindCellAtPos(Vector2 position);
 

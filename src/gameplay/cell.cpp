@@ -12,8 +12,4 @@ void Cell::RemoveEntity(Entity* entity)
 	entities.remove(entity);
 }
 
-std::list<Entity*> Cell::GetEntities()
-{
-	return entities;
-}
 

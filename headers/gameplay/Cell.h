@@ -6,18 +6,17 @@ class Entity;
 struct Cell
 {
 private :
-	std::list<Entity*> entities;
 	
 
 public :
 
+	std::list<Entity*> entities;
 	Vector2 position;
 	Cell() = default;
 	Cell(Vector2 _position) : position(_position) {}
 
 	void AddEntity(Entity*);
 	void RemoveEntity(Entity*);
-	std::list<Entity*> GetEntities();
 
 
 };

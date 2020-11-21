@@ -9,98 +9,51 @@ Physics2D* Physics2D::_instance = nullptr;
 
 void Physics2D::InitGrid()
 {
-	int CellPerRow = Master::windowWidth / cellSize;
-	int cellPerColumn = Master::windowHeight / cellSize;
 
-	for (int i = 0; i <= CellPerRow; i++)
+	for (int i = 0; i <= Master::windowWidth; i += cellSize)
 	{
-		for (int j = 0; j <= cellPerColumn; j++)
+		for (int j = 0; j <= Master::windowHeight; j += cellSize)
 		{
-			Cell newCell = Cell{ {(float)i* cellSize, (float)j * cellSize} };
-			cellGrid.push_back(newCell);
+			Cell newCell = Cell{ {(float)i, (float)j} };
+			cellGrid[i / cellSize][j / cellSize] = newCell;
 		}
 	}
 }
 
 std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell c)
 {
-	std::list<Cell> cells;
-	std::list<Entity*> list;
-	std::list<Entity*> temp;
+	std::list<Entity*> entityList;
+
+	int indexX = c.position.x / cellSize;
+	int indexY = c.position.y / cellSize;
+
 
 	//neighbor cells positions
-	Vector2 neighborPositions[8] = { 
-		//first top row
-		Vector2{c.position.x - cellSize,c.position.y - cellSize},
-		Vector2{c.position.x		   ,c.position.y - cellSize},
-		Vector2{c.position.x + cellSize,c.position.y - cellSize},
-
-		//second row 
-		Vector2{c.position.x - cellSize,c.position.y},
-		Vector2{c.position.x + cellSize,c.position.y},
-		
-		//third row
-		Vector2{c.position.x - cellSize,c.position.y + cellSize},
-		Vector2{c.position.x			,c.position.y + cellSize},
-		Vector2{c.position.x + cellSize,c.position.y + cellSize},
-
-	};
-
-	cells.push_back(c);
-
-	//get neighbor cells in cells
-	for (Cell c : cellGrid)
+	for (int i = -1; i <= 1; i++)
 	{
-		for (int i = 0; i < 8; i++)
+		for (int j = -1; j <= 1; j++)
 		{
-			if ((c.position.x == neighborPositions[i].x) && (c.position.y == neighborPositions[i].y))
-				cells.push_back(c);
+			if (indexX + i > 0 && indexY + j > 0 && indexX + i < 7 && indexY + j < 5)
+				for (Entity* e : cellGrid[indexX + i][indexY + j].entities)
+				{
+					entityList.push_back(e);
+				}
 		}
 	}
 
-	//for each in cells -> add c entities in total list
-	for (Cell c : cells)
-	{
-		temp = c.GetEntities();
-		for (Entity* e : temp)
-		{
-			list.push_back(e);
-		}
-	}
-
-
-	return list;
+	return entityList;
 }
 
 
 Cell Physics2D::FindCellAtPos(Vector2 position)
 {
-	for (Cell c : cellGrid)
-	{
-		bool checkX = position.x >= c.position.x && position.x < c.position.x + cellSize;
-		bool checkY = position.y >= c.position.y && position.y < c.position.y + cellSize;
 
-		if (checkX && checkY)
-			return c;
-	}
+	int indexX = position.x / cellSize;
+	int indexY = position.y / cellSize;
 
-	return Cell();
+	return cellGrid[indexX][indexY];
+	
 }
 
-void Physics2D::DrawGrid()
-{
-	int i = 0;
-	for (Cell c : cellGrid)
-	{
-		if (i % 3 == 0)
-			DrawRectangleLines(c.position.x, c.position.y, cellSize, cellSize, WHITE);
-		else if (i % 3 == 1)
-			DrawRectangleLines(c.position.x, c.position.y, cellSize, cellSize, RED);
-		else 
-			DrawRectangleLines(c.position.x, c.position.y, cellSize, cellSize, BLUE);
-
-		i++;
-	}
-}
 
 
