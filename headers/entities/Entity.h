@@ -37,7 +37,7 @@ public:
 	Vector2 origin;
 	Rectangle spriteRect;
 	Rectangle hitboxRect;
-	Texture2D texture; //POINTER
+	Texture2D texture;
 
 	virtual void Update();
 	virtual Entity* Clone() = 0;
