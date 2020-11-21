@@ -12,7 +12,7 @@ public :
 	{
 		enablePhysics = true;
 	};
-	~Bullet() {};
+	~Bullet() = default;
 
 	float timer = 3;
 

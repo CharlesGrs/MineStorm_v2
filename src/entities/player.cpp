@@ -4,6 +4,8 @@
 #include "../../headers/gameplay/World.h"
 #include "../../headers/entities/Bullet.h"
 #include "../../headers/helpers/Vector2Helper.h"
+#include <iostream>
+using namespace std;
 
 Entity* Player::Clone() {
 	return new Player(*this);
@@ -56,12 +58,20 @@ void Player::GetInput()
 	}
 }
 
+Player::~Player()
+{
+	cout << "Player Destroyed..\n";
+
+}
+
 void Player::Update()
 {
 	Entity::Update();
 	GetInput();
 	UpdatePosition();
-	RenderTrail();
+
+	if (IsKeyDown(KEY_B))
+		RenderTrail();
 }
 
 void Player::Shoot()
@@ -76,7 +86,6 @@ Vector2 Player::GetThrusterPos() {
 	Vector2 thrusterPos = Vector2{ dir.x * offset + position.x, position.y - dir.y * offset };
 	return thrusterPos;
 }
-
 
 void Player::RenderTrail()
 {
@@ -96,7 +105,7 @@ void Player::RenderTrail()
 		}
 	}
 
-	for (size_t i = 0; i < size - 1; i++)
+	for (size_t i = 0; i < (long)size - 1; i++)
 	{
 		if (Vector2Helper::Distance(trailPoints[i], trailPoints[i + 1]) > 100)
 			continue;

@@ -22,7 +22,7 @@ public:
 
 	Entity() = default;
 	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon hitbox,Texture2D _texture);
-	~Entity() = default; // VIRTUAL 
+	virtual ~Entity() = default; // VIRTUAL 
 
 	Vector2 position;
 	float rotation = 0;
