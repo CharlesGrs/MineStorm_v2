@@ -5,6 +5,9 @@
 #include <crtdbg.h>
 #include "../../headers/core/Master.h"
 
+
+//#define MAX_BATCH_ELEMENTS  8192
+
 int main(int argc, char* argv[])
 {
     int screenWidth = 1080;
@@ -24,8 +27,8 @@ int main(int argc, char* argv[])
     }
 
 
+
     CloseWindow();
-    //_CrtDumpMemoryLeaks();
 
     return 0;
 }

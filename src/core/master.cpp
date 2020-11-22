@@ -1,6 +1,7 @@
 #include "..\..\headers\core\Master.h"
 #include "..\..\headers\core\Game.h"
 #include "..\..\headers\core\Menu.h"
+#include <string>
 
 bool Master::debugMode;
 
@@ -9,6 +10,13 @@ Master::Master()
 {
 	LoadResources();
 	ChangeScene(SceneIndex::Game);
+}
+
+Master::~Master()
+{
+	std::cout << "Unload Master \n";
+	delete currentScene;
+	UnloadResources();
 }
 
 void Master::ChangeScene(SceneIndex sceneIndex)
@@ -68,6 +76,11 @@ void Master::Update()
 	else
 		DrawText("Press F2 to enable debugMode", 5, windowHeight - 25, 12, WHITE);
 
+
+	int size = (int)Game::entityManager()->entityAmount();
+	std::string s = "Entity count: " + std::to_string(size);
+	char const* pChar = s.c_str();
+	DrawText(pChar, 5, 10, 12, WHITE);
 	EndDrawing();
 }
 

@@ -47,12 +47,10 @@ std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell c)
 
 Cell Physics2D::FindCellAtPos(Vector2 position)
 {
-
 	int indexX = position.x / cellSize;
 	int indexY = position.y / cellSize;
 
 	return cellGrid[indexX][indexY];
-	
 }
 
 

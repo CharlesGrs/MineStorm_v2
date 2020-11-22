@@ -31,7 +31,7 @@ void Entity::Draw()
 				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
 					Vector2{ hitbox.vertices.front().x + position.x - origin.x, hitbox.vertices.front().y + position.y - origin.y }, 3, GREEN);
 			else
-				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y }, 
+				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
 					Vector2{ std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y },
 					3, GREEN);
 		}
@@ -64,7 +64,6 @@ void Entity::Update()
 	hitboxRect.x = position.x;
 	hitboxRect.y = position.y;
 
-	
 
 	if (enablePhysics)
 	{
@@ -78,20 +77,21 @@ void Entity::Update()
 
 		if ((newCell.position.x != currentCell.position.x) || (newCell.position.y != currentCell.position.y))
 		{
- 			currentCell.RemoveEntity(this);
+			currentCell.RemoveEntity(this);
 			currentCell = newCell;
 			currentCell.AddEntity(this);
 		}
 
 		//Physics2D::instance()->DrawGrid();
-		DrawRectangleLines(currentCell.position.x, currentCell.position.y, Physics2D::instance()->cellSize, Physics2D::instance()->cellSize, WHITE);
-		
+		if (Master::debugMode)
+			DrawRectangleLines(currentCell.position.x, currentCell.position.y, Physics2D::instance()->cellSize, Physics2D::instance()->cellSize, WHITE);
 
-		std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
-		for (Entity* e : temp)
-		{
-			//check collision
-		}
+
+		//std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
+		//for (Entity* e : temp)
+		//{
+		//	//check collision
+		//}
 	}
 
 }

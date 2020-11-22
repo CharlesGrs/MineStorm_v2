@@ -10,7 +10,7 @@ class Master
 {
 public:
 	Master();
-	~Master() = default;
+	~Master();
 
 	bool enableShader = true;
 	static bool debugMode;

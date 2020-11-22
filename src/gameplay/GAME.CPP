@@ -5,6 +5,7 @@ EntityManager* Game::_eM;
 
 Game::~Game()
 {
+	std::cout << "Unload Game..\n";
 	delete _eM;
 }
 
@@ -36,7 +37,7 @@ void Game::ExitGame()
 
 void Game::Debug()
 {
-	if (IsKeyReleased(KEY_SPACE))
+	if (IsKeyDown(KEY_SPACE))
 	{
 		Vector2 playerPos;
 		playerPos.x = (float)(rand() % 1080);
@@ -44,8 +45,5 @@ void Game::Debug()
 		entityManager()->InstantiateEntity(EntityType::Player, playerPos, 0);
 	}
 
-	int size = (int)entityManager()->entityAmount();
-	std::string s = "Entity count: " + std::to_string(size);
-	char const* pChar = s.c_str();
-	DrawText(pChar, 5, 10, 12, WHITE);
+
 }
