@@ -1,6 +1,7 @@
 #pragma once
 #include <stdbool.h>
 #include "Geometry.h"
+#include "../helpers/Vector2Helper.h"
 
 class Range
 {

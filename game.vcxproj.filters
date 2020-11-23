@@ -84,9 +84,6 @@
     <ClInclude Include="headers\gameplay\Range.h">
       <Filter>Headers\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="headers\gameplay\Vector2.h">
-      <Filter>Headers\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="headers\gameplay\Geometry.h">
       <Filter>Headers\Gameplay</Filter>
     </ClInclude>
@@ -132,9 +129,6 @@
       <Filter>Sources\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\gameplay\range.cpp">
-      <Filter>Sources\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gameplay\vector2.cpp">
       <Filter>Sources\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\gameplay\geometry.cpp">

@@ -1,7 +1,6 @@
 #include <raylib.h>
 #include <string>
 #include "../../headers/gameplay/Physics2D.h"
-#include "../../headers/gameplay/Vector2.h"
 #include "../../headers/gameplay/Range.h"
 #include "../../headers/core/Master.h"
 #include "../../headers/core/Game.h"
@@ -97,20 +96,20 @@ bool IsSeparatorAxe(Polygon p1, Polygon p2)
 
 	for (Vector2 v : p1.vertices)
 	{
-		Vector2 normal = (Soustraction(v, temp));
-		normal = NormalVector(normal);
+		Vector2 normal = (Vector2Helper::Substract(v, temp));
+		normal = Vector2Helper::NormalVector(normal);
 
-		Range p1Range = { DotProduct(p1.vertices.front(),normal), DotProduct(p1.vertices.front(),normal) };
-		Range p2Range = { DotProduct(p2.vertices.front(),normal), DotProduct(p2.vertices.front(),normal) };
+		Range p1Range = { Vector2Helper::DotProduct(p1.vertices.front(),normal), Vector2Helper::DotProduct(p1.vertices.front(),normal) };
+		Range p2Range = { Vector2Helper::DotProduct(p2.vertices.front(),normal), Vector2Helper::DotProduct(p2.vertices.front(),normal) };
 
 		for (Vector2 v1 : p1.vertices)
 		{
-			p1Range = WidenRange(p1Range, DotProduct(v1, normal));
+			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(v1, normal));
 		}
 
 		for (Vector2 v2 : p2.vertices)
 		{
-			p2Range = WidenRange(p2Range, DotProduct(v2, normal));
+			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(v2, normal));
 		}
 
 		if (!RangeInterference(p1Range, p2Range))

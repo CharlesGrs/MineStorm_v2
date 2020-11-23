@@ -1,7 +1,6 @@
 #include <math.h>
 #include <stdio.h>
 #include "../../headers/gameplay/Range.h"
-#include "../../headers/gameplay/Vector2.h"
 
 
 Range::Range(float min, float max)
@@ -65,7 +64,7 @@ bool IsValueInRange(Range r, float val)
 Range PointToAxes(Vector2 directeur, Vector2 pointPosition)
 {
     Range r;
-    float projectionVal = DotProduct(directeur,pointPosition);
+    float projectionVal = Vector2Helper::DotProduct(directeur,pointPosition);
     r = {projectionVal, projectionVal};
 
     return r;
@@ -75,8 +74,8 @@ Range PointToAxes(Vector2 directeur, Vector2 pointPosition)
 Range SegmentToAxes(Vector2 directeur, Segment s)
 {
     Range r;
-    float val1 = DotProduct(directeur,s.p1);
-    float val2 = DotProduct(directeur,s.p2);
+    float val1 = Vector2Helper::DotProduct(directeur, s.p1);
+    float val2 = Vector2Helper::DotProduct(directeur,s.p2);
 
     WidenRange(r, val1);
     WidenRange(r, val2);
@@ -90,16 +89,16 @@ Range BoxToAxes(Vector2 directeur, Box b)
     float val1, val2, val3, val4;
     Vector2 currentPoint = b.position;
 
-    val1 = DotProduct(directeur, currentPoint);
+    val1 = Vector2Helper::DotProduct(directeur, currentPoint);
 
     currentPoint.x += b.width;
-    val2 = DotProduct(directeur, currentPoint);
+    val2 = Vector2Helper::DotProduct(directeur, currentPoint);
 
     currentPoint.y += b.height;
-    val3 = DotProduct(directeur, currentPoint);
+    val3 = Vector2Helper::DotProduct(directeur, currentPoint);
 
     currentPoint.x -= b.width;
-    val4 = DotProduct(directeur, currentPoint);
+    val4 = Vector2Helper::DotProduct(directeur, currentPoint);
 
     WidenRange(r, val1);
     WidenRange(r, val2);
