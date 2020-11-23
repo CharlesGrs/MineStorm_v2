@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include "../helpers/PolygonHelper.h"
 #include "../gameplay/Cell.h"
+#include "../entities/Hitbox.h"
 
 enum class EntityType : int
 {
@@ -20,14 +21,14 @@ class Entity
 public:
 
 	Entity() = default;
-	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon hitbox,Texture2D _texture);
+	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Hitbox hitbox, Texture2D _texture);
 	virtual ~Entity() = default;
 
 	Vector2 position;
 	float rotation = 0;
 	float scale;
 	float speed;
-	Polygon hitbox;
+	Hitbox hitbox;
 
 	EntityType type = EntityType::Player;
 	bool enablePhysics = false;
@@ -43,6 +44,6 @@ public:
 
 	void RotateHitbox(float angle);
 
-private :
+private:
 	bool isColliding = false;
 };

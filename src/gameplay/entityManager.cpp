@@ -30,7 +30,8 @@ void EntityManager::LoadEntitiesReferences()
 	float scale = 0.25;
 
 	Rectangle playerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 0);
-	Polygon playerHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, playerSpriteRect, scale);
+	Polygon* playerHitboxPolygon = PolygonHelper::CalculatePolygonFromImage(collisionMapData, playerSpriteRect, scale);
+	Hitbox playerHitbox = Hitbox{ HitboxType::Polygon, playerHitboxPolygon };
 	prefabs[0] = new Player(defaultPosition, 10, scale, playerSpriteRect, playerHitbox, spriteSheet);
 
 
@@ -43,7 +44,8 @@ void EntityManager::LoadEntitiesReferences()
 	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
 
 	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
-	Polygon bulletHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, bulletSpriteRect, scale);
+	Circle* circleHitbox = new Circle{ 2 , Vector2{SpriteHelper::GetSpriteOrigin(bulletSpriteRect,scale) } };
+	Hitbox bulletHitbox = Hitbox{ HitboxType::Circle, circleHitbox };
 	prefabs[3] = new Bullet(defaultPosition, 15, scale, bulletSpriteRect, bulletHitbox, spriteSheet);
 
 	//Rectangle floatingMineSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 4);
@@ -90,7 +92,7 @@ Entity* EntityManager::InstantiateEntity(EntityType type, Vector2 position, floa
 	return newEntity;
 }
 
-void EntityManager::DestroyEntity(Entity* entity) 
+void EntityManager::DestroyEntity(Entity* entity)
 {
 	entitiesToDestroy.push_back(entity);
 }

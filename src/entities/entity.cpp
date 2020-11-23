@@ -5,7 +5,7 @@
 #include "../../headers/gameplay/Physics2D.h"
 #include "../../headers/helpers/Vector2Helper.h"
 
-Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon _hitbox, Texture2D _texture)
+Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Hitbox _hitbox, Texture2D _texture)
 	: position(_position), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), hitbox(_hitbox), texture(_texture)
 {
 	hitboxRect = Rectangle(spriteRect);
@@ -23,25 +23,33 @@ void Entity::Draw()
 
 	if (Master::debugMode)
 	{
-		int size = hitbox.vertices.size();
-		int i = 0;
-		Color c = isColliding ? RED : GREEN;
-		for (std::list<Vector2>::iterator it = hitbox.vertices.begin(); it != hitbox.vertices.end(); ++it) {
-			i++;
-			if (i > size - 1)
-				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
-					Vector2{ hitbox.vertices.front().x + position.x - origin.x, hitbox.vertices.front().y + position.y - origin.y }, 3, c);
-			else
-				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
-					Vector2{ std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y },
-					3, c);
+		if (hitbox.type == HitboxType::Polygon)
+		{
+			Polygon* polygon = dynamic_cast<Polygon*>(hitbox.shape);
+			int size = polygon->vertices.size();
+			int i = 0;
+			Color c = isColliding ? RED : GREEN;
+			for (std::list<Vector2>::iterator it = polygon->vertices.begin(); it != polygon->vertices.end(); ++it) {
+				i++;
+				if (i > size - 1)
+					DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
+						Vector2{ polygon->vertices.front().x + position.x - origin.x, polygon->vertices.front().y + position.y - origin.y }, 3, c);
+				else
+					DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
+						Vector2{ std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y },
+						3, c);
+			}
 		}
 	}
 }
 
 void Entity::RotateHitbox(float angle)
 {
-	for (std::list<Vector2>::iterator it = hitbox.vertices.begin(); it != hitbox.vertices.end(); ++it)
+	if (hitbox.type != HitboxType::Polygon)
+		return;
+
+	Polygon* polygon = dynamic_cast<Polygon*>(hitbox.shape);
+	for (std::list<Vector2>::iterator it = polygon->vertices.begin(); it != polygon->vertices.end(); ++it)
 	{
 		Vector2 newPoint = Vector2Helper::RotatePoint(origin.x, origin.y, angle * DEG2RAD, Vector2{ it->x, it->y });
 		it->x = newPoint.x;
@@ -80,9 +88,15 @@ void Entity::Update()
 			{
 				if (e != this)
 				{
-					isColliding = Physics2D::CollisionSAT(hitbox, e->hitbox, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
-					if (isColliding)
-						collided = true;
+					if (hitbox.type == HitboxType::Polygon)
+					{
+						Polygon* polygon = dynamic_cast<Polygon*>(hitbox.shape);
+						Polygon* polygon2 = dynamic_cast<Polygon*>(e->hitbox.shape);
+						isColliding = Physics2D::CollisionSAT(polygon, polygon2, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
+						if (isColliding)
+							collided = true;
+					}
+
 				}
 			}
 		}

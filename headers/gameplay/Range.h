@@ -1,6 +1,6 @@
 #pragma once
 #include <stdbool.h>
-#include "Geometry.h"
+#include "../helpers/Geometry.h"
 #include "../helpers/Vector2Helper.h"
 
 class Range
@@ -20,5 +20,3 @@ bool IsValueInRange(Range r, float val);
 
 //projections
 Range PointToAxes(Vector2 directeur, Vector2 pointPosition);
-Range SegmentToAxes(Vector2 directeur, Segment s);
-Range BoxToAxes(Vector2 directeur, Box b);

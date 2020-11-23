@@ -58,7 +58,6 @@ void Player::GetInput()
 	}
 }
 
-
 void Player::Update()
 {
 	Entity::Update();

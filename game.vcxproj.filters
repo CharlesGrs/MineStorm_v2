@@ -84,11 +84,14 @@
     <ClInclude Include="headers\gameplay\Range.h">
       <Filter>Headers\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="headers\gameplay\Geometry.h">
-      <Filter>Headers\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="headers\core\SoundResources.h">
       <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\Hitbox.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\helpers\Geometry.h">
+      <Filter>Headers\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,8 +137,8 @@
     <ClCompile Include="src\gameplay\range.cpp">
       <Filter>Sources\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\gameplay\geometry.cpp">
-      <Filter>Sources\Gameplay</Filter>
+    <ClCompile Include="src\entities\hitbox.cpp">
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

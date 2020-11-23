@@ -19,8 +19,8 @@ public:
 	std::list<Cell*> GetNeighborCells(Cell* c);
 	Cell* FindCellAtPos(Vector2 position);
 	
-	static bool CollisionSAT(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2);
-	static bool IsSeparatorAxe(Polygon&  p1, Polygon& p2, Vector2 o1, Vector2 o2);
+	static bool CollisionSAT(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2);
+	static bool IsSeparatorAxe(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2);
 
 };
 

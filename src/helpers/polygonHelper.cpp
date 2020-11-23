@@ -26,7 +26,7 @@ bool PolygonHelper::CompareAngle(const VertexInfo& first, const VertexInfo& seco
 	else if (firstAngle > secondAngle) return false;
 }
 
-Polygon PolygonHelper::CalculatePolygonFromImage(Image collisionImage, Rectangle spriteRect, float scale)
+Polygon* PolygonHelper::CalculatePolygonFromImage(Image collisionImage, Rectangle spriteRect, float scale)
 {
 	Vector4* rawData = GetImageDataNormalized(collisionImage);
 	std::list<VertexInfo> verticesInfo;
@@ -47,7 +47,7 @@ Polygon PolygonHelper::CalculatePolygonFromImage(Image collisionImage, Rectangle
 	for (VertexInfo v : verticesInfo)
 		vertices.push_back(Vector2{ (v.coords.x ) * scale, (v.coords.y ) * scale });
 
-	return Polygon(vertices);
+	return new Polygon(vertices);
 }
 
 Polygon PolygonHelper::OffsetPolygon(Polygon p, Vector2 offset)

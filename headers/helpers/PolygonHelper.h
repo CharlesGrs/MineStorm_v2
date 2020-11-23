@@ -2,18 +2,8 @@
 #include <raylib.h>
 #include <list>
 #include <iostream>
+#include "Geometry.h"
 
-struct Polygon
-{
-	std::list<Vector2> vertices;
-
-	Polygon(std::list<Vector2> _vertices)
-	{
-		if (_vertices.size() == 0)
-			throw "Polygon vertices is empty";
-		vertices = _vertices;
-	}
-};
 
 struct VertexInfo
 {
@@ -29,7 +19,7 @@ struct VertexInfo
 class PolygonHelper
 {
 public:
-	static Polygon CalculatePolygonFromImage(Image img, Rectangle spriteRect, float scale);
+	static Polygon* CalculatePolygonFromImage(Image img, Rectangle spriteRect, float scale);
 	static Polygon OffsetPolygon(Polygon p, Vector2 offset);
 
 private:

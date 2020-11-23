@@ -92,11 +92,11 @@ Cell* Physics2D::FindCellAtPos(Vector2 position)
 }
 
 
-bool Physics2D::IsSeparatorAxe(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2)
+bool Physics2D::IsSeparatorAxe(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 {
-	Vector2 temp = Vector2Helper::Add(p1.vertices.back(), o1);
+	Vector2 temp = Vector2Helper::Add(p1->vertices.back(), o1);
 
-	for (Vector2 v : p1.vertices)
+	for (Vector2 v : p1->vertices)
 	{
 		v = Vector2Helper::Add(v, o1);
 		Vector2 normal = (Vector2Helper::Substract(temp, v));
@@ -105,13 +105,13 @@ bool Physics2D::IsSeparatorAxe(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2)
 		Range p1Range = { std::numeric_limits<float>::max(), std::numeric_limits<float>::min() };
 		Range p2Range = { std::numeric_limits<float>::max(), std::numeric_limits<float>::min() };
 
-		for (Vector2 v1 : p1.vertices)
+		for (Vector2 v1 : p1->vertices)
 		{
 			v1 = Vector2Helper::Add(v1, o1);
 			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(normal, v1));
 		}
 
-		for (Vector2 v2 : p2.vertices)
+		for (Vector2 v2 : p2->vertices)
 		{
 			v2 = Vector2Helper::Add(v2, o2);
 			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(normal, v2));
@@ -126,7 +126,7 @@ bool Physics2D::IsSeparatorAxe(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2)
 	return true;
 }
 
-bool Physics2D::CollisionSAT(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2)
+bool Physics2D::CollisionSAT(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 {
 	return (IsSeparatorAxe(p1, p2, o1, o2) && IsSeparatorAxe(p2, p1, o1, o2));
 }
