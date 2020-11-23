@@ -25,7 +25,6 @@ void Entity::Draw()
 	{
 		int size = hitbox.vertices.size();
 		int i = 0;
-
 		Color c = isColliding ? RED : GREEN;
 		for (std::list<Vector2>::iterator it = hitbox.vertices.begin(); it != hitbox.vertices.end(); ++it) {
 			i++;
@@ -81,13 +80,13 @@ void Entity::Update()
 			{
 				if (e != this)
 				{
-					return;
-					isColliding = CollisionSAT(hitbox, e->hitbox);
-					collided = isColliding;
+					isColliding = Physics2D::CollisionSAT(hitbox, e->hitbox, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
+					if (isColliding)
+						collided = true;
 				}
 			}
 		}
-		
+
 		isColliding = collided;
 	}
 

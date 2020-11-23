@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include <string>
+#include <limits>
 #include "../../headers/gameplay/Physics2D.h"
 #include "../../headers/gameplay/Range.h"
 #include "../../headers/core/Master.h"
@@ -91,28 +92,28 @@ Cell* Physics2D::FindCellAtPos(Vector2 position)
 }
 
 
-bool Physics2D::IsSeparatorAxe(Entity* e1, Entity* e2)
+bool Physics2D::IsSeparatorAxe(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2)
 {
-	Polygon p1 = Physics2D::OffsetPolygon(e1->hitbox, e1->position);
-	Polygon p2 = Physics2D::OffsetPolygon(e2->hitbox, e2->position);
-
-	Vector2 temp = p1.vertices.back();
+	Vector2 temp = Vector2Helper::Add(p1.vertices.back(), o1);
 
 	for (Vector2 v : p1.vertices)
 	{
+		v = Vector2Helper::Add(v, o1);
 		Vector2 normal = (Vector2Helper::Substract(temp, v));
 		normal = Vector2Helper::NormalVector(normal);
 
-		Range p1Range = { Vector2Helper::DotProduct(p1.vertices.front(),normal), Vector2Helper::DotProduct(p1.vertices.front(),normal) };
-		Range p2Range = { Vector2Helper::DotProduct(p2.vertices.front(),normal), Vector2Helper::DotProduct(p2.vertices.front(),normal) };
+		Range p1Range = { std::numeric_limits<float>::max(), std::numeric_limits<float>::min() };
+		Range p2Range = { std::numeric_limits<float>::max(), std::numeric_limits<float>::min() };
 
 		for (Vector2 v1 : p1.vertices)
 		{
+			v1 = Vector2Helper::Add(v1, o1);
 			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(normal, v1));
 		}
 
 		for (Vector2 v2 : p2.vertices)
 		{
+			v2 = Vector2Helper::Add(v2, o2);
 			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(normal, v2));
 		}
 
@@ -120,25 +121,12 @@ bool Physics2D::IsSeparatorAxe(Entity* e1, Entity* e2)
 			return false;
 
 		temp = v;
-
 	}
 
 	return true;
 }
 
-bool Physics2D::CollisionSAT(Entity* e1, Entity* e2)
+bool Physics2D::CollisionSAT(Polygon& p1, Polygon& p2, Vector2 o1, Vector2 o2)
 {
-	return (IsSeparatorAxe(e1, e2) && IsSeparatorAxe(e2, e1));
-}
-
-Polygon Physics2D::OffsetPolygon(Polygon p, Vector2 pos)
-{
-	Polygon res = p;
-	for (std::list<Vector2>::iterator it = res.vertices.begin(); it != res.vertices.end(); ++it)
-	{
-		it->x += pos.x;
-		it->y += pos.y;
-	}
-
-	return res;
+	return (IsSeparatorAxe(p1, p2, o1, o2) && IsSeparatorAxe(p2, p1, o1, o2));
 }

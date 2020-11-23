@@ -30,6 +30,7 @@ class PolygonHelper
 {
 public:
 	static Polygon CalculatePolygonFromImage(Image img, Rectangle spriteRect, float scale);
+	static Polygon OffsetPolygon(Polygon p, Vector2 offset);
 
 private:
 	bool CompareAngle( const VertexInfo& first, const VertexInfo& second);
