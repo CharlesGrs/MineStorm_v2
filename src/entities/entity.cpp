@@ -92,13 +92,12 @@ void Entity::Update()
 
 		std::list<Entity*> temp = Game::physics2D()->GetEntityInNeighborCells(currentCell);
 
-		return;
 		bool collided = false;
 		for (Entity* e : temp)
 		{
 			if (e != this)
 			{
-				isColliding = CollisionSAT(hitbox, e->hitbox);
+ 				isColliding = Game::physics2D()->CollisionSAT(this, e);
 				collided = isColliding;
 			}
 		}

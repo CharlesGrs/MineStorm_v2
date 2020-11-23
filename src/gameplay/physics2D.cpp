@@ -73,13 +73,16 @@ Cell* Physics2D::FindCellAtPos(Vector2 position)
 
 //Collision
 
-bool IsSeparatorAxe(Polygon p1, Polygon p2)
+bool Physics2D::IsSeparatorAxe(Entity* e1, Entity* e2)
 {
+	Polygon p1 = Physics2D::OffsetPolygon(e1->hitbox, e1->position);
+	Polygon p2 = Physics2D::OffsetPolygon(e2->hitbox, e2->position);
+
 	Vector2 temp = p1.vertices.back();
 
 	for (Vector2 v : p1.vertices)
 	{
-		Vector2 normal = (Vector2Helper::Substract(v, temp));
+		Vector2 normal = (Vector2Helper::Substract(temp, v));
 		normal = Vector2Helper::NormalVector(normal);
 
 		Range p1Range = { Vector2Helper::DotProduct(p1.vertices.front(),normal), Vector2Helper::DotProduct(p1.vertices.front(),normal) };
@@ -87,12 +90,12 @@ bool IsSeparatorAxe(Polygon p1, Polygon p2)
 
 		for (Vector2 v1 : p1.vertices)
 		{
-			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(v1, normal));
+			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(normal, v1));
 		}
 
 		for (Vector2 v2 : p2.vertices)
 		{
-			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(v2, normal));
+			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(normal, v2));
 		}
 
 		if (!RangeInterference(p1Range, p2Range))
@@ -105,8 +108,19 @@ bool IsSeparatorAxe(Polygon p1, Polygon p2)
 	return true;
 }
 
-bool CollisionSAT(Polygon p1, Polygon p2)
+bool Physics2D::CollisionSAT(Entity* e1, Entity* e2)
 {
-	return (IsSeparatorAxe(p1, p2) && IsSeparatorAxe(p2, p1));
+	return (IsSeparatorAxe(e1, e2) && IsSeparatorAxe(e2, e1));
 }
 
+Polygon Physics2D::OffsetPolygon(Polygon p, Vector2 pos)
+{
+	Polygon res = p;
+	for (std::list<Vector2>::iterator it = res.vertices.begin(); it != res.vertices.end(); ++it)
+	{
+		it->x += pos.x;
+		it->y += pos.y;
+	}
+
+	return res;
+}

@@ -17,7 +17,10 @@ public:
 	void FreeGrid();
 	std::list<Entity*> GetEntityInNeighborCells(Cell* c);
 	Cell* FindCellAtPos(Vector2 position);
+	
+	bool CollisionSAT(Entity* p1, Entity* p2);
+	bool IsSeparatorAxe(Entity* p1, Entity* p2);
+	Polygon OffsetPolygon(Polygon p, Vector2 pos);
 
 };
 
-bool CollisionSAT(Polygon p1, Polygon p2);
