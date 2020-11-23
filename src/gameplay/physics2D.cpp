@@ -53,15 +53,37 @@ void Physics2D::Update()
 	{
 		for (size_t j = 0; j < 5; j++)
 		{
+
+
 			cellGrid[i][j]->entities.clear();
 		}
 	}
 
 	for (Entity* e : Game::entityManager()->loadedEntities)
 	{
+
 		FindCellAtPos(e->position)->AddEntity(e);
 	}
+
+	if (Master::debugMode)
+		for (size_t i = 0; i < 7; i++)
+		{
+			for (size_t j = 0; j < 5; j++)
+			{
+				float t = cellGrid[i][j]->entities.size() / 25.0f;
+				if (t > 1) t = 1;
+
+				Color cellColor;
+				cellColor.r = WHITE.r + t * (RED.r - WHITE.r);
+				cellColor.g = WHITE.g + t * (RED.g - WHITE.g);
+				cellColor.b = WHITE.b + t * (RED.b - WHITE.b);
+				cellColor.a = BLACK.b + t * (WHITE.b - BLACK.b);
+				DrawRectangleLines(cellGrid[i][j]->position.x, cellGrid[i][j]->position.y, Physics2D::cellSize -5, Physics2D::cellSize -5, cellColor);
+			}
+		}
 }
+
+
 
 std::list<Cell*> Physics2D::GetNeighborCells(Cell* c)
 {
@@ -128,5 +150,7 @@ bool Physics2D::IsSeparatorAxe(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 
 bool Physics2D::CollisionSAT(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 {
-	return (IsSeparatorAxe(p1, p2, o1, o2) && IsSeparatorAxe(p2, p1, o1, o2));
+	if (p2 && p1)
+		return (IsSeparatorAxe(p1, p2, o1, o2) && IsSeparatorAxe(p2, p1, o1, o2));
+	else return false;
 }

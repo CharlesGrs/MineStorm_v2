@@ -8,7 +8,10 @@
 using namespace std;
 
 Entity* Player::Clone() {
-	return new Player(*this);
+	Player* clone = new Player(*this);
+	Polygon* s = dynamic_cast<Polygon*>(hitbox.shape);
+	clone->hitbox.shape = new Polygon(s->vertices);
+	return clone;
 }
 
 void Player::UpdatePosition()
@@ -69,8 +72,7 @@ void Player::Update()
 
 void Player::Shoot()
 {
-	Entity* bullet = Game::entityManager()->InstantiateEntity(EntityType::Bullet, position);
-	bullet->rotation = rotation;
+	Entity* bullet = Game::entityManager()->InstantiateEntity(EntityType::Bullet, position, rotation);
 }
 
 Vector2 Player::GetThrusterPos() {

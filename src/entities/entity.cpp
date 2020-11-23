@@ -78,8 +78,6 @@ void Entity::Update()
 	{
 		Cell* currentCell = Game::physics2D()->FindCellAtPos(position);
 
-		if (Master::debugMode)
-			DrawRectangleLines(currentCell->position.x, currentCell->position.y, Physics2D::cellSize, Physics2D::cellSize, WHITE);
 
 		bool collided = false;
 		for (Cell* c : currentCell->neighborCells)

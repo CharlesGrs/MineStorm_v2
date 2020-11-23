@@ -39,7 +39,7 @@ void Game::ExitGame()
 
 void Game::Debug()
 {
-	if (IsKeyPressed(KEY_SPACE))
+	if (IsKeyDown(KEY_SPACE))
 	{
 		Vector2 playerPos;
 		playerPos.x = (float)(rand() % 1080);
