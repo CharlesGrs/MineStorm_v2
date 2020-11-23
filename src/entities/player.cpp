@@ -21,7 +21,7 @@ void Player::GetInput()
 	bool accelerate = false;
 	if (IsKeyDown(KEY_W))
 	{
-		float magnitude = Vector2Helper::Magnitude(inertia);
+		float magnitude = Vector2Helper::Norm(inertia);
 		if (magnitude < speed)
 		{
 			Vector2 currentDirection = Vector2Helper::Multiply(Vector2Helper::AngleToVector2(rotation), 0.25f);
