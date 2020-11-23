@@ -13,7 +13,7 @@ public :
 	};
 	~Bullet() = default;
 
-	float timer = 3;
+	float timer = 1;
 
 	void Update();
 	void Draw();

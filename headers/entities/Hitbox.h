@@ -1,13 +1,14 @@
 #pragma once
 #include "../helpers/PolygonHelper.h"
+#include <raylib.h>
 
-enum class HitboxType 
+enum class HitboxType
 {
 	Circle,
 	Polygon
 };
 
-struct Hitbox 
+struct Hitbox
 {
 	Hitbox(HitboxType _hitbox, Shape* _shape)
 	{
@@ -15,6 +16,7 @@ struct Hitbox
 		shape = _shape;
 		offset = Vector2{ 0,0 };
 	}
+	
 	Vector2 offset;
 	HitboxType type;
 	Shape* shape;

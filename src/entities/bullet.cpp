@@ -3,8 +3,6 @@
 #include "../../headers/entities/Bullet.h"
 #include "../../headers/core/Game.h"
 
-
-
 Entity* Bullet::Clone() {
 
 	Bullet* clone = new Bullet(*this);
@@ -30,6 +28,7 @@ void Bullet::Update()
 	timer -= GetFrameTime();
 	if (timer < 0)
 		Game::entityManager()->DestroyEntity(this);
+
 }
 
 void Bullet::Draw()

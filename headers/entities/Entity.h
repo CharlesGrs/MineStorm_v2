@@ -22,8 +22,12 @@ public:
 
 	Entity() = default;
 	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Hitbox hitbox, Texture2D _texture);
-	virtual ~Entity() {
-		delete hitbox.shape;
+	virtual ~Entity()
+	{
+		if (hitbox.type == HitboxType::Polygon)
+			delete (Polygon*)hitbox.shape;
+		else
+			delete (Circle*)hitbox.shape;
 	};
 
 	Vector2 position;

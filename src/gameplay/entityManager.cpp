@@ -33,8 +33,6 @@ void EntityManager::LoadEntitiesReferences()
 	Polygon* playerHitboxPolygon = PolygonHelper::CalculatePolygonFromImage(collisionMapData, playerSpriteRect, scale);
 	Hitbox playerHitbox = Hitbox{ HitboxType::Polygon, playerHitboxPolygon };
 	prefabs[0] = new Player(defaultPosition, 10, scale, playerSpriteRect, playerHitbox, spriteSheet);
-
-
 #pragma region LATER
 
 	//Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
