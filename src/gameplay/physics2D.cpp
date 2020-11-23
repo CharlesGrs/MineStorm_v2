@@ -130,3 +130,55 @@ bool Physics2D::CollisionSAT(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 {
 	return (IsSeparatorAxe(p1, p2, o1, o2) && IsSeparatorAxe(p2, p1, o1, o2));
 }
+
+bool Physics2D::CollisionSAT(Circle c, Polygon p, Vector2 offSet)
+{
+
+	//Vector2 summit = cp.pointsList[0];
+	//Vector2 normCircle;
+	//Vector2 scaleNorm;
+	//Range    circleRange;
+	//Range    cpRange;
+	//
+	//Vector2 temp = Vector2Helper::Add(p.vertices.back(), offSet);
+	//
+	//for (Vector2 v : p.vertices)
+	//{
+	//	Vector2 normal = (Vector2Helper::Substract(temp, v));
+	//	normal = Vector2Helper::NormalVector(normal);
+	//
+	//	scaleNorm = Vector2Helper::Multiply(normal, c.radius);
+	//
+	//	circleRange = { Vector2Helper::DotProduct(Vector2Helper::Substract(c.center,scaleNorm), normal),
+	//					Vector2Helper::DotProduct(Vector2Helper::Add(c.center,scaleNorm), normal) };
+	//
+	//	cpRange = { cp.pointsList[0].dotProduct(norm), cp.pointsList[0].dotProduct(norm) };
+	//
+	//	for (int j = 1; j < cp.nbPoint; j++)
+	//	{
+	//		cpRange = cpRange.valueInRange(cp.pointsList[j].dotProduct(norm));
+	//
+	//		if ((cp.pointsList[j] - circle.center).squareLength() < (summit - circle.center).squareLength())
+	//			summit = cp.pointsList[j];
+	//	}
+	//
+	//	if (!cpRange.intersectRange(circleRange))
+	//		return false;
+	//}
+	//
+	//normCircle = (circle.center - summit).normalized();
+	//scaleNorm = normCircle * circle.radius;
+	//circleRange = { (circle.center - scaleNorm).dotProduct(normCircle), (circle.center + scaleNorm).dotProduct(normCircle) };
+	//cpRange = { cp.pointsList[0].dotProduct(normCircle), cp.pointsList[0].dotProduct(normCircle) };
+	//
+	//for (int i = 1; i < cp.nbPoint; i++)
+	//{
+	//	cpRange = cpRange.valueInRange(cp.pointsList[i].dotProduct(normCircle));
+	//}
+	//
+	//if (!cpRange.intersectRange(circleRange))
+	//	return false;
+	//
+	return true;
+	
+}
