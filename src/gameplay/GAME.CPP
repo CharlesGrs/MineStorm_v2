@@ -33,8 +33,6 @@ void Game::SaveScore()
 
 void Game::ExitGame()
 {
-
-
 }
 
 void Game::Debug()

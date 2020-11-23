@@ -83,8 +83,6 @@ void Physics2D::Update()
 		}
 }
 
-
-
 std::list<Cell*> Physics2D::GetNeighborCells(Cell* c)
 {
 	std::list<Cell*> cellList;
@@ -112,7 +110,6 @@ Cell* Physics2D::FindCellAtPos(Vector2 position)
 
 	return cellGrid[indexX][indexY];
 }
-
 
 bool Physics2D::IsSeparatorAxe(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 {

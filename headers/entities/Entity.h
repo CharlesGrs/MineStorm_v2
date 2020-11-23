@@ -22,7 +22,9 @@ public:
 
 	Entity() = default;
 	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Hitbox hitbox, Texture2D _texture);
-	virtual ~Entity() = default;
+	virtual ~Entity() {
+		delete hitbox.shape;
+	};
 
 	Vector2 position;
 	float rotation = 0;
@@ -35,7 +37,7 @@ public:
 
 	Vector2 origin;
 	Rectangle spriteRect;
-	Rectangle hitboxRect;
+	Rectangle drawRect;
 	Texture2D texture;
 
 	virtual void Update();
