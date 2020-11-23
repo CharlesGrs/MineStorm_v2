@@ -32,6 +32,7 @@ private:
 	Vector2 inertia = { 0,0 };
 	float bulletTimer =0;
 	const float SHOOTING_SPEED = 0.1f;
+
 	const float TRAIL_FREQUENCY = 0.0166f;
 	float trailTimer = 0;
 	Vector2 trailPoints[10];

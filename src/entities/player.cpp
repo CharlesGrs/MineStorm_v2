@@ -35,7 +35,7 @@ void Player::GetInput()
 	}
 	if (!accelerate)
 	{
-		float factor = IsKeyDown(KEY_S) ? 2.5f : 0.7f;
+		float factor = IsKeyDown(KEY_S) ? 10.0f : 3.5f;
 		inertia = Vector2Helper::Lerp(inertia, Vector2{ 0,0 }, GetFrameTime() * factor);
 	}
 
@@ -100,7 +100,7 @@ void Player::RenderTrail()
 		}
 	}
 
-	for (size_t i = 0; i < (long)size - 1; i++)
+	for (size_t i = 0; i < size - 1; i++)
 	{
 		if (Vector2Helper::Distance(trailPoints[i], trailPoints[i + 1]) > 100)
 			continue;

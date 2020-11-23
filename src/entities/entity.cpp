@@ -20,7 +20,6 @@ void Entity::Draw()
 	drawRect.x = position.x;
 	drawRect.y = position.y;
 	DrawTexturePro(texture, spriteRect, drawRect, origin, rotation, Color{ 120,200,255 ,255 });
-
 	if (Master::debugMode)
 	{
 		Color c = isColliding ? RED : GREEN;
@@ -101,7 +100,15 @@ void Entity::CheckCollision()
 					if (e->hitbox.type == HitboxType::Polygon)
 					{
 						Polygon* polygon2 = (Polygon*)(e->hitbox.shape);
-						isColliding = Physics2D::CollisionSAT(polygon, polygon2, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
+						if (position.x - origin.x  < e->position.x - e->origin.x + e->spriteRect.width * e->scale &&
+							position.x - origin.x + spriteRect.width * scale > e->position.x - e->scale &&
+							position.y - origin.x < e->position.y - e-> origin.y + e->spriteRect.height * e->scale &&
+							position.y - origin.x + spriteRect.height * scale > e->position.y - e-> origin.y)
+						{
+							isColliding = Physics2D::CollisionSAT(polygon, polygon2, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
+							if (isColliding)
+								collided = true;
+						}
 					}
 					else
 					{
@@ -125,9 +132,6 @@ void Entity::CheckCollision()
 						// isColliding =
 					}
 				}
-
-				if (isColliding)
-					collided = true;
 			}
 		}
 	}
