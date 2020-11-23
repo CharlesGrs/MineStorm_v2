@@ -44,7 +44,7 @@ void EntityManager::LoadEntitiesReferences()
 	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
 
 	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
-	Circle* circleHitbox = new Circle{ 2 , Vector2{SpriteHelper::GetSpriteOrigin(bulletSpriteRect,scale) } };
+	Circle* circleHitbox = new Circle{ 4 , Vector2{SpriteHelper::GetSpriteOrigin(bulletSpriteRect,scale) } };
 	Hitbox bulletHitbox = Hitbox{ HitboxType::Circle, circleHitbox };
 	prefabs[3] = new Bullet(defaultPosition, 15, scale, bulletSpriteRect, bulletHitbox, spriteSheet);
 

@@ -39,6 +39,8 @@ public:
 	Texture2D texture;
 
 	virtual void Update();
+	void CheckBorder();
+	void CheckCollision();
 	virtual Entity* Clone() = 0;
 	void Draw();
 

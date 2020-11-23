@@ -23,12 +23,12 @@ void Entity::Draw()
 
 	if (Master::debugMode)
 	{
+		Color c = isColliding ? RED : GREEN;
 		if (hitbox.type == HitboxType::Polygon)
 		{
-			Polygon* polygon = dynamic_cast<Polygon*>(hitbox.shape);
+			Polygon* polygon = (Polygon*)(hitbox.shape);
 			int size = polygon->vertices.size();
 			int i = 0;
-			Color c = isColliding ? RED : GREEN;
 			for (std::list<Vector2>::iterator it = polygon->vertices.begin(); it != polygon->vertices.end(); ++it) {
 				i++;
 				if (i > size - 1)
@@ -39,6 +39,11 @@ void Entity::Draw()
 						Vector2{ std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y },
 						3, c);
 			}
+		}
+		else if (hitbox.type == HitboxType::Circle)
+		{
+			Circle* circle = (Circle*)(hitbox.shape);
+			DrawCircleLines(position.x, position.y, circle->radius, c);
 		}
 	}
 }
@@ -59,7 +64,12 @@ void Entity::RotateHitbox(float angle)
 
 void Entity::Update()
 {
+	CheckBorder();
+	CheckCollision();
+}
 
+void Entity::CheckBorder()
+{
 	if (position.x > Master::windowWidth)
 		position.x = 0;
 	else if (position.y > Master::windowHeight)
@@ -69,38 +79,59 @@ void Entity::Update()
 		position.y = Master::windowHeight;
 	else if (position.x < 0)
 		position.x = Master::windowWidth;
+}
 
-	hitboxRect.x = position.x;
-	hitboxRect.y = position.y;
+void Entity::CheckCollision()
+{
+	if (!enablePhysics)return;
 
+	Cell* currentCell = Game::physics2D()->FindCellAtPos(position);
 
-	if (enablePhysics)
+	bool collided = false;
+	for (Cell* c : currentCell->neighborCells)
 	{
-		Cell* currentCell = Game::physics2D()->FindCellAtPos(position);
-
-
-		bool collided = false;
-		for (Cell* c : currentCell->neighborCells)
+		for (Entity* e : c->entities)
 		{
-			for (Entity* e : c->entities)
+			if (e != this)
 			{
-				if (e != this)
+				if (hitbox.type == HitboxType::Polygon)
 				{
-					if (hitbox.type == HitboxType::Polygon)
-					{
-						Polygon* polygon = dynamic_cast<Polygon*>(hitbox.shape);
-						Polygon* polygon2 = dynamic_cast<Polygon*>(e->hitbox.shape);
-						isColliding = Physics2D::CollisionSAT(polygon, polygon2, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
-						if (isColliding)
-							collided = true;
-					}
+					Polygon* polygon = (Polygon*)(hitbox.shape);
 
+					if (e->hitbox.type == HitboxType::Polygon)
+					{
+						Polygon* polygon2 = (Polygon*)(e->hitbox.shape);
+						isColliding = Physics2D::CollisionSAT(polygon, polygon2, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
+					}
+					else
+					{
+						Circle* circle2 = (Circle*)(hitbox.shape);
+						// isColliding =
+					}
 				}
+
+				else
+				{
+					Circle* circle = (Circle*)(hitbox.shape);
+
+					if (e->hitbox.type == HitboxType::Polygon)
+					{
+						Polygon* polygon2 = (Polygon*)(e->hitbox.shape);
+						// isColliding =
+					}
+					else
+					{
+						Circle* circle2 = (Circle*)(hitbox.shape);
+						// isColliding =
+					}
+				}
+
+				if (isColliding)
+					collided = true;
 			}
 		}
-
-		isColliding = collided;
 	}
 
+	isColliding = collided;
 }
 

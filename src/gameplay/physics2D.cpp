@@ -70,7 +70,7 @@ void Physics2D::Update()
 		{
 			for (size_t j = 0; j < 5; j++)
 			{
-				float t = cellGrid[i][j]->entities.size() / 25.0f;
+				float t = cellGrid[i][j]->entities.size() / 10.0f;
 				if (t > 1) t = 1;
 
 				Color cellColor;
