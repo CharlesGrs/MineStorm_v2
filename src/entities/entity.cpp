@@ -8,18 +8,18 @@
 Entity::Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Hitbox _hitbox, Texture2D _texture)
 	: position(_position), rotation(0), speed(_speed), scale(_scale), spriteRect(_spriteRect), hitbox(_hitbox), texture(_texture)
 {
-	hitboxRect = Rectangle(spriteRect);
-	hitboxRect.width *= scale;
-	hitboxRect.height *= scale;
+	drawRect = Rectangle(spriteRect);
+	drawRect.width *= scale;
+	drawRect.height *= scale;
 
 	origin = SpriteHelper::GetSpriteOrigin(spriteRect, scale);
 }
 
 void Entity::Draw()
 {
-	hitboxRect.x = position.x;
-	hitboxRect.y = position.y;
-	DrawTexturePro(texture, spriteRect, hitboxRect, origin, rotation, Color{ 120,200,255 ,255 });
+	drawRect.x = position.x;
+	drawRect.y = position.y;
+	DrawTexturePro(texture, spriteRect, drawRect, origin, rotation, Color{ 120,200,255 ,255 });
 
 	if (Master::debugMode)
 	{
