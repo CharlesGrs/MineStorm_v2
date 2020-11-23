@@ -14,5 +14,9 @@ public:
 	static Vector2 Lerp(Vector2 v1, Vector2 v2, float t);
 	static Vector2 AngleToVector2(float angle);
 	static float Distance(Vector2 v1, Vector2 v2);
-
+	
+	//rest
+	static Vector2 vector_null();
+	static float DotProduct(Vector2 v1, Vector2 v2);
+	static Vector2 NormalVector(Vector2 v);
 };

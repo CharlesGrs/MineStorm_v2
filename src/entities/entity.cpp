@@ -87,11 +87,14 @@ void Entity::Update()
 			DrawRectangleLines(currentCell.position.x, currentCell.position.y, Physics2D::instance()->cellSize, Physics2D::instance()->cellSize, WHITE);
 
 
-		//std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
-		//for (Entity* e : temp)
-		//{
-		//	//check collision
-		//}
+		std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
+		for (Entity* e : temp)
+		{
+			if (CollisionSAT(hitbox, e->hitbox))
+			{
+				int a = 5;
+			}
+		}
 	}
 
 }

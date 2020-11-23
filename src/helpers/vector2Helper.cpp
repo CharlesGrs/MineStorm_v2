@@ -78,3 +78,24 @@ float Vector2Helper::Distance(Vector2 v1, Vector2 v2)
 {
 	return Magnitude(Substract(v1, v2));
 }
+
+//rest 
+
+Vector2 Vector2Helper::vector_null()
+{
+	Vector2 vect = { 0,0 };
+	return vect;
+}
+
+float Vector2Helper::DotProduct(Vector2 v1, Vector2 v2)
+{
+	return v1.x * v2.x + v1.y * v2.y;
+}
+
+Vector2 Vector2Helper::NormalVector(Vector2 v)
+{
+	float newX = -v.y;
+	float newY = v.x;
+
+	return Vector2{ newX,newY };
+}

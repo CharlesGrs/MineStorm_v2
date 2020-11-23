@@ -95,7 +95,6 @@
     <ClCompile Include="src\gameplay\menu.cpp" />
     <ClCompile Include="src\gameplay\physics2D.cpp" />
     <ClCompile Include="src\gameplay\range.cpp" />
-    <ClCompile Include="src\gameplay\vector2.cpp" />
     <ClCompile Include="src\helpers\polygonHelper.cpp" />
     <ClCompile Include="src\helpers\spriteHelper.cpp" />
     <ClCompile Include="src\helpers\vector2Helper.cpp" />
@@ -114,7 +113,6 @@
     <ClInclude Include="headers\gameplay\Geometry.h" />
     <ClInclude Include="headers\gameplay\Physics2D.h" />
     <ClInclude Include="headers\gameplay\Range.h" />
-    <ClInclude Include="headers\gameplay\Vector2.h" />
     <ClInclude Include="headers\helpers\PolygonHelper.h" />
     <ClInclude Include="headers\helpers\SpriteHelper.h" />
     <ClInclude Include="headers\helpers\Vector2Helper.h" />
