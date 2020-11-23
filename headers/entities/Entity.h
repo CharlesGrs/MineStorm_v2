@@ -22,7 +22,7 @@ public:
 
 	Entity() = default;
 	Entity(Vector2 _position, float _speed, float _scale, Rectangle _spriteRect, Polygon hitbox,Texture2D _texture);
-	virtual ~Entity() = default; // VIRTUAL 
+	virtual ~Entity() = default;
 
 	Vector2 position;
 	float rotation = 0;
@@ -31,7 +31,7 @@ public:
 	Polygon hitbox;
 
 	EntityType type = EntityType::Player;
-	Cell currentCell;
+	Cell* currentCell;
 	bool enablePhysics = false;
 
 	Vector2 origin;
@@ -44,4 +44,7 @@ public:
 	void Draw();
 
 	void RotateHitbox(float angle);
+
+private :
+	bool isColliding = false;
 };

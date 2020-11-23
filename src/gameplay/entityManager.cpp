@@ -16,6 +16,7 @@ EntityManager::EntityManager()
 
 EntityManager::~EntityManager()
 {
+	std::cout << "Unload EntityManager..\n";
 	FreeBuffers();
 }
 

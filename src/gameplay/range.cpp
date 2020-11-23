@@ -9,7 +9,7 @@ Range::Range(float min, float max)
     this -> max = max;
 }
 
-Range getRange(Range r1, Range r2)
+Range GetRange(Range r1, Range r2)
 {
     Range r;
 
@@ -27,7 +27,7 @@ Range getRange(Range r1, Range r2)
     
 }
 
-Range widenRange(Range r, float val)
+Range WidenRange(Range r, float val)
 {
     Range res;
     if (r.min > val)
@@ -43,7 +43,7 @@ Range widenRange(Range r, float val)
     return res;
 }
 
-bool rangeInterference(Range r1, Range r2)
+bool RangeInterference(Range r1, Range r2)
 {
     if (r1.min > r2.max || r2.min > r1.max)
         return false;
@@ -51,7 +51,7 @@ bool rangeInterference(Range r1, Range r2)
         return true;
 }
 
-bool valueInRange(Range r, float val)
+bool IsValueInRange(Range r, float val)
 {
     if (val >= r.min && val <= r.max)
         return true;
@@ -61,7 +61,7 @@ bool valueInRange(Range r, float val)
 
 //projections
 
-Range pointToAxes(Vector2 directeur, Vector2 pointPosition)
+Range PointToAxes(Vector2 directeur, Vector2 pointPosition)
 {
     Range r;
     float projectionVal = Vector2Helper::DotProduct(directeur,pointPosition);
@@ -71,19 +71,19 @@ Range pointToAxes(Vector2 directeur, Vector2 pointPosition)
 
 }
 
-Range segmentToAxes(Vector2 directeur, Segment s)
+Range SegmentToAxes(Vector2 directeur, Segment s)
 {
     Range r;
     float val1 = Vector2Helper::DotProduct(directeur, s.p1);
     float val2 = Vector2Helper::DotProduct(directeur,s.p2);
 
-    widenRange(r, val1);
-    widenRange(r, val2);
+    WidenRange(r, val1);
+    WidenRange(r, val2);
 
     return r;
 }
 
-Range boxToAxes(Vector2 directeur, Box b)
+Range BoxToAxes(Vector2 directeur, Box b)
 {
     Range r;
     float val1, val2, val3, val4;
@@ -100,10 +100,10 @@ Range boxToAxes(Vector2 directeur, Box b)
     currentPoint.x -= b.width;
     val4 = Vector2Helper::DotProduct(directeur, currentPoint);
 
-    widenRange(r, val1);
-    widenRange(r, val2);
-    widenRange(r, val3);
-    widenRange(r, val4);
+    WidenRange(r, val1);
+    WidenRange(r, val2);
+    WidenRange(r, val3);
+    WidenRange(r, val4);
 
     return r;
 }

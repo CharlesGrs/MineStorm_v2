@@ -13,12 +13,12 @@ public :
 
 };
 
-Range widenRange(Range r, float val);
-Range getRange(Range r1, Range r2);
-bool rangeInterference(Range r1, Range r2);
-bool valueInRange(Range r, float val);
+Range WidenRange(Range r, float val);
+Range GetRange(Range r1, Range r2);
+bool RangeInterference(Range r1, Range r2);
+bool IsValueInRange(Range r, float val);
 
 //projections
-Range pointToAxes(Vector2 directeur, Vector2 pointPosition);
-Range segmentToAxes(Vector2 directeur, Segment s);
-Range boxToAxes(Vector2 directeur, Box b);
+Range PointToAxes(Vector2 directeur, Vector2 pointPosition);
+Range SegmentToAxes(Vector2 directeur, Segment s);
+Range BoxToAxes(Vector2 directeur, Box b);

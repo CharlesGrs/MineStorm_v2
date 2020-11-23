@@ -1,6 +1,7 @@
 #include "..\..\headers\core\Master.h"
 #include "..\..\headers\core\Game.h"
 #include "..\..\headers\core\Menu.h"
+#include "..\..\headers\gameplay\Physics2D.h"
 #include <string>
 
 bool Master::debugMode;
