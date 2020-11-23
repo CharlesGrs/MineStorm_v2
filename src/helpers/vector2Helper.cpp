@@ -53,7 +53,12 @@ Vector2 Vector2Helper::RotatePoint(float cx, float cy, float angle, Vector2 p)
 	return p;
 }
 
-float Vector2Helper::Magnitude(Vector2 v)
+float Vector2Helper::SquaredNorm(Vector2 v)
+{
+	return v.x * v.x + v.y * v.y;
+}
+
+float Vector2Helper::Norm(Vector2 v)
 {
 	return sqrtf(v.x * v.x + v.y * v.y);
 }
@@ -76,7 +81,7 @@ Vector2 Vector2Helper::AngleToVector2(float angle)
 
 float Vector2Helper::Distance(Vector2 v1, Vector2 v2)
 {
-	return Magnitude(Substract(v1, v2));
+	return Norm(Substract(v1, v2));
 }
 
 //rest 
