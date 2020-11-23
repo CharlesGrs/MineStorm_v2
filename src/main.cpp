@@ -16,6 +16,7 @@ int main(int argc, char* argv[])
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(screenWidth, screenHeight, "MineStorm");
+    InitAudioDevice();
 
     Master master;
 

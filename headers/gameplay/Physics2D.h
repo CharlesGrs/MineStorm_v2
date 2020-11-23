@@ -18,7 +18,6 @@ public:
 	void Update();
 	std::list<Cell*> GetNeighborCells(Cell* c);
 	Cell* FindCellAtPos(Vector2 position);
-
 };
 
 bool CollisionSAT(Polygon p1, Polygon p2);

@@ -87,6 +87,9 @@
     <ClInclude Include="headers\gameplay\Geometry.h">
       <Filter>Headers\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="headers\core\SoundResources.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

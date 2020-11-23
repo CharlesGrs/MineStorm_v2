@@ -104,6 +104,7 @@
     <ClInclude Include="headers\core\Master.h" />
     <ClInclude Include="headers\core\Menu.h" />
     <ClInclude Include="headers\core\Scene.h" />
+    <ClInclude Include="headers\core\SoundResources.h" />
     <ClInclude Include="headers\entities\Bullet.h" />
     <ClInclude Include="headers\entities\Entity.h" />
     <ClInclude Include="headers\entities\Player.h" />

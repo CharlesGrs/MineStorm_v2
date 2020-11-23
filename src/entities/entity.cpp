@@ -81,7 +81,6 @@ void Entity::Update()
 			{
 				if (e != this)
 				{
-					return;
 					isColliding = CollisionSAT(hitbox, e->hitbox);
 					collided = isColliding;
 				}
