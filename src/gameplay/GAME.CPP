@@ -2,11 +2,13 @@
 #include <string>
 
 EntityManager* Game::_eM;
+Physics2D* Game::_physics2D;
 
 Game::~Game()
 {
 	std::cout << "Unload Game..\n";
 	delete _eM;
+	delete _physics2D;
 }
 
 void Game::Update()
@@ -37,7 +39,7 @@ void Game::ExitGame()
 
 void Game::Debug()
 {
-	if (IsKeyDown(KEY_SPACE))
+	if (IsKeyPressed(KEY_SPACE))
 	{
 		Vector2 playerPos;
 		playerPos.x = (float)(rand() % 1080);

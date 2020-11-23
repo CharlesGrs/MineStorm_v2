@@ -25,15 +25,17 @@ void Entity::Draw()
 	{
 		int size = hitbox.vertices.size();
 		int i = 0;
+
+		Color c = isColliding ? RED : GREEN;
 		for (std::list<Vector2>::iterator it = hitbox.vertices.begin(); it != hitbox.vertices.end(); ++it) {
 			i++;
 			if (i > size - 1)
 				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
-					Vector2{ hitbox.vertices.front().x + position.x - origin.x, hitbox.vertices.front().y + position.y - origin.y }, 3, GREEN);
+					Vector2{ hitbox.vertices.front().x + position.x - origin.x, hitbox.vertices.front().y + position.y - origin.y }, 3, c);
 			else
 				DrawLineEx(Vector2{ it->x + position.x - origin.x, it->y + position.y - origin.y },
 					Vector2{ std::next(it)->x + position.x - origin.x, std::next(it)->y + position.y - origin.y },
-					3, GREEN);
+					3, c);
 		}
 	}
 }
@@ -70,28 +72,37 @@ void Entity::Update()
 		bool checkX = position.x >= 0 && position.x < Master::windowWidth;
 		bool checkY = position.y >= 0 && position.y < Master::windowHeight;
 
-		Cell newCell = currentCell;
+		if (currentCell == nullptr)
+			currentCell = Game::physics2D()->FindCellAtPos(position);
+
+		Cell* newCell = currentCell;
 
 		if (checkX && checkY)
-			newCell = Physics2D::instance()->FindCellAtPos(position);
+			newCell = Game::physics2D()->FindCellAtPos(position);
 
-		if ((newCell.position.x != currentCell.position.x) || (newCell.position.y != currentCell.position.y))
+		if ((newCell->position.x != currentCell->position.x) || (newCell->position.y != currentCell->position.y))
 		{
-			currentCell.RemoveEntity(this);
+			currentCell->RemoveEntity(this);
 			currentCell = newCell;
-			currentCell.AddEntity(this);
+			currentCell->AddEntity(this);
 		}
 
-		//Physics2D::instance()->DrawGrid();
 		if (Master::debugMode)
-			DrawRectangleLines(currentCell.position.x, currentCell.position.y, Physics2D::instance()->cellSize, Physics2D::instance()->cellSize, WHITE);
+			DrawRectangleLines(currentCell->position.x, currentCell->position.y, Physics2D::cellSize, Physics2D::cellSize, WHITE);
 
+		std::list<Entity*> temp = Game::physics2D()->GetEntityInNeighborCells(currentCell);
 
-		//std::list<Entity*> temp = Physics2D::instance()->GetEntityInNeighborCells(currentCell);
-		//for (Entity* e : temp)
-		//{
-		//	//check collision
-		//}
+		return;
+		bool collided = false;
+		for (Entity* e : temp)
+		{
+			if (e != this)
+			{
+				isColliding = CollisionSAT(hitbox, e->hitbox);
+				collided = isColliding;
+			}
+		}
+		isColliding = collided;
 	}
 
 }
