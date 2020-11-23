@@ -15,7 +15,8 @@ public:
 
 	void InitGrid();
 	void FreeGrid();
-	std::list<Entity*> GetEntityInNeighborCells(Cell* c);
+	void Update();
+	std::list<Cell*> GetNeighborCells(Cell* c);
 	Cell* FindCellAtPos(Vector2 position);
 
 };

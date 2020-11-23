@@ -27,6 +27,13 @@ void Physics2D::InitGrid()
 			cellGrid[i / cellSize][j / cellSize] = newCell;
 		}
 	}
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			cellGrid[i][j]->neighborCells = GetNeighborCells(cellGrid[i][j]);
+		}
+	}
 }
 
 void Physics2D::FreeGrid()
@@ -40,9 +47,25 @@ void Physics2D::FreeGrid()
 	}
 }
 
-std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell* c)
+void Physics2D::Update()
 {
-	std::list<Entity*> entityList;
+	for (size_t i = 0; i < 7; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			cellGrid[i][j]->entities.clear();
+		}
+	}
+
+	for (Entity* e : Game::entityManager()->loadedEntities)
+	{
+		FindCellAtPos(e->position)->AddEntity(e);
+	}
+}
+
+std::list<Cell*> Physics2D::GetNeighborCells(Cell* c)
+{
+	std::list<Cell*> cellList;
 
 	int indexX = c->position.x / cellSize;
 	int indexY = c->position.y / cellSize;
@@ -53,16 +76,12 @@ std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell* c)
 		for (int j = -1; j < 2; j++)
 		{
 			if (indexX + i >= 0 && indexY + j >= 0 && indexX + i < 7 && indexY + j < 5)
-				for (Entity* e : cellGrid[indexX + i][indexY + j]->entities)
-				{
-					entityList.push_back(e);
-				}
+				cellList.push_back(cellGrid[indexX + i][indexY + j]);
 		}
 	}
 
-	return entityList;
+	return cellList;
 }
-
 
 Cell* Physics2D::FindCellAtPos(Vector2 position)
 {
@@ -71,8 +90,6 @@ Cell* Physics2D::FindCellAtPos(Vector2 position)
 
 	return cellGrid[indexX][indexY];
 }
-
-//Collision
 
 bool IsSeparatorAxe(Polygon p1, Polygon p2)
 {

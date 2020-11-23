@@ -69,39 +69,25 @@ void Entity::Update()
 
 	if (enablePhysics)
 	{
-		bool checkX = position.x >= 0 && position.x < Master::windowWidth;
-		bool checkY = position.y >= 0 && position.y < Master::windowHeight;
-
-		if (currentCell == nullptr)
-			currentCell = Game::physics2D()->FindCellAtPos(position);
-
-		Cell* newCell = currentCell;
-
-		if (checkX && checkY)
-			newCell = Game::physics2D()->FindCellAtPos(position);
-
-		if ((newCell->position.x != currentCell->position.x) || (newCell->position.y != currentCell->position.y))
-		{
-			currentCell->RemoveEntity(this);
-			currentCell = newCell;
-			currentCell->AddEntity(this);
-		}
+		Cell* currentCell = Game::physics2D()->FindCellAtPos(position);
 
 		if (Master::debugMode)
 			DrawRectangleLines(currentCell->position.x, currentCell->position.y, Physics2D::cellSize, Physics2D::cellSize, WHITE);
 
-		std::list<Entity*> temp = Game::physics2D()->GetEntityInNeighborCells(currentCell);
-
-		return;
 		bool collided = false;
-		for (Entity* e : temp)
+		for (Cell* c : currentCell->neighborCells)
 		{
-			if (e != this)
+			for (Entity* e : c->entities)
 			{
-				isColliding = CollisionSAT(hitbox, e->hitbox);
-				collided = isColliding;
+				if (e != this)
+				{
+					return;
+					isColliding = CollisionSAT(hitbox, e->hitbox);
+					collided = isColliding;
+				}
 			}
 		}
+		
 		isColliding = collided;
 	}
 

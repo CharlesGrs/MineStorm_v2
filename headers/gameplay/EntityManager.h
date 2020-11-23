@@ -21,6 +21,7 @@ public:
 	{
 		return loadedEntities.size();
 	}
+	std::list<Entity*>  loadedEntities;
 
 	void DestroyEntity(Entity* entity);
 	void UpdateEntities();
@@ -28,7 +29,6 @@ public:
 	void FreeBuffers();
 
 private:
-	std::list<Entity*>  loadedEntities;
 	std::list<Entity*> entitiesToDestroy;
 	Entity* prefabs[8];
 	Texture spriteSheet;

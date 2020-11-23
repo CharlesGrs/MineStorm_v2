@@ -31,7 +31,6 @@ public:
 	Polygon hitbox;
 
 	EntityType type = EntityType::Player;
-	Cell* currentCell;
 	bool enablePhysics = false;
 
 	Vector2 origin;
