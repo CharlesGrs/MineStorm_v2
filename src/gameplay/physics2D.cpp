@@ -26,6 +26,13 @@ void Physics2D::InitGrid()
 			cellGrid[i / cellSize][j / cellSize] = newCell;
 		}
 	}
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			cellGrid[i][j]->neighborCells = GetNeighborCells(cellGrid[i][j]);
+		}
+	}
 }
 
 void Physics2D::FreeGrid()
@@ -39,9 +46,25 @@ void Physics2D::FreeGrid()
 	}
 }
 
-std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell* c)
+void Physics2D::Update()
 {
-	std::list<Entity*> entityList;
+	for (size_t i = 0; i < 7; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			cellGrid[i][j]->entities.clear();
+		}
+	}
+
+	for (Entity* e : Game::entityManager()->loadedEntities)
+	{
+		FindCellAtPos(e->position)->AddEntity(e);
+	}
+}
+
+std::list<Cell*> Physics2D::GetNeighborCells(Cell* c)
+{
+	std::list<Cell*> cellList;
 
 	int indexX = c->position.x / cellSize;
 	int indexY = c->position.y / cellSize;
@@ -52,16 +75,12 @@ std::list<Entity*> Physics2D::GetEntityInNeighborCells(Cell* c)
 		for (int j = -1; j < 2; j++)
 		{
 			if (indexX + i >= 0 && indexY + j >= 0 && indexX + i < 7 && indexY + j < 5)
-				for (Entity* e : cellGrid[indexX + i][indexY + j]->entities)
-				{
-					entityList.push_back(e);
-				}
+				cellList.push_back(cellGrid[indexX + i][indexY + j]);
 		}
 	}
 
-	return entityList;
+	return cellList;
 }
-
 
 Cell* Physics2D::FindCellAtPos(Vector2 position)
 {
@@ -71,18 +90,13 @@ Cell* Physics2D::FindCellAtPos(Vector2 position)
 	return cellGrid[indexX][indexY];
 }
 
-//Collision
-
-bool Physics2D::IsSeparatorAxe(Entity* e1, Entity* e2)
+bool IsSeparatorAxe(Polygon p1, Polygon p2)
 {
-	Polygon p1 = Physics2D::OffsetPolygon(e1->hitbox, e1->position);
-	Polygon p2 = Physics2D::OffsetPolygon(e2->hitbox, e2->position);
-
 	Vector2 temp = p1.vertices.back();
 
 	for (Vector2 v : p1.vertices)
 	{
-		Vector2 normal = (Vector2Helper::Substract(temp, v));
+		Vector2 normal = (Vector2Helper::Substract(v, temp));
 		normal = Vector2Helper::NormalVector(normal);
 
 		Range p1Range = { Vector2Helper::DotProduct(p1.vertices.front(),normal), Vector2Helper::DotProduct(p1.vertices.front(),normal) };
@@ -90,12 +104,12 @@ bool Physics2D::IsSeparatorAxe(Entity* e1, Entity* e2)
 
 		for (Vector2 v1 : p1.vertices)
 		{
-			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(normal, v1));
+			p1Range = WidenRange(p1Range, Vector2Helper::DotProduct(v1, normal));
 		}
 
 		for (Vector2 v2 : p2.vertices)
 		{
-			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(normal, v2));
+			p2Range = WidenRange(p2Range, Vector2Helper::DotProduct(v2, normal));
 		}
 
 		if (!RangeInterference(p1Range, p2Range))
@@ -108,19 +122,8 @@ bool Physics2D::IsSeparatorAxe(Entity* e1, Entity* e2)
 	return true;
 }
 
-bool Physics2D::CollisionSAT(Entity* e1, Entity* e2)
+bool CollisionSAT(Polygon p1, Polygon p2)
 {
-	return (IsSeparatorAxe(e1, e2) && IsSeparatorAxe(e2, e1));
+	return (IsSeparatorAxe(p1, p2) && IsSeparatorAxe(p2, p1));
 }
 
-Polygon Physics2D::OffsetPolygon(Polygon p, Vector2 pos)
-{
-	Polygon res = p;
-	for (std::list<Vector2>::iterator it = res.vertices.begin(); it != res.vertices.end(); ++it)
-	{
-		it->x += pos.x;
-		it->y += pos.y;
-	}
-
-	return res;
-}

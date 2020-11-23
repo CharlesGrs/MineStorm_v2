@@ -14,7 +14,7 @@ Game::~Game()
 void Game::Update()
 {
 	Debug();
-
+	physics2D()->Update();
 	entityManager()->UpdateEntities();
 	entityManager()->DrawEntities();
 }

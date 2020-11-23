@@ -11,6 +11,7 @@ private :
 public :
 
 	std::list<Entity*> entities;
+	std::list<Cell*> neighborCells;
 	Vector2 position;
 	Cell() = default;
 	Cell(Vector2 _position) : position(_position) {}
