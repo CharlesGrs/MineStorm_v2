@@ -106,7 +106,7 @@ void Entity::CheckCollision()
 					else
 					{
 						Circle* circle2 = (Circle*)(hitbox.shape);
-						// isColliding =
+						isColliding = Physics2D::CollisionSAT(circle2, polygon, Vector2Helper::Substract(position, origin));
 					}
 				}
 

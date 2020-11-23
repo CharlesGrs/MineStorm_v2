@@ -155,7 +155,7 @@ bool Physics2D::CollisionSAT(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2)
 	else return false;
 }
 
-bool Physics2D::CollisionSAT(Circle c, Polygon p, Vector2 offSet)
+bool Physics2D::CollisionSAT(Circle* c, Polygon* p, Vector2 offSet)
 {
 	Vector2 circleNorm;
 	Vector2 scaleNorm;
@@ -163,41 +163,41 @@ bool Physics2D::CollisionSAT(Circle c, Polygon p, Vector2 offSet)
 	Range    cRange;
 	Range    pRange;
 	
-	Vector2 temp = Vector2Helper::Add(p.vertices.back(), offSet);
+	Vector2 temp = Vector2Helper::Add(p->vertices.back(), offSet);
 	
-	for (Vector2 v : p.vertices)
+	for (Vector2 v : p->vertices)
 	{
 		Vector2 normal = (Vector2Helper::Substract(temp, v));
 		normal = Vector2Helper::NormalVector(normal);
 	
-		scaleNorm = Vector2Helper::Multiply(normal, c.radius);
+		scaleNorm = Vector2Helper::Multiply(normal, c->radius);
 	
-		cRange = { Vector2Helper::DotProduct(Vector2Helper::Substract(c.center,scaleNorm), normal),
-						Vector2Helper::DotProduct(Vector2Helper::Add(c.center,scaleNorm), normal) };
+		cRange = { Vector2Helper::DotProduct(Vector2Helper::Substract(c->center,scaleNorm), normal),
+						Vector2Helper::DotProduct(Vector2Helper::Add(c->center,scaleNorm), normal) };
 	
-		pRange = { Vector2Helper::DotProduct(p.vertices.front() ,normal), Vector2Helper::DotProduct(p.vertices.front(),normal) };
+		pRange = { Vector2Helper::DotProduct(p->vertices.front() ,normal), Vector2Helper::DotProduct(p->vertices.front(),normal) };
 	
-		for (Vector2 v : p.vertices)
+		for (Vector2 v : p->vertices)
 		{
 			pRange = WidenRange(pRange, Vector2Helper::DotProduct(v, normal));
 	
-			if (Vector2Helper::SquaredNorm(Vector2Helper::Substract(v,c.center)) < 
-				Vector2Helper::SquaredNorm(Vector2Helper::Substract(temp, c.center)))
+			if (Vector2Helper::SquaredNorm(Vector2Helper::Substract(v,c->center)) < 
+				Vector2Helper::SquaredNorm(Vector2Helper::Substract(temp, c->center)))
 					temp = v;
 		}
 	
 		if (!RangeInterference(pRange,cRange))
 			return false;
 	}
-	circleNorm = Vector2Helper::Normalize(Vector2Helper::Substract(c.center, temp));
+	circleNorm = Vector2Helper::Normalize(Vector2Helper::Substract(c->center, temp));
 
-	scaleNorm = Vector2Helper::Multiply(circleNorm, c.radius);
-	cRange = { Vector2Helper::DotProduct(Vector2Helper::Substract(c.center,scaleNorm), circleNorm),
-						Vector2Helper::DotProduct(Vector2Helper::Add(c.center,scaleNorm), circleNorm) };
+	scaleNorm = Vector2Helper::Multiply(circleNorm, c->radius);
+	cRange = { Vector2Helper::DotProduct(Vector2Helper::Substract(c->center,scaleNorm), circleNorm),
+						Vector2Helper::DotProduct(Vector2Helper::Add(c->center,scaleNorm), circleNorm) };
 
-	pRange = { Vector2Helper::DotProduct(p.vertices.front(),circleNorm), Vector2Helper::DotProduct(p.vertices.front(),circleNorm) };
+	pRange = { Vector2Helper::DotProduct(p->vertices.front(),circleNorm), Vector2Helper::DotProduct(p->vertices.front(),circleNorm) };
 	
-	for (Vector2 v : p.vertices)
+	for (Vector2 v : p->vertices)
 	{
 		pRange = WidenRange(pRange, Vector2Helper::DotProduct(v, circleNorm));
 	}
