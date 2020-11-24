@@ -14,10 +14,10 @@ PLAYER ONE :
 ● “E” ou “T”: Teleport the Player randomly 
 
 PLAYER TWO :
-● “J“ et “L“ : change the ship rotation (Rotate Player)
-● “I“ :  make the Player accelerate (Toward the front of the ship)
-● “K” : Shoot a bullet
-● “U” ou “O” : Teleport the Player randomly 
+1. “J“ et “L“ : change the ship rotation (Rotate Player)
+1. “I“ :  make the Player accelerate (Toward the front of the ship)
+1. “K” : Shoot a bullet
+1. “U” ou “O” : Teleport the Player randomly 
 
 
 ● "SPACE" : Pause the game.
