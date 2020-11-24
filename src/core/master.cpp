@@ -5,12 +5,12 @@
 #include <string>
 
 bool Master::debugMode;
+Master* Master::instance;
 
 Master::Master()
 {
 	LoadResources();
-	//ChangeScene(SceneIndex::Menu);
-	ChangeScene(SceneIndex::Game);
+	ChangeScene(SceneIndex::Menu);
 }
 
 Master::~Master()
@@ -20,14 +20,14 @@ Master::~Master()
 	UnloadResources();
 }
 
-void Master::ChangeScene(SceneIndex sceneIndex)
+void Master::ChangeScene(SceneIndex sceneIndex, bool twoPlayers)
 {
 	delete currentScene;
 	switch (sceneIndex)
 	{
 	case SceneIndex::Game:
 		currentScene = new Game();
-		((Game*)currentScene)->NewGame(true);
+		((Game*)currentScene)->NewGame(twoPlayers);
 		break;
 	case SceneIndex::Menu:
 		currentScene = new Menu();

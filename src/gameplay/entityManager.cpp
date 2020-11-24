@@ -39,10 +39,10 @@ void EntityManager::LoadEntitiesReferences()
 	//Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
 	//prefabs[1] = new SpawnPoint(defaultPosition, 10, 1, spawnPointSpriteRect, spriteSheet);
 
-	Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
+	/*Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
 	Polygon* MineLayerHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, MineLayerSpriteRect, scale);
 	Hitbox MineLayerHitbox = Hitbox{ HitboxType::Circle, MineLayerHitbox };
-	prefabs[2] = new MineLayer(defaultPosition, 10, scale, MineLayerSpriteRect, spriteSheet);
+	prefabs[2] = new MineLayer(defaultPosition, 10, scale, MineLayerSpriteRect, spriteSheet);*/
 
 	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
 	Circle* circleHitbox = new Circle{ 4 , Vector2{SpriteHelper::GetSpriteOrigin(bulletSpriteRect,scale) } };

@@ -8,9 +8,12 @@ enum class  SceneIndex {
 };
 class Master
 {
+private: 
 public:
 	Master();
 	~Master();
+
+	static Master* instance;
 
 	bool enableShader = true;
 	static bool debugMode;
@@ -20,7 +23,7 @@ public:
 	static const int windowWidth = 1080;
 	static const int windowHeight = 720;
 
-	void ChangeScene(SceneIndex scene);
+	void ChangeScene(SceneIndex scene, bool twoPlayers = false);
 	void Update();
 	void LoadResources();
 	void UnloadResources();
