@@ -16,22 +16,35 @@ Additional controls in-game to display shaders and debug. (F1, F2)
 
 
 ### Entity System
-* An EntityManager manages all the entity in the game **EntityManager.h**
+* An EntityManager manages all the entity in the game (**EntityManager.h**)
+* Instantiates prefabs at the beggining of the game, is able to destroy them safely
+* Is accessible to all the classes and makes easy instantiation & destroying entities
 
 ### Collision System
 * Three layers:
-	* Grid system to split the physics system in cells for optimization 
-	* AABB Check
-	* SAT Algorithm
+	* Grid system to split the physics system in cells for optimization (**Physics2D.h**)
+	* AABB Check (**Entity.h**)
+	* SAT Algorithm (**Physics2D.h**)
+* A tool that uses a texture to generate polygons & vertices (**PolygonHelper.cpp**)
+	
+### Shaders
+* A Post-Process shader to simulate retro monitor (**Bloom.fs**)
+	* Bloom
+	* Bumped UV
+	* RGB Strides
+	* Old pixel look
 
-● Movement in accordance with the law of inertia
-	(Player.cpp -> GetInput() for the inertia update)
-● Cells system to limit the collision fct calls (third layer of collision before the AABB check)
-(Physics2D.h -> cellGrid && Physics2D.cpp cells related fct)
+### Player
+* Movement in accordance with the law of inertia (**Player.cpp -> GetInput() **)
+* Trail Renderer (**Player.cpp -> RenderTrail()**)
 
-● Clean unity-like engine with scenes and architectural similarities
+### Scene Management
+* Master class that manages the scene that makes the scene transition easy. (**Master.cpp -> ChangeScene)
+* Singleton Pattern
 
-● Player ship trail 
-	(Player.cpp : GetThrusterPos & RenderTrail)
 
+### Helpers & Maths
+* Helper class for **Vector2** for basic Vector2 operations
+* Helper class for **Sprite** to generate SpriteRect & SpriteOrigins easily
+* All maths functions are stored in **Physics2D.cpp** & **Vector2Helper.cpp**
 
