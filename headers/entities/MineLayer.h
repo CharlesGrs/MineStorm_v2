@@ -8,7 +8,7 @@ class Minelayer : public Enemy
 	float spawnTimer = 0;
 	float spawnFrequency = 0;
 
-	MineLayer();
+	//MineLayer();
 	void Update();
 
 };

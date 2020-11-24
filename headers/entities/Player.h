@@ -18,6 +18,8 @@ public :
 
 	void Update() override ;
 	Entity* Clone();
+	bool playerOne = true;
+
 
 private:
 
@@ -27,7 +29,6 @@ private:
 	void RenderTrail();
 	Vector2 GetThrusterPos();
 
-	bool playerOne = true;
 	int health = 3;
 	Vector2 inertia = { 0,0 };
 	float bulletTimer =0;

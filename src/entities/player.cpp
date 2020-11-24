@@ -22,7 +22,8 @@ void Player::UpdatePosition()
 void Player::GetInput()
 {
 	bool accelerate = false;
-	if (IsKeyDown(KEY_W))
+
+	if (playerOne ? IsKeyDown(KEY_W) : IsKeyDown(KEY_I))
 	{
 		float magnitude = Vector2Helper::Norm(inertia);
 		if (magnitude < speed)
@@ -35,22 +36,21 @@ void Player::GetInput()
 	}
 	if (!accelerate)
 	{
-		float factor = IsKeyDown(KEY_S) ? 10.0f : 3.5f;
-		inertia = Vector2Helper::Lerp(inertia, Vector2{ 0,0 }, GetFrameTime() * factor);
+		inertia = Vector2Helper::Lerp(inertia, Vector2{ 0,0 }, GetFrameTime() * 3.5f);
 	}
 
-	if (IsKeyDown(KEY_A))
+	if (playerOne ? IsKeyDown(KEY_A) : IsKeyDown(KEY_J))
 	{
 		rotation -= 5;
 		RotateHitbox(-5);
 	}
-	else if (IsKeyDown(KEY_D))
+	else if (playerOne ? IsKeyDown(KEY_D) : IsKeyDown(KEY_L))
 	{
 		rotation += 5;
 		RotateHitbox(5);
 	}
 
-	if (IsKeyDown(KEY_F))
+	if (playerOne ? IsKeyDown(KEY_S) : IsKeyDown(KEY_K))
 	{
 		bulletTimer += GetFrameTime();
 		if (bulletTimer > SHOOTING_SPEED)

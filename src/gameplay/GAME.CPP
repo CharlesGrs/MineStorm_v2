@@ -1,4 +1,6 @@
 #include "..\..\headers\core\Game.h"
+#include "..\..\headers\entities\Player.h"
+
 #include <string>
 
 EntityManager* Game::_eM;
@@ -27,6 +29,16 @@ void Game::Update()
 
 void Game::NewGame(bool twoPlayer)
 {
+	int count = twoPlayer ? 2 : 1;
+	for (size_t i = 0; i < count; i++)
+	{
+		Vector2 playerPos;
+		playerPos.x = (float)(rand() % 1080);
+		playerPos.y = (float)(rand() % 720);
+
+		Player* p = (Player*)entityManager()->InstantiateEntity(EntityType::Player, playerPos, 0);
+		p->playerOne = i == 0;
+	}
 }
 
 void Game::InitNewLevel()

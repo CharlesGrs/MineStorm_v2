@@ -6,10 +6,10 @@
 
 bool Master::debugMode;
 
-
 Master::Master()
 {
 	LoadResources();
+	//ChangeScene(SceneIndex::Menu);
 	ChangeScene(SceneIndex::Game);
 }
 
@@ -27,6 +27,7 @@ void Master::ChangeScene(SceneIndex sceneIndex)
 	{
 	case SceneIndex::Game:
 		currentScene = new Game();
+		((Game*)currentScene)->NewGame(true);
 		break;
 	case SceneIndex::Menu:
 		currentScene = new Menu();
