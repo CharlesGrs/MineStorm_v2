@@ -9,6 +9,9 @@ class Game : public Scene
 private:
 	static EntityManager* _eM;
 	static Physics2D* _physics2D;
+	int enemyLeft = 0;
+	int score = 0;
+	int level = 0;
 
 public:
 
@@ -36,10 +39,5 @@ public:
 	void InitNewLevel();
 	void SaveScore();
 	void ExitGame();
-
-private:
-	int enemyLeft = 0;
-	int score = 0;
-	int level = 0;
 
 };

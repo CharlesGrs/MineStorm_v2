@@ -4,7 +4,7 @@
 //#include "../../headers/entities/Mine.h"
 //#include "../../headers/entities/SpawnPoint.h"
 #include "../../headers/entities/Bullet.h"
-//#include "../../headers/entities/MineLayer.h"
+#include "../../headers/entities/MineLayer.h"
 #include <stdlib.h>
 #include <raylib.h>
 
@@ -33,13 +33,16 @@ void EntityManager::LoadEntitiesReferences()
 	Polygon* playerHitboxPolygon = PolygonHelper::CalculatePolygonFromImage(collisionMapData, playerSpriteRect, scale);
 	Hitbox playerHitbox = Hitbox{ HitboxType::Polygon, playerHitboxPolygon };
 	prefabs[0] = new Player(defaultPosition, 10, scale, playerSpriteRect, playerHitbox, spriteSheet);
+
 #pragma region LATER
 
 	//Rectangle spawnPointSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 1);
 	//prefabs[1] = new SpawnPoint(defaultPosition, 10, 1, spawnPointSpriteRect, spriteSheet);
 
-	//Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
-	//prefabs[2] = new MineLayer(defaultPosition, 10, 1, MineLayerSpriteRect, spriteSheet);
+	Rectangle MineLayerSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 2);
+	Polygon* MineLayerHitbox = PolygonHelper::CalculatePolygonFromImage(collisionMapData, MineLayerSpriteRect, scale);
+	Hitbox MineLayerHitbox = Hitbox{ HitboxType::Circle, MineLayerHitbox };
+	prefabs[2] = new MineLayer(defaultPosition, 10, scale, MineLayerSpriteRect, spriteSheet);
 
 	Rectangle bulletSpriteRect = SpriteHelper::GetSpriteRectangle(spriteSheet, 4, 2, 3);
 	Circle* circleHitbox = new Circle{ 4 , Vector2{SpriteHelper::GetSpriteOrigin(bulletSpriteRect,scale) } };
