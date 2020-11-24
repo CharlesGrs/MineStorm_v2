@@ -12,7 +12,7 @@ private:
 
 public:
 
-	Game()= default;
+	Game() = default;
 	~Game();
 
 	static EntityManager* entityManager()
@@ -36,8 +36,10 @@ public:
 	void InitNewLevel();
 	void SaveScore();
 	void ExitGame();
-private :
+
+private:
 	int enemyLeft = 0;
-	int level = 0;
 	int score = 0;
+	int level = 0;
+
 };

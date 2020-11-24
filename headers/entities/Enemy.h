@@ -4,5 +4,6 @@
 
 class Enemy : public Entity
 {
-
+public:
+	int score;
 };
