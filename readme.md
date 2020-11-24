@@ -15,13 +15,15 @@ PLAYER ONE :
 Additional controls in-game to display shaders and debug. (F1, F2)
 
 
-## Entity System
+### Entity System
+* An EntityManager manages all the entity in the game *EntityManager.h" 
 
-## Collision System
+### Collision System
 * Three layers:
-	* Grid system to split the physics system in cells for optimization
+	* Grid system to split the physics system in cells for optimization 
 	* AABB Check
 	* SAT Algorithm
+
 ● Movement in accordance with the law of inertia
 	(Player.cpp -> GetInput() for the inertia update)
 ● Cells system to limit the collision fct calls (third layer of collision before the AABB check)
