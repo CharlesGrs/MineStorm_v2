@@ -156,15 +156,20 @@ bool Physics2D::CollisionSAT(Circle* c, Polygon* p, Vector2 offSet)
 {
 	Vector2 circleNorm;
 	Vector2 scaleNorm;
-	Vector2 summit = p->vertices.front();
+	Vector2 summit = Vector2Helper::Add(p->vertices.front(), offSet);
 
 	Range    cRange;
 	Range    pRange;
 	
-	Vector2 temp = Vector2Helper::Add(p->vertices.back(), offSet);
+	Vector2 temp = Vector2Helper::Add(p->vertices.front(), offSet);
 	
 	for (Vector2 v : p->vertices)
 	{
+		if (v.x == temp.x && v.y == temp.y)
+			continue;
+
+		v = Vector2Helper::Add(v, offSet);
+
 		Vector2 normal = (Vector2Helper::Substract(v, temp));
 		normal = Vector2Helper::NormalVector(normal);
 	
@@ -175,13 +180,15 @@ bool Physics2D::CollisionSAT(Circle* c, Polygon* p, Vector2 offSet)
 	
 		pRange = { Vector2Helper::DotProduct(p->vertices.front() ,normal), Vector2Helper::DotProduct(p->vertices.front(),normal) };
 	
-		for (Vector2 v : p->vertices)
+		for (Vector2 v1 : p->vertices)
 		{
-			pRange = WidenRange(pRange, Vector2Helper::DotProduct(v, normal));
+			v1 = Vector2Helper::Add(v, offSet);
+
+			pRange = WidenRange(pRange, Vector2Helper::DotProduct(v1, normal));
 	
-			if (Vector2Helper::SquaredNorm(Vector2Helper::Substract(v,c->center)) < 
+			if (Vector2Helper::SquaredNorm(Vector2Helper::Substract(v1,c->center)) < 
 				Vector2Helper::SquaredNorm(Vector2Helper::Substract(summit, c->center)))
-				summit = v;
+				summit = v1;
 		}
 	
 		if (!RangeInterference(pRange,cRange))
@@ -206,5 +213,22 @@ bool Physics2D::CollisionSAT(Circle* c, Polygon* p, Vector2 offSet)
 		return false;
 	
 	return true;
+	
+}
+
+bool Physics2D::EmergencyCollisionCirclePolygon(Circle* c, Polygon* p, Vector2 offset)
+{
+	for (Vector2 v : p->vertices)
+	{
+		if (Vector2Helper::Distance(c->center, Vector2Helper::Add(v, offset)) < c->radius)
+			return true;
+	}
+
+	return false;
+}
+
+bool Physics2D::CollisionCircleCircle(Circle* c1, Circle* c2)
+{
+	return (Vector2Helper::Distance(c1->center, c2->center) < c1->radius + c2->radius);
 	
 }

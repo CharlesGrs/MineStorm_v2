@@ -21,6 +21,8 @@ public:
 	static bool CollisionSAT(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2);
 	static bool IsSeparatorAxe(Polygon* p1, Polygon* p2, Vector2 o1, Vector2 o2);
 	static bool CollisionSAT(Circle* c, Polygon* p, Vector2 offSet);
+	static bool EmergencyCollisionCirclePolygon(Circle* c, Polygon* p, Vector2 offset);
+	static bool CollisionCircleCircle(Circle* c1, Circle* c2);
 
 private :
 	std::list<Cell*> GetNeighborCells(Cell* c);
