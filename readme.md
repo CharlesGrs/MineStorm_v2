@@ -16,7 +16,7 @@ Additional controls in-game to display shaders and debug. (F1, F2)
 
 
 ### Entity System
-* An EntityManager manages all the entity in the game *EntityManager.h" 
+* An EntityManager manages all the entity in the game **EntityManager.h**
 
 ### Collision System
 * Three layers:
