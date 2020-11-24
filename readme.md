@@ -1,23 +1,16 @@
-Rules of the game :
-
-The player controls a spaceship and is able to fire towards enemies to destroy them.
-
-If the player touch a enemy or is hit by an enemy bullet, he lose one of his 3 lives.
-
+#MineStorm
 
 Controls :
 
 PLAYER ONE :
-● “D“ & “G“ : change the ship rotation (Rotate Player)
-● “Z“ : make the Player accelerate (Toward the front of the ship)
-● “F” : Shoot a bullet
-● “E” ou “T”: Teleport the Player randomly 
+1. “D“ & “Q“ : change the ship rotation (Rotate Player)
+1. “Z“ : makes the Player accelerates (Toward the front of the ship)
+1. “S” : Shoot a bullet
 
-PLAYER TWO :
+#PLAYER TWO :
 1. “J“ et “L“ : change the ship rotation (Rotate Player)
-1. “I“ :  make the Player accelerate (Toward the front of the ship)
+1. “I“ :  makes the Player accelerates (Toward the front of the ship)
 1. “K” : Shoot a bullet
-1. “U” ou “O” : Teleport the Player randomly 
 
 
 ● "SPACE" : Pause the game.
