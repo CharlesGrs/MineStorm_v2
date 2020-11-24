@@ -17,6 +17,12 @@ void Game::Update()
 	physics2D()->Update();
 	entityManager()->UpdateEntities();
 	entityManager()->DrawEntities();
+
+	if (enemyLeft == 0)
+	{
+		InitNewLevel();
+		level++;
+	}
 }
 
 void Game::NewGame(bool twoPlayer)
@@ -25,6 +31,7 @@ void Game::NewGame(bool twoPlayer)
 
 void Game::InitNewLevel()
 {
+	// prendre en compte level pour la difficulty
 }
 
 void Game::SaveScore()
