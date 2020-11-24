@@ -14,23 +14,22 @@ PLAYER ONE :
 
 Additional controls in-game to display shaders and debug. (F1, F2)
 
-Features :
-	
-	## Entity System
-	
-	## Collision System
-	* Three layers:
-		* Grid system to split the physics system in cells for optimization
-		* AABB Check
-		* SAT Algorithm
-	● Movement in accordance with the law of inertia
-		(Player.cpp -> GetInput() for the inertia update)
-	● Cells system to limit the collision fct calls (third layer of collision before the AABB check)
-		(Physics2D.h -> cellGrid && Physics2D.cpp cells related fct)
 
-	● Clean unity-like engine with scenes and architectural similarities
+## Entity System
 
-	● Player ship trail 
-		(Player.cpp : GetThrusterPos & RenderTrail)
-	
+## Collision System
+* Three layers:
+	* Grid system to split the physics system in cells for optimization
+	* AABB Check
+	* SAT Algorithm
+● Movement in accordance with the law of inertia
+	(Player.cpp -> GetInput() for the inertia update)
+● Cells system to limit the collision fct calls (third layer of collision before the AABB check)
+(Physics2D.h -> cellGrid && Physics2D.cpp cells related fct)
+
+● Clean unity-like engine with scenes and architectural similarities
+
+● Player ship trail 
+	(Player.cpp : GetThrusterPos & RenderTrail)
+
 
