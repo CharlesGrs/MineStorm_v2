@@ -1,13 +1,13 @@
 # MineStorm
 
-Controls :
+### Controls :
 
-PLAYER ONE :
+**PLAYER ONE :** 
 1. “D“ & “Q“ : change the ship rotation (Rotate Player)
 1. “Z“ : makes the Player accelerates (Toward the front of the ship)
 1. “S” : Shoot a bullet
 
-#PLAYER TWO :
+**PLAYER TWO :**
 1. “J“ et “L“ : change the ship rotation (Rotate Player)
 1. “I“ :  makes the Player accelerates (Toward the front of the ship)
 1. “K” : Shoot a bullet
