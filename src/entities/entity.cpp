@@ -102,8 +102,8 @@ void Entity::CheckCollision()
 						Polygon* polygon2 = (Polygon*)(e->hitbox.shape);
 						if (position.x - origin.x  < e->position.x - e->origin.x + e->spriteRect.width * e->scale &&
 							position.x - origin.x + spriteRect.width * scale > e->position.x - e->scale &&
-							position.y - origin.x < e->position.y - e-> origin.y + e->spriteRect.height * e->scale &&
-							position.y - origin.x + spriteRect.height * scale > e->position.y - e-> origin.y)
+							position.y - origin.x < e->position.y - e->origin.y + e->spriteRect.height * e->scale &&
+							position.y - origin.x + spriteRect.height * scale > e->position.y - e->origin.y)
 						{
 							isColliding = Physics2D::CollisionSAT(polygon, polygon2, Vector2Helper::Substract(position, origin), Vector2Helper::Substract(e->position, e->origin));
 							if (isColliding)
@@ -113,7 +113,7 @@ void Entity::CheckCollision()
 					else
 					{
 						Circle* circle2 = (Circle*)(hitbox.shape);
-						isColliding = Physics2D::CollisionSAT(circle2, polygon, Vector2Helper::Substract(position, origin));
+						isColliding = Physics2D::EmergencyCollisionCirclePolygon(circle2, polygon, Vector2Helper::Substract(position, origin));
 					}
 				}
 
@@ -124,12 +124,12 @@ void Entity::CheckCollision()
 					if (e->hitbox.type == HitboxType::Polygon)
 					{
 						Polygon* polygon2 = (Polygon*)(e->hitbox.shape);
-						// isColliding =
+						isColliding = Physics2D::EmergencyCollisionCirclePolygon(circle, polygon2, Vector2Helper::Substract(position, origin));
 					}
 					else
 					{
 						Circle* circle2 = (Circle*)(hitbox.shape);
-						// isColliding =
+						isColliding = Physics2D::CollisionCircleCircle(circle, circle2);
 					}
 				}
 			}
