@@ -15,5 +15,4 @@ void Minelayer::Update()
 		Vector2 vRand = Vector2{ position.x + rand() % 1080, position.y };
 		Game::entityManager()->InstantiateEntity(EntityType::SpawnPoint, Vector2Helper::Add(position, vRand));
 	}
-
 }

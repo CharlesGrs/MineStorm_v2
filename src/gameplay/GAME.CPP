@@ -27,6 +27,7 @@ void Game::Update()
 	}
 }
 
+
 void Game::NewGame(bool twoPlayer)
 {
 	int count = twoPlayer ? 2 : 1;

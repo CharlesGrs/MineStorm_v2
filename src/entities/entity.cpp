@@ -100,6 +100,7 @@ void Entity::CheckCollision()
 					if (e->hitbox.type == HitboxType::Polygon)
 					{
 						Polygon* polygon2 = (Polygon*)(e->hitbox.shape);
+						//AABB Check
 						if (position.x - origin.x  < e->position.x - e->origin.x + e->spriteRect.width * e->scale &&
 							position.x - origin.x + spriteRect.width * scale > e->position.x - e->scale &&
 							position.y - origin.x < e->position.y - e->origin.y + e->spriteRect.height * e->scale &&
