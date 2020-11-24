@@ -86,9 +86,16 @@
   <ItemGroup>
     <ClCompile Include="src\core\master.cpp" />
     <ClCompile Include="src\entities\bullet.cpp" />
+    <ClCompile Include="src\entities\enemy.cpp" />
     <ClCompile Include="src\entities\entity.cpp" />
+    <ClCompile Include="src\entities\fireballMine.cpp" />
+    <ClCompile Include="src\entities\floatingMine.cpp" />
     <ClCompile Include="src\entities\hitbox.cpp" />
+    <ClCompile Include="src\entities\magneticFireballMine.cpp" />
+    <ClCompile Include="src\entities\magneticMine.cpp" />
+    <ClCompile Include="src\entities\mineLayer.cpp" />
     <ClCompile Include="src\entities\player.cpp" />
+    <ClCompile Include="src\entities\spawnPoint.cpp" />
     <ClCompile Include="src\gameplay\cell.cpp" />
     <ClCompile Include="src\gameplay\entityManager.cpp" />
     <ClCompile Include="src\gameplay\game.cpp" />
@@ -106,9 +113,16 @@
     <ClInclude Include="headers\core\Scene.h" />
     <ClInclude Include="headers\core\SoundResources.h" />
     <ClInclude Include="headers\entities\Bullet.h" />
+    <ClInclude Include="headers\entities\Enemy.h" />
     <ClInclude Include="headers\entities\Entity.h" />
+    <ClInclude Include="headers\entities\FireballMine.h" />
+    <ClInclude Include="headers\entities\FloatingMine.h" />
     <ClInclude Include="headers\entities\Hitbox.h" />
+    <ClInclude Include="headers\entities\MagneticFireballMine.h" />
+    <ClInclude Include="headers\entities\MagneticMine.h" />
+    <ClInclude Include="headers\entities\MineLayer.h" />
     <ClInclude Include="headers\entities\Player.h" />
+    <ClInclude Include="headers\entities\SpawnPoint.h" />
     <ClInclude Include="headers\gameplay\Cell.h" />
     <ClInclude Include="headers\gameplay\EntityManager.h" />
     <ClInclude Include="headers\gameplay\Game.h" />

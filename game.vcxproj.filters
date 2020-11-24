@@ -93,6 +93,27 @@
     <ClInclude Include="headers\helpers\Geometry.h">
       <Filter>Headers\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\entities\SpawnPoint.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\MineLayer.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\FloatingMine.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\FireballMine.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\MagneticMine.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\MagneticFireballMine.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\entities\Enemy.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -138,6 +159,27 @@
       <Filter>Sources\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\hitbox.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\spawnPoint.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\mineLayer.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\magneticFireballMine.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\magneticMine.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\floatingMine.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\fireballMine.cpp">
+      <Filter>Sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\enemy.cpp">
       <Filter>Sources\Entities</Filter>
     </ClCompile>
   </ItemGroup>
